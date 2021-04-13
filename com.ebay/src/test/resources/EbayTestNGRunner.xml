@@ -10,7 +10,8 @@
         <parameter name="url" value="https://www.ebay.com"/>
 
         <classes>
-           <!-- <class name="homepageTest.HomepageTest"/> -->
+            <class name="testEbayElectronicsPageKE.testEbayElectronicsPage"/>
+            <!--><class name="testAboutUSContactUsPageKE.TestContactUsPage"/>-->
         </classes>
 
     </test>

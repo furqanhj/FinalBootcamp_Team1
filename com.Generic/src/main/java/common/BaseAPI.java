@@ -6,24 +6,24 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 import utilities.DataReader;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.Set;
 
 public class BaseAPI {
 
     public static WebDriver driver;
     public static WebDriverWait driverWait;
+    public static Actions actions;
     public DataReader dataReader;
     public Properties properties;
 
@@ -51,7 +51,8 @@ public class BaseAPI {
 
     // Parameterization via .xml runner files in each module
     @Parameters({"browserName", "browserVersion", "url"})
-    @BeforeMethod
+  // @BeforeClass
+  @BeforeMethod
     public static void setUp(@Optional("chrome") String browserName, @Optional("90") String browserVersion,
                              @Optional("") String url) {
 
@@ -60,9 +61,10 @@ public class BaseAPI {
         driver.get(url);
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
+        actions = new Actions(driver);
     }
-
-    @AfterMethod(alwaysRun = true)
+    //@AfterClass(alwaysRun = true)
+    @AfterMethod
     public static void tearDown() {
         driver.close();
         driver.quit();
@@ -89,11 +91,74 @@ public class BaseAPI {
 
         return driver;
     }
+    /**
+     * Synchronization Helper Methods
+     */
+
+    public void waitForVisibilityOfElement(WebElement element) {
+        try {
+            driverWait.until(ExpectedConditions.visibilityOf(element));
+
+        } catch (ElementNotVisibleException elementNotVisibleException) {
+            elementNotVisibleException.printStackTrace();
+            System.out.println("ELEMENT NOT VISIBLE");
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("UNABLE TO LOCATE ELEMENT");
+        }
+    }
+
+    public void waitForElementToBeClickable(WebElement element) {
+        try {
+            driverWait.until(ExpectedConditions.elementToBeClickable(element));
+
+        } catch (ElementNotInteractableException elementNotInteractableException) {
+            elementNotInteractableException.printStackTrace();
+            System.out.println("ELEMENT NOT INTERACTABLE");
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("UNABLE TO LOCATE ELEMENT");
+        }
+    }
+
+    public void waitForElementToBeSelected(WebElement element) {
+        try {
+            driverWait.until(ExpectedConditions.elementSelectionStateToBe(element, true));
+
+        } catch (ElementNotInteractableException elementNotInteractableException) {
+            elementNotInteractableException.printStackTrace();
+            System.out.println("ELEMENT NOT INTERACTABLE");
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("UNABLE TO LOCATE ELEMENT");
+        }
+    }
+
+    public void waitForPageLoad(String URL) {
+        driverWait.until(ExpectedConditions.urlToBe(URL));
+    }
+
 
     /**
      * Helper Methods
      */
+    public void hoverOverElement(WebElement elementToHoverOver) {
+        try {
+            waitForVisibilityOfElement(elementToHoverOver);
+            actions.moveToElement(elementToHoverOver).build().perform();
 
+        } catch (ElementNotInteractableException elementNotInteractableException) {
+            elementNotInteractableException.printStackTrace();
+            System.out.println("ELEMENT IS NOT INTERACTABLE");
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("UNABLE TO HOVER OVER ELEMENT");
+        }
+    }
     public void sendKeysToElement(WebElement element, String keysToSend) {
 
         try {
@@ -246,6 +311,17 @@ public class BaseAPI {
             flag = false;
         }
         return flag;
+    }
+    public void switchToNewWindow() {
+        String parentWindow = driver.getWindowHandle();
+
+        Set<String> windowHandles = driver.getWindowHandles();
+
+        for (String handle : windowHandles) {
+            if (!(handle.equals(parentWindow))) {
+                driver.switchTo().window(handle);
+            }
+        }
     }
 
 }

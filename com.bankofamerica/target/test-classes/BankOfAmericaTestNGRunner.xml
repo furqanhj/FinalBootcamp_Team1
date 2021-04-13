@@ -11,9 +11,9 @@
 
         <classes>
                <class name="testBankOfAmericaAboutUsKE.TestAboutUsPage"/>
-             <class name="testAboutUSContactUsPageKE.TestContactUsPage"/>
+            <!--> <class name="testAboutUSContactUsPageKE.TestContactUsPage"/> -->
     </classes>
-
+   
    </test>
 
    </suite>
