@@ -28,7 +28,7 @@ public class TestAdvancedSearchPage extends BaseAPI {
     }
 
     //TestCase#2: click on searchTips Link and validate via
-    @Test (priority = 1, enabled = false)
+    @Test (priority = 1, enabled = true)
     public void testClickOnSearchTipsLink(){
         ebayHomepage = new EbayHomepage();
         ebayHomepage.navigateToAdvancedSearchPage().clickOnSearchTipsLink();

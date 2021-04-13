@@ -10,7 +10,7 @@
         <parameter name="url" value="https://www.bankofamerica.com"/>
 
         <classes>
-            <!--            <class name="homepageTest.HomepageTest"/>-->
+                        <class name="testInvestingPageFJ.TestInvestingPage"/>
         </classes>
 
     </test>
