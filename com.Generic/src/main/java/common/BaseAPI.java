@@ -9,6 +9,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
@@ -246,6 +247,62 @@ public class BaseAPI {
             flag = false;
         }
         return flag;
+    }
+    public void clickByXpathOrCssUsingJavaScript(String locator) {
+        try {
+            //explicit wait
+            WebDriverWait wait10 = new WebDriverWait(driver, 20);
+            //for any web elements found by xpath
+            WebElement element = driver.findElement(By.xpath(locator));
+            //converting Javascriptexecutor to driver, to give it access. so its able to click on anything without issues
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            //Telling javascript to execute a script, telling it to click the element
+            js.executeScript("arguments[0].click()", element);
+        }catch(Exception e){
+            e.printStackTrace();     //info on the exception and what went wrong
+            System.out.println("FIRST ATTEMPT FAILED");
+            try {
+                //explicit wait
+                WebDriverWait wait10 = new WebDriverWait(driver, 20);
+                //for any web elements found by xpath
+                WebElement element = driver.findElement(By.cssSelector(locator));
+                //converting Javascriptexecutor to driver, to give it access. so its able to click on anything without issues
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                //Telling javascript to execute a script, telling it to click the element
+                js.executeScript("arguments[0].click()", element);
+            }catch(Exception e1){
+                e1.printStackTrace();
+            }
+        }
+
+    }
+
+    public void typeOnElement(String locator, String value) {
+        try {
+            driver.findElement(By.cssSelector(locator)).sendKeys(value);
+        } catch (Exception ex) {
+            driver.findElement(By.xpath(locator)).sendKeys(value);
+        }
+    }
+
+
+    //helper method to combine the assertion code into one method.
+    //To get
+    public void assertEqualsGetText(String exp,String loc){
+      try {
+          String actualResult = driver.findElement(By.xpath(loc)).getText();
+          Assert.assertEquals(actualResult, exp, "TEST FAILED");
+      }catch(Exception e) {
+          e.printStackTrace();
+      try {
+          String actualResult = driver.findElement(By.cssSelector(loc)).getText();
+          Assert.assertEquals(actualResult, exp, "TEST FAILED");
+      }catch(Exception e1){
+          e1.printStackTrace();
+      }
+      }
+
+
     }
 
 }
