@@ -1,9 +1,13 @@
 package ebayHomepageFJ;
 
 import common.BaseAPI;
+import ebayAdvancedSearchPageFJ.EbayAdvancedSearchPage;
+import ebaySignInPageFJ.EbaySignInPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
 
 import static ebayHomepageFJ.EbayHomepageWebElements.*;
 
@@ -14,86 +18,95 @@ public class EbayHomepage extends BaseAPI {
      * Declaring the locators of the elements on the homepage by the use of @FindBy annotation,
      * and storing them in the WebElement type instance variable.
      */
-    @FindBy(xpath = webElementEbayHomepageLink)
-    WebElement ebayHomepageLink;
+    @FindBy(xpath = WEB_ELEMENT_EBAY_HOMEPAGE_LINK)
+    public WebElement ebayHomepageLink;
 
-    @FindBy (css = webElementSearchBar)
-    WebElement searchBar;
+    @FindBy (css = WEB_ELEMENT_SEARCH_BAR)
+    public WebElement searchBar;
 
-    @FindBy (xpath = webElementSearchButton)
-    WebElement searchButton;
+    @FindBy (xpath = WEB_ELEMENT_SEARCH_BUTTON)
+    public WebElement searchButton;
 
-    @FindBy (css = webElementShopByCatDropdown)
-    WebElement shopByDropdown;
+    @FindBy (css = WEB_ELEMENT_SHOP_BY_CAT_DROPDOWN)
+    public WebElement shopByDropdown;
 
-    @FindBy (css = webElementAllCatDropdown)
-    WebElement allCategoriesDropdown;
+    @FindBy (css = WEB_ELEMENT_ALL_CAT_DROPDOWN)
+    public WebElement allCategoriesDropdown;
 
-    @FindBy (css = webElementAdvancedSearchLink)
-    WebElement advancedSearchButton;
+    @FindBy (css = WEB_ELEMENT_ADVANCED_SEARCH_LINK)
+    public WebElement advancedSearchButton;
 
-    @FindBy (css = webElementSignInButton)
-    WebElement signInButton;
+    @FindBy (css = WEB_ELEMENT_SIGN_IN_BUTTON)
+    public WebElement signInButton;
 
-    @FindBy (css = webElementRegisterButton)
-    WebElement registerButton;
+    @FindBy (css = WEB_ELEMENT_REGISTER_BUTTON)
+    public WebElement registerButton;
 
-    @FindBy (xpath = webElementDailyDealsButton)
-    WebElement dailyDealsButton;
+    @FindBy (xpath = WEB_ELEMENT_DAILY_DEALS_BUTTON)
+    public WebElement dailyDealsButton;
 
-    @FindBy (xpath = webElementBrandOutletButton)
-    WebElement brandOutletButton;
+    @FindBy (xpath = WEB_ELEMENT_BRAND_OUTLET_BUTTON)
+    public WebElement brandOutletButton;
 
-    @FindBy (xpath = webElementHelpAndContactButton)
-    WebElement helpAndContactButton;
+    @FindBy (xpath = WEB_ELEMENT_HELP_AND_CONTACT_BUTTON)
+    public WebElement helpAndContactButton;
 
-    @FindBy (css = webElementSellButton)
-    WebElement sellButton;
+    @FindBy (css = WEB_ELEMENT_SELL_BUTTON)
+    public WebElement sellButton;
 
-    @FindBy (css = webElementWatchlistDropdown)
-    WebElement watchlistDropdown;
+    @FindBy (css = WEB_ELEMENT_WATCHLIST_DROPDOWN)
+    public WebElement watchlistDropdown;
 
-    @FindBy (css = webElementMyEbayDropdown)
-    WebElement myEbayDropdown;
+    @FindBy (css = WEB_ELEMENT_MY_EBAY_DROPDOWN)
+    public WebElement myEbayDropdown;
 
-    @FindBy (css = webElementNotificationsButton)
-    WebElement notificationsButton;
+    @FindBy (css = WEB_ELEMENT_NOTIFICATIONS_BUTTON)
+    public WebElement notificationsButton;
 
-    @FindBy (css = webElementShoppingCartButton)
-    WebElement shoppingCartButton;
+    @FindBy (css = WEB_ELEMENT_SHOPPING_CART_BUTTON)
+    public WebElement shoppingCartButton;
 
-    @FindBy (css = webElementSavedButton)
-    WebElement savedButton;
+    @FindBy (css = WEB_ELEMENT_SAVED_LINK_BUTTON)
+    public WebElement savedButton;
 
-    @FindBy (css = webElementMotorsButton)
-    WebElement motorsButton;
+    @FindBy (css = WEB_ELEMENT_MOTORS_LINK_BUTTON)
+    public WebElement motorsButton;
 
-    @FindBy (xpath = webElementFashionButton)
-    WebElement fashionButton;
+    @FindBy (xpath = WEB_ELEMENT_FASHION_LINK_BUTTON)
+    public WebElement fashionButton;
 
-    @FindBy (xpath = webElementElectronicsButton)
-    WebElement electronicsButton;
+    @FindBy (xpath = WEB_ELEMENT_ELECTRONICS_LINK_BUTTON)
+    public WebElement electronicsButton;
 
-    @FindBy (xpath = webElementCollectiblesButton)
-    WebElement collectiblesButton;
+    @FindBy (xpath = WEB_ELEMENT_COLLECTIBLES_LINK_BUTTON)
+    public WebElement collectiblesButton;
 
-    @FindBy (xpath = webElementHomeAndGardenButton)
-    WebElement homeAndGardenButton;
+    @FindBy (xpath = WEB_ELEMENT_HOME_AND_GARDEN_LINK_BUTTON)
+    public WebElement homeAndGardenButton;
 
-    @FindBy (xpath = webElementSportingGoodsButton)
-    WebElement sportingGoodsButton;
+    @FindBy (xpath = WEB_ELEMENT_SPORTING_GOODS_LINK_BUTTON)
+    public WebElement sportingGoodsButton;
 
-    @FindBy (xpath = webElementToysButton)
-    WebElement toysButton;
+    @FindBy (xpath = WEB_ELEMENT_TOYS_LINK_BUTTON)
+    public WebElement toysButton;
 
-    @FindBy (xpath = webElementBusnAndIndButton)
-    WebElement businessAndIndButton;
+    @FindBy (xpath = WEB_ELEMENT_BUSN_AND_IND_LINK_BUTTON)
+    public WebElement businessAndIndButton;
 
-    @FindBy (xpath = webElementMusicButton)
-    WebElement musicButton;
+    @FindBy (xpath = WEB_ELEMENT_MUSIC_LINK_BUTTON)
+    public WebElement musicButton;
 
-    @FindBy (xpath = webElementDealsButton)
-    WebElement dealsButton;
+    @FindBy (xpath = WEB_ELEMENT_DEALS_LINK_BUTTON)
+    public WebElement dealsButton;
+
+    @FindBy (xpath = WEB_ELEMENT_EXPECTED_TEXT_SEARCH_RESULT)
+    public WebElement expectedTextFromSearchResult;
+
+    @FindBy (css = WEB_ELEMENT_EXPECTED_ALL_CAT_DROPDOWN)
+    public WebElement expectedAllCatDropdown;
+
+    @FindBy (css = WEB_ELEMENTS_EXPECTED_ALL_CAT_DROPDOWN_SEARCH_BAR)
+    public List<WebElement> expectedAllCatDropdownTotalElements;
 
     /**
      * @author Furqan.
@@ -110,11 +123,11 @@ public class EbayHomepage extends BaseAPI {
      */
 
     public void enterTextInSearchBar(String dataToSearch){
-        searchBar.sendKeys(dataToSearch);
+        sendKeysToElement(searchBar, dataToSearch);
     }
 
     public void clickSearchButton(){
-        searchButton.click();
+        clickElement(searchButton);
     }
 
     public void searchForAnItem(String itemSearch){
@@ -122,12 +135,32 @@ public class EbayHomepage extends BaseAPI {
         clickSearchButton();
     }
 
-    public void clickOnEbayIconForHomepage(){
-        ebayHomepageLink.click();
+    public void selectCategoryFromSearchBarUsingIndex(int index) {
+        selectOptionByIndex(allCategoriesDropdown, index);
     }
 
-    public void clickOnSignInLink(){
-        signInButton.click();
+    public void selectCategoryFromSearchBarUsingValue(String value) {
+        selectOptionByValue(allCategoriesDropdown, value);
+    }
+
+    public void selectCategoryFromSearchBarUsingVisibleText(String visibleText) {
+        selectOptionByVisibleText(shopByDropdown, visibleText);
+    }
+
+    public void clickOnEbayIconForHomepage(){
+        clickElement(ebayHomepageLink);
+    }
+
+    public EbaySignInPage navigateToSignInPage(){
+        clickElement(signInButton);
+
+        return new EbaySignInPage();
+    }
+
+    public EbayAdvancedSearchPage navigateToAdvancedSearchPage(){
+        clickElement(advancedSearchButton);
+
+        return new EbayAdvancedSearchPage();
     }
 
 
