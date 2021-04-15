@@ -23,6 +23,8 @@ import org.testng.annotations.Optional;
 import reporting.ExtentManager;
 import reporting.ExtentTestManager;
 import utilities.DataReader;
+import utilities.WebEventListener;
+
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
@@ -130,6 +132,10 @@ public class BaseAPI {
             driver = new InternetExplorerDriver();
         }
 
+        eventFiringWebDriver = new EventFiringWebDriver(driver);
+        eventFiringWebDriver.register(new WebEventListener());
+        driver = eventFiringWebDriver;
+
         return driver;
     }
 
@@ -137,7 +143,7 @@ public class BaseAPI {
         String fileName = testName + ".png";
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         File newScreenshotFile = new File(System.getProperty("user.dir") + File.separator + "src" + File.separator +
-                "main" + File.separator + "java" + File.separator + "reporting" + File.separator + "screenshots" + File.separator + fileName);
+                "main" + File.separator + "java" + File.separator + "reporting" + File.separator + fileName);
 
         try {
             FileHandler.copy(screenshot, newScreenshotFile);
@@ -563,7 +569,7 @@ public class BaseAPI {
     public boolean compareStrings(String str1, String str2) {
         boolean flag = false;
 
-        if (str1.toLowerCase().equals(str2)) {
+        if (str1.toLowerCase().equals(str2.toLowerCase())) {
             flag = true;
             return flag;
         }

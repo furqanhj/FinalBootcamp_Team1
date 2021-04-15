@@ -23,6 +23,10 @@ public class ChaseCustomerServiceWebElements {
      */
     //Input SearchBox on landed Find ATM Link: (CSS)
     public static final String WEB_ELEMENT_SEARCH_BOX_TO_FIND_NEAREST_ATM = "#q";
-
-
+    //4 header links on Dispute a charge page for case#3: (CSS)
+            public static final String WEB_ELEMENT_ACTUAL_LINKS_ON_DISPUTE_CHARGE_PAGE = "#SubHeaderOriginal > ul > li";
+    //Text on Make A Payment page: (CSS)
+    public static final String WEB_ELEMENT_ACTUAL_TEXT_ON_MAKE_A_PAYMENT_PAGE = ".body-copy.default h2";
+    //Text on Reset Username/ Password Link: (ID)
+    public static final String WEB_ELEMENT_ACTUAL_TEXT_ON_RESET_USERNAME_PSWD_PAGE = "passwordResetHeader";
 }

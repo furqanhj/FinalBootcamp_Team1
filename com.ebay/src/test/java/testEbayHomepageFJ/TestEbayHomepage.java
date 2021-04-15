@@ -17,7 +17,7 @@ public class TestEbayHomepage extends BaseAPI {
     EbayHomepage ebayHomepage;
 
     //Test Case#1: Search for "travel bags" and validate via Text on search result page.
-    @Test(priority = 1, enabled = false)
+    @Test(priority = 1, enabled = true)
     public void testSearchForAnItem() {
         ebayHomepage = new EbayHomepage();
 
@@ -29,7 +29,7 @@ public class TestEbayHomepage extends BaseAPI {
     }
 
     //Test Case#2: Test All Category dropdown in search bar, element on index 10 (collectibles) via Text.
-    @Test(priority = 2, enabled = false)
+    @Test(priority = 2, enabled = true)
     public void testAllCategoriesDropdownByIndex() {
         ebayHomepage = new EbayHomepage();
 
@@ -45,7 +45,7 @@ public class TestEbayHomepage extends BaseAPI {
     public void testNumberOfElementsInSelectAllCatDropdownViaExcelReader() throws IOException {
         ebayHomepage = new EbayHomepage();
 
-        String sheetPath = "";
+        String sheetPath = System.getProperty("user.dir") + "/src/test/resources/test_data/EbayTestData.xlsx";
 
         String[] expectedResult = dataReader.fileReaderStringXSSF(sheetPath, "AllCatDropdown");
         List<WebElement> elements = ebayHomepage.expectedAllCatDropdownTotalElements;
@@ -64,7 +64,7 @@ public class TestEbayHomepage extends BaseAPI {
     }
 
     // Test Case#4: Validate the list of Categories in All Category dropdown via Buffered Reader
-    @Test (priority = 4, enabled = false)
+    @Test (priority = 4, enabled = true)
     public void testNumberOfElementsInSelectAllCatDropdownViaTextFile() throws IOException {
         ebayHomepage = new EbayHomepage();
 

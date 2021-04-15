@@ -10,9 +10,9 @@
         <parameter name="url" value="https://www.ebay.com"/>
 
         <classes>
-<!--            <class name="testEbayHomepageFJ.TestEbayHomepage"/>-->
+            <class name="testEbayHomepageFJ.TestEbayHomepage"/>
 <!--            <class name="testEbaySignInPageFJ.TestEbaySignInPage"/>-->
-            <class name="testAdvancedSearchPageFJ.TestAdvancedSearchPage"/>
+<!--            <class name="testAdvancedSearchPageFJ.TestAdvancedSearchPage"/>-->
         </classes>
 
     </test>

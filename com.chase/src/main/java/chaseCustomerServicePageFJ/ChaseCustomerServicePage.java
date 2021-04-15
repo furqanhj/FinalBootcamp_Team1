@@ -7,6 +7,9 @@ import common.BaseAPI;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.seleniumhq.jetty9.server.PushBuilder;
+
+import java.util.List;
 
 public class ChaseCustomerServicePage extends BaseAPI {
 
@@ -33,6 +36,15 @@ public class ChaseCustomerServicePage extends BaseAPI {
      */
     @FindBy (css = WEB_ELEMENT_SEARCH_BOX_TO_FIND_NEAREST_ATM)
     public WebElement searchBoxToFindNearestATM;
+
+    @FindBy (css = WEB_ELEMENT_ACTUAL_LINKS_ON_DISPUTE_CHARGE_PAGE)
+    public List<WebElement> actualLinksOnDisputeChargePage;
+
+    @FindBy (css = WEB_ELEMENT_ACTUAL_TEXT_ON_MAKE_A_PAYMENT_PAGE)
+    public WebElement actualTextOnMakeAPaymentPage;
+
+    @FindBy (id = WEB_ELEMENT_ACTUAL_TEXT_ON_RESET_USERNAME_PSWD_PAGE)
+    public WebElement actualTextOnResetUsernamePswdPage;
 
     public ChaseCustomerServicePage(){
         PageFactory.initElements(driver, this);
