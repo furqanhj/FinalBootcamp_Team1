@@ -70,7 +70,7 @@ public class WebEventListener extends BaseAPI implements WebDriverEventListener 
 
     @Override
     public void beforeFindBy(By by, WebElement webElement, WebDriver webDriver) {
-        System.out.println("ATTEMPTING TO FIND " + webElement + " USING " + by);
+        System.out.println("ATTEMPTING TO FIND " + by + " USING " + webDriver);
     }
 
     @Override

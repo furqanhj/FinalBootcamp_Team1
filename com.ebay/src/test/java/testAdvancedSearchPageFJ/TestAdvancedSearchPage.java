@@ -6,6 +6,7 @@ import ebayHomepageFJ.EbayHomepage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+// TOTAL TEST CASES = 2
 public class TestAdvancedSearchPage extends BaseAPI {
 
     EbayHomepage ebayHomepage;

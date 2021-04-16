@@ -12,6 +12,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 
+//TOTAL TEST CASES = 4
 public class TestEbayHomepage extends BaseAPI {
 
     EbayHomepage ebayHomepage;

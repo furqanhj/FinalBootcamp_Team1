@@ -2,14 +2,13 @@ package testEbaySignInPageFJ;
 
 import common.BaseAPI;
 import ebayHomepageFJ.EbayHomepage;
-import ebaySignInPageFJ.EbaySignInPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+// TOTAL TEST CASES = 2
 public class TestEbaySignInPage extends BaseAPI {
 
     EbayHomepage ebayHomepage;
-    EbaySignInPage ebaySignInPage;
 
     //TestCase#1: Test login using valid credentials
     @Test(priority = 1, enabled = false)

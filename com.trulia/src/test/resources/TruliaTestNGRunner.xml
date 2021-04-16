@@ -10,7 +10,8 @@
         <parameter name="url" value="https://www.trulia.com"/>
 
         <classes>
-            <!--            <class name="homepageTest.HomepageTest"/>-->
+<!--                        <class name="testTruliaHomepageFJ.TestTruliaHomepage"/>-->
+            <class name="testTruliaNeighborhoodsPageFJ.TestNeighborhoodsPage"/>
         </classes>
 
     </test>
