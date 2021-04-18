@@ -10,7 +10,7 @@
         <parameter name="url" value="https://www.chase.com"/>
 
         <classes>
-            <!--            <class name="homepageTest.HomepageTest"/>-->
+            <class name="chaseOpenAnAccountAR.ChaseOpenAnAccount"/>
         </classes>
 
     </test>

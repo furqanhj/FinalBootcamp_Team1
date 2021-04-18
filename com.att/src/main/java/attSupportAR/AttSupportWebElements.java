@@ -15,7 +15,9 @@ public class AttSupportWebElements {
 
     public static final String WEB_ELEMENT_ACCOUNT_DROPDOWN = "//span[@class='z1-profile-text hide-xsm hide-sm']";
     public static final String WEB_ELEMENT_ACCOUNT_OVERVIEW = "//span[.='Account overview']"; //xpath
-
+    public static final String WEB_ELEMENT_TEXT_SEARCH = "bill";
+    public static final String WEB_ELEMENT_VIEW_YOUR_BILL_PERIOD= "//a[.='View your bill period']";//XPATH
+    public static final String WEB_ELEMENT_VIEW_YOUR_BILL_PERIOD_HEADER= "//h1[@class='_1Ap-c _24O_p']";//XPATH
 
 
 

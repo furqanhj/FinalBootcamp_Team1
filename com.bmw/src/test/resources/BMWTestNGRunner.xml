@@ -10,7 +10,7 @@
         <parameter name="url" value="https://www.bmwusa.com"/>
 
         <classes>
-            <!--            <class name="homepageTest.HomepageTest"/>-->
+             <class name="testBmwM_SeriesAR.TestBmwM_Series"/>
         </classes>
 
     </test>

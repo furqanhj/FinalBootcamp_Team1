@@ -8,6 +8,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -17,9 +19,12 @@ import org.testng.annotations.Parameters;
 import utilities.DataReader;
 
 import java.io.IOException;
+import java.nio.channels.ScatteringByteChannel;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 public class BaseAPI {
 
@@ -111,7 +116,7 @@ public class BaseAPI {
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("UNABLE TO SEND KEYS TO WEB ELEMENT" );
+            System.out.println("UNABLE TO SEND KEYS TO WEB ELEMENT");
         }
     }
 
@@ -130,7 +135,7 @@ public class BaseAPI {
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("UNABLE TO CLICK ON WEB ELEMENT" );
+            System.out.println("UNABLE TO CLICK ON WEB ELEMENT");
         }
     }
 
@@ -150,7 +155,7 @@ public class BaseAPI {
             System.out.println("ELEMENT IS NOT VISIBLE IN THE DOM");
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("UNABLE TO GET TEXT FROM WEB ELEMENT" );
+            System.out.println("UNABLE TO GET TEXT FROM WEB ELEMENT");
         }
 
         return elementText;
@@ -222,7 +227,7 @@ public class BaseAPI {
 
         String[] actual = new String[actualList.size()];
 
-        for (int j = 0; j<actualList.size(); j++) {
+        for (int j = 0; j < actualList.size(); j++) {
             actual[j] = actualList.get(j).getAttribute(attribute).replaceAll("&amp;", "&").replaceAll("’", "'").replaceAll("<br>", "\n").trim();
             actual[j].replaceAll("&amp;", "&").replaceAll("’", "'").replaceAll("<br>", "\n").trim();
 //            escapeHtml4(actual[j]);
@@ -238,7 +243,7 @@ public class BaseAPI {
                 System.out.println("ACTUAL " + attribute.toUpperCase() + " " + (i + 1) + ": " + actual[i]);
                 System.out.println("EXPECTED " + attribute.toUpperCase() + " " + (i + 1) + ": " + expectedList[i] + "\n");
             } else {
-                System.out.println("FAILED AT INDEX " + (i+1) + "\nEXPECTED " + attribute.toUpperCase() + ": " + expectedList[i] +
+                System.out.println("FAILED AT INDEX " + (i + 1) + "\nEXPECTED " + attribute.toUpperCase() + ": " + expectedList[i] +
                         "\nACTUAL " + attribute.toUpperCase() + ": " + actual[i] + "\n");
                 falseCount++;
             }
@@ -248,6 +253,7 @@ public class BaseAPI {
         }
         return flag;
     }
+
     public void clickByXpathOrCssUsingJavaScript(String locator) {
         try {
             //explicit wait
@@ -258,7 +264,7 @@ public class BaseAPI {
             JavascriptExecutor js = (JavascriptExecutor) driver;
             //Telling javascript to execute a script, telling it to click the element
             js.executeScript("arguments[0].click()", element);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();     //info on the exception and what went wrong
             System.out.println("FIRST ATTEMPT FAILED");
             try {
@@ -270,7 +276,7 @@ public class BaseAPI {
                 JavascriptExecutor js = (JavascriptExecutor) driver;
                 //Telling javascript to execute a script, telling it to click the element
                 js.executeScript("arguments[0].click()", element);
-            }catch(Exception e1){
+            } catch (Exception e1) {
                 e1.printStackTrace();
             }
         }
@@ -288,21 +294,166 @@ public class BaseAPI {
 
     //helper method to combine the assertion code into one method.
     //To get
-    public void assertEqualsGetText(String exp,String loc){
-      try {
-          String actualResult = driver.findElement(By.xpath(loc)).getText();
-          Assert.assertEquals(actualResult, exp, "TEST FAILED");
-      }catch(Exception e) {
-          e.printStackTrace();
-      try {
-          String actualResult = driver.findElement(By.cssSelector(loc)).getText();
-          Assert.assertEquals(actualResult, exp, "TEST FAILED");
-      }catch(Exception e1){
-          e1.printStackTrace();
-      }
-      }
+    public void assertEqualsGetText(String exp, String loc) {
+        try {
+            String actualResult = driver.findElement(By.xpath(loc)).getText();
+            Assert.assertEquals(actualResult, exp, "TEST FAILED");
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                String actualResult = driver.findElement(By.cssSelector(loc)).getText();
+                Assert.assertEquals(actualResult, exp, "TEST FAILED");
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
+
+    public void assertEqualsGetTitle(String exp) {
+        try {
+            String actualResult = driver.getTitle();
+            Assert.assertEquals(actualResult, exp, "TEST FAILED");
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                String actualResult = driver.getTitle();
+                Assert.assertEquals(actualResult, exp, "TEST FAILED");
+            } catch (Exception e1) {
+                e1.printStackTrace();
+
+            }
+        }
+
+    }
+
+    public void assertEqualsGetAttribute(String exp, String loc, String attribute) {
+        try {
+            String expectedText = exp;
+            String actualText = driver.findElement(By.xpath(loc)).getAttribute(attribute);
+            Assert.assertEquals(actualText, expectedText, "ATTRIBUTE NOT FOUND");
+        } catch (Exception e) {
+            e.printStackTrace();
+            String expectedText = exp;
+            String actualText = driver.findElement(By.cssSelector(loc)).getAttribute(attribute);
+            Assert.assertEquals(actualText, expectedText, "ATTRIBUTE NOT FOUND");
+        }
+    }
+
+
+    public void implicitWait(long seconds) {
+        driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
+    }
+
+
+    public static void typeOnElementNEnter(String locator, String value) {
+        try {
+            driver.findElement(By.cssSelector(locator)).sendKeys(value, Keys.ENTER);
+        } catch (Exception ex1) {
+            try {
+                System.out.println("First Attempt was not successful");
+                driver.findElement(By.name(locator)).sendKeys(value, Keys.ENTER);
+            } catch (Exception ex2) {
+                try {
+                    System.out.println("Second Attempt was not successful");
+                    driver.findElement(By.xpath(locator)).sendKeys(value, Keys.ENTER);
+                } catch (Exception ex3) {
+                    System.out.println("Third Attempt was not successful");
+                    driver.findElement(By.id(locator)).sendKeys(value, Keys.ENTER);
+                }
+            }
+        }
+    }
+
+    public void find(String locator) {
+        driver.findElement(By.xpath(locator));
+    }
+
+    public void explicitWaitUntilClickable(long seconds, String locator) {
+        WebDriverWait wait = new WebDriverWait(driver, seconds);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator)));
 
 
     }
 
-}
+    public void click(String locator) {
+        try {
+            driver.findElement(By.xpath(locator)).click();
+        } catch (Exception e) {
+            e.printStackTrace();
+            driver.findElement(By.cssSelector(locator)).click();
+            try {
+                driver.findElement(By.id(locator)).click();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+                driver.findElement(By.className(locator)).click();
+            }
+
+
+        }
+    }
+
+
+    public void fluentWait(long seconds) {
+
+        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+                .withTimeout(Duration.ofSeconds(seconds))
+                .pollingEvery(Duration.ofSeconds(5))
+                .withMessage("Time out after 30 seconds")
+                .ignoring(NoSuchElementException.class);
+    }
+
+
+
+    public void waitTimeUsingFluentUsingXNCss(long seconds, String locator) {
+        try {
+            Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+                    .withTimeout(Duration.ofSeconds(seconds))
+                    .pollingEvery(Duration.ofSeconds(5))
+                    .withMessage("Time out after 30 seconds")
+                    .ignoring(NoSuchElementException.class);
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(locator)));
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+                        .withTimeout(Duration.ofSeconds(seconds))
+                        .pollingEvery(Duration.ofSeconds(5))
+                        .withMessage("Time out after 30 seconds")
+                        .ignoring(NoSuchElementException.class);
+                wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(locator)));
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+
+    }
+
+        public void scrollToElementUsingJavaScript(String loc) {
+            try {
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+//Find element by link text and store in variable "Element"
+                WebElement Element = driver.findElement(By.xpath(loc));
+//This will scroll the page till the element is found
+                js.executeScript("arguments[0].scrollIntoView();", Element);
+            } catch (Exception e) {
+                e.printStackTrace();
+                try {
+                    JavascriptExecutor js = (JavascriptExecutor) driver;
+//Find element by link text and store in variable "Element"
+                    WebElement Element = driver.findElement(By.cssSelector(loc));
+//This will scroll the page till the element is found
+                    js.executeScript("arguments[0].scrollIntoView();", Element);
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
+
+    //iFrame Handle
+    public void iframeHandle(WebElement element) {
+        driver.switchTo().frame(element);
+    }
+
+    }
+
+

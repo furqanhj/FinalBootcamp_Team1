@@ -25,6 +25,9 @@ public class AttSupport extends BaseAPI {
     @FindBy(xpath = WEB_ELEMENT_MANAGE_DATA_USE_LINK)
     WebElement manageDataUseLink;
 
+    @FindBy (xpath = WEB_ELEMENT_VIEW_YOUR_BILL_PERIOD)
+    WebElement viewYourBillPeriod;
+
 
 
 
@@ -48,14 +51,14 @@ public class AttSupport extends BaseAPI {
     public void viewYourBillPeriod() {
         supportLink.click();
         supportSearchBox.click();
-        supportSearchBox.sendKeys();
+        supportSearchBox.sendKeys(WEB_ELEMENT_TEXT_SEARCH);
+        implicitWait(20);
+        viewYourBillPeriod.click();
     }
 
-
-
     //Type in the search box on Support page
-    public void sendKeysToSearchBox(String keysToSend) {
-        supportSearchBox.sendKeys(keysToSend);
+    public void sendKeysToSearchBox(String value) {
+        supportSearchBox.sendKeys(value);
     }
 
     public void clickSearchButton() {
@@ -73,9 +76,9 @@ public class AttSupport extends BaseAPI {
     //Select Account Overview from drop down options
     public void selectAccountDropdown() throws InterruptedException {
         clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_ACCOUNT_DROPDOWN);
-        Thread.sleep(5000);
+        implicitWait(10);
         clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_ACCOUNT_OVERVIEW);
-        Thread.sleep(5000);
+        implicitWait(10);
     }
 
 
