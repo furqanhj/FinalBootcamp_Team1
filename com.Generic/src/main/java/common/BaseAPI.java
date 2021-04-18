@@ -19,6 +19,7 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import org.testng.annotations.Optional;
+import org.testng.asserts.SoftAssert;
 import reporting.ExtentManager;
 import reporting.ExtentTestManager;
 import utilities.DataReader;
@@ -607,7 +608,7 @@ public class BaseAPI {
             JavascriptExecutor js = (JavascriptExecutor) driver;
             //Telling javascript to execute a script, telling it to click the element
             js.executeScript("arguments[0].click()", element);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();     //info on the exception and what went wrong
             System.out.println("FIRST ATTEMPT FAILED");
             try {
@@ -619,12 +620,12 @@ public class BaseAPI {
                 JavascriptExecutor js = (JavascriptExecutor) driver;
                 //Telling javascript to execute a script, telling it to click the element
                 js.executeScript("arguments[0].click()", element);
-            }catch(Exception e1){
+            } catch (Exception e1) {
                 e1.printStackTrace();
             }
 
 
-            }
+        }
     }
 
     public void implicitWait() {
@@ -639,8 +640,157 @@ public class BaseAPI {
                 .ignoring(NoSuchElementException.class);
 
     }
-    public void assertEqualsGetTextUsingXpath(String exp, String loc){
+
+    public void assertEqualsGetTextUsingXpath(String exp, String loc) {
         String actualText = driver.findElement(By.xpath(loc)).getText();
         Assert.assertEquals(actualText, exp);
     }
+
+
+    public void switchWindows() {
+        try {
+            String parentWindow = driver.getWindowHandle();
+            Set<String> windowHandle = driver.getWindowHandles();
+            for (String handle : windowHandle) {
+                if (!(handle.equals(parentWindow))) {
+                    driver.switchTo().window(handle);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("\n*** Window Switch Failed ***");
+        } finally {
+            System.out.println(driver.getTitle());
+        }
+    }
+
+    public void switchHandlesExample() {
+// Get Parent window handle
+        String winHandleBefore = driver.getWindowHandle();
+        for (String winHandle : driver.getWindowHandles()) {
+// Switch to child window
+            driver.switchTo().window(winHandle);
+        }
+// Do some operation on child window and get child window handle.
+        String winHandleAfter = driver.getWindowHandle();
+//switch to child window of 1st child window.
+        for (String winChildHandle : driver.getWindowHandles()) {
+// Switch to child window of the 1st child window.
+            if (!winChildHandle.equals(winHandleBefore)
+                    && !winChildHandle.equals(winHandleAfter)) {
+                driver.switchTo().window(winChildHandle);
+            }
+        }
+    }
+
+
+    public void assertEqualsGetAttribute(String expected, String locator, String attribute) throws
+            InterruptedException {
+        try {
+            String icon = driver.findElement(By.xpath(locator)).getAttribute(attribute);
+            Assert.assertEquals(icon, expected, "\n*** Error Icon Not Displayed ***");
+        } catch (Exception e) {
+            System.out.println("\n*** First Attempt Unsuccessful ***");
+            try {
+                String icon = driver.findElement(By.cssSelector(locator)).getAttribute(attribute);
+                Assert.assertEquals(icon, expected, "\n*** Error Icon Not Displayed ***");
+            } catch (Exception ex) {
+                System.out.println("\n*** Second Attempt Unsuccessful ***");
+                try {
+                    String icon = driver.findElement(By.className(locator)).getAttribute(attribute);
+                    Assert.assertEquals(icon, expected, "\n*** Error Icon Not Displayed ***");
+                } catch (Exception ex1) {
+                    System.out.println("\n*** Third Attempt Unsuccessful ***");
+                    try {
+                        String icon = driver.findElement(By.id(locator)).getAttribute(attribute);
+                        Assert.assertEquals(icon, expected, "\n*** Error Icon Not Displayed ***");
+                    } catch (Exception ex2) {
+                        System.out.println("\n*** Fourth Attempt Unsuccessful ***");
+                        try {
+                            String icon = driver.findElement(By.tagName(locator)).getAttribute(attribute);
+                            Assert.assertEquals(icon, expected, "\n*** Error Icon Not Displayed ***");
+                        } catch (Exception ex3) {
+                            System.out.println("\n*** Last Attempt Unsuccessful ***");
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void cancelAlert() {
+        try {
+            Alert alert = driver.switchTo().alert();
+            alert.dismiss();
+            System.out.println(alert.getText());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void assertEqualsGetTitle(String exp, String loc) {
+        try {
+            String actualResult = driver.findElement(By.xpath(loc)).getText();
+            Assert.assertEquals(actualResult, exp, "TEST FAILED");
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                String actualResult = driver.findElement(By.cssSelector(loc)).getText();
+                Assert.assertEquals(actualResult, exp, "TEST FAILED");
+            } catch (Exception e1) {
+
+
+            }
+        }
+    }
+
+    public void assertEqualsGetText(String exp, String loc) {
+        try {
+            String actualResult = driver.findElement(By.xpath(loc)).getText();
+            Assert.assertEquals(actualResult, exp, "TEST FAILED");
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                String actualResult = driver.findElement(By.cssSelector(loc)).getText();
+                Assert.assertEquals(actualResult, exp, "TEST FAILED");
+            } catch (Exception e1) {
+            }
+        }
+    }
+
+    public void basicHoverUsingXpath(String loc) {
+        //Hover over Like-New Cams link using Actions
+        WebElement ele = driver.findElement(By.xpath(loc));
+        //Creating object of an Actions class
+        Actions action = new Actions(driver);
+        //Performing the mouse hover action on the target element.
+        action.moveToElement(ele).perform();
+    }
+
+    public static void hoverOverNClickUsingXpath(String main, String sub) {
+        implicitWait(20);
+        WebElement mainMenu = driver.findElement(By.xpath(main));
+        Actions actions = new Actions(driver);
+        actions.moveToElement(mainMenu).build().perform();
+        WebElement subMenu = driver.findElement(By.xpath(sub));
+        actions.moveToElement(subMenu);
+        actions.click().build().perform();
+    }
+    public static void implicitWait(int seconds){
+        driver.manage().timeouts().implicitlyWait(seconds,TimeUnit.SECONDS);
+    }
+
+    public static void softAssertAssertEqualsGetCurrentURL(String exp){
+        String expected = exp;
+        String actual = driver.getCurrentUrl();
+        SoftAssert softAssert = new SoftAssert();
+//        softAssert.assertTrue(expected.equalsIgnoreCase(actual));
+        softAssert.assertEquals(actual,expected,"TEST FAILED");
+//        softAssert.assertAll();
+    }
 }
+
+//    String expected = "https://www.ebay.com/b/Watches-Parts-Accessories/260324/bn_2408535";
+//    String actual = driver.getCurrentUrl();
+//
+//        Assert.assertEquals(actual,expected);

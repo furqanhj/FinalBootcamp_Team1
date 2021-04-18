@@ -25,10 +25,15 @@ public class BmwCertifiedWebElements{
     public static final String WEB_ELEMENT_X3M_BLUE = "//button[@aria-label='Phytonic Blue Metallic']";//XPATH
     public static final String WEB_ELEMENT_X3M_RED = "//button[@aria-label='Toronto Red Metallic']";//XPATH
 
+//***********
+    public static final String WEB_ELEMENT_MY_BMW_LINK = "//div[@class='globalnav-primary-my-bmw__portal-holder']/a[contains(.,'My BMW')]";//xpath
+    public static final String WEB_ELEMENT_AGREE_BUTTON = "//button[@id='agreeBtn']";//XPATH
+    public static final String WEB_ELEMENT_MY_BMW_TITLE = "//div[@class='title']";//XPATH
+    public static final String WEB_ELEMENT_NEED_HELP = "//button[@id='needHelpBtn']";//XPATH
 
+//***********
 
-
-
+//***********
 
 
 }

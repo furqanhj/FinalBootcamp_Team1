@@ -16,6 +16,10 @@ public class BmwCertified extends BaseAPI {
     @FindBy(xpath = WEB_ELEMENT_PREOWNED)
     WebElement preOwned;
 
+    public void preOwnedPage(){
+        preOwned.click();
+    }
+
     @FindBy(xpath = WEB_ELEMENT_ZIPCODE)
     WebElement zipcodeField;
 
@@ -38,6 +42,10 @@ public class BmwCertified extends BaseAPI {
 
     @FindBy(xpath = WEB_ELEMENT_IMPORTANT_INFO_CLOSE)
     WebElement importantInfoClose;
+
+    public void specialOffersPage(){
+        specialOffers.click();
+    }
 
     public void specialOffersImportantInfo(){
         specialOffers.click();
@@ -90,10 +98,33 @@ public class BmwCertified extends BaseAPI {
         x3mBlue.click();
         implicitWait();
         x3mRed.click();
+    }
+    @FindBy(xpath = WEB_ELEMENT_MY_BMW_LINK)
+    WebElement myBmw;
+    @FindBy(xpath = WEB_ELEMENT_AGREE_BUTTON)
+    WebElement iAgreeButton;
+//    @FindBy(xpath = WEB_ELEMENT_MY_BMW_TITLE)
+//    WebElement myBmwTitle;
+    @FindBy(xpath = WEB_ELEMENT_NEED_HELP)
+    WebElement needHelpButton;
 
+    public void navigateToMyBmwLink(){
+        myBmw.click();
 
+    }
+    public void clickAgreeButton(){
+        myBmw.click();
+        implicitWait();
+        iAgreeButton.click();
+    }
+    public void clickNeedHelpButton(){
+        myBmw.click();
+        implicitWait();
+        needHelpButton.click();
+        implicitWait();
     }
 
 
     }
 
+//wait.until(Expectedconditions.visibilityOf());
