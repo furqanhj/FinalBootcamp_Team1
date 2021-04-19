@@ -31,6 +31,12 @@ public class AttInternetPage extends BaseAPI {
     @FindBy(xpath = WEB_ELEMENT_TEXT_MessAGE)
     public WebElement textMessage;
 
+    @FindBy(xpath = WEB_ELEMENT_Hover_Sign_ME_UP)
+    public WebElement hoverSignMeUpButton;
+
+    @FindBy(xpath=WEB_ELEMENT_FIND_STORE)
+    public WebElement findStoreTextLink;
+
 
     public AttInternetPage() {
         PageFactory.initElements(driver, this);
@@ -64,6 +70,18 @@ public class AttInternetPage extends BaseAPI {
 
         //clickElement(checkAvailabilityButton2);
 
+    }
+
+    public void hoverOverSignMeUpButton() {
+
+        hoverOverElement(hoverSignMeUpButton);
+
+
+    }
+    public void clickFindStoreTextLink(){
+
+        findStoreTextLink.click();
+        //clickElement(findStoreTextLink);
     }
 
 

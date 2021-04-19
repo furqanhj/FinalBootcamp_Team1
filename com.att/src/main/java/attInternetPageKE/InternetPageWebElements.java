@@ -20,5 +20,10 @@ public class InternetPageWebElements {
     public static final String WEB_ELEMENT_CHECK_AVAILABILTY_BTN2 ="//button[contains(text(),'Check availability')]";
     public static final String WEB_ELEMENT_CLICK="//div[contains(@class,'CheckAvailability__modal')]";
     public static final String WEB_ELEMENT_TEXT_MessAGE="//div[contains(text(),'Looks like high-speed internet isn’t available at ')]";//xPath
+    //Hover Sign me up Button , Located by : xpath
+    public static final String WEB_ELEMENT_Hover_Sign_ME_UP =" //*[@id='DYNAMIC_COMPONENT14-container']/div[4]/div[2]/span/a";
 
-}
+    //Find a Store Text Link  located By : xpath
+    public static final String WEB_ELEMENT_FIND_STORE = "//a[@href='https://www.att.com/stores/']";
+
+    }
