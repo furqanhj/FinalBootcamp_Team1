@@ -10,7 +10,8 @@
         <parameter name="url" value="https://www.att.com"/>
 
         <classes>
-            <!--            <class name="homepageTest.HomepageTest"/>-->
+<!--            <class name="testAttHomepageFJ.TestAttHomepage"/>-->
+            <class name="testAttTVPage.TestAttTVPage"/>
         </classes>
 
     </test>
