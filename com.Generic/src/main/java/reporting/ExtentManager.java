@@ -23,7 +23,7 @@ public class ExtentManager {
             extent = new ExtentReports(System.getProperty("user.dir")+"/src/main/java/reporting/testReports/" + fileName,true);
             Reporter.log("Extent Report Directory" + resultDirectory, true);
             extent.addSystemInfo("Host Name", "Maximus").addSystemInfo("Environment","QA")
-                    .addSystemInfo("User Name", "Sami Sheikh");
+                    .addSystemInfo("User Name", "Furqan Javed");
 
             extent.loadConfig(new File(System.getProperty("user.dir")+ "/src/main/resources/reporting/report-config.xml"));
         }

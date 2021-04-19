@@ -9,15 +9,15 @@ public class TestExpediaHomepage extends BaseAPI {
 
     ExpediaHomepage homepage;
 
-    @Test (enabled = false) //Failed- StaleElementReferenceException
+    @Test (enabled = true) //Failed- StaleElementReferenceException
     public void testNavigateToSignInPage(){
         homepage = new ExpediaHomepage();
         homepage.navigateToSignInPage();
-        System.out.println("Navigated to Sign-In Page");
 
-        String actualTextOnSignInPage = "\n" +
-                "Sign in or select an option\t\t\t\t\t\t".trim();
-        Assert.assertTrue(compareStrings(actualTextOnSignInPage, getTextFromElement(homepage.expectedTextOnSignInPage).trim()));
+        String actualTextOnSignInPage = getTextFromElement(homepage.expectedTextOnSignInPage);
+        String expectedTextOnSignInPage = "Sign in with your email";
+
+        Assert.assertEquals(actualTextOnSignInPage, expectedTextOnSignInPage, "TEXT DO NOT MATCH");
     }
 
     @Test (enabled = false) //Failed- StaleElementReferenceException

@@ -87,4 +87,7 @@ public class EbayHomepageWebElements {
     public static final String WEB_ELEMENT_EXPECTED_ALL_CAT_DROPDOWN = "#gh-cat > option:nth-child(11)";
     // Locator for TestCase3 - Number of elements in All Categories Dropdown list (CSS)
     public static final String WEB_ELEMENTS_EXPECTED_ALL_CAT_DROPDOWN_SEARCH_BAR = "#gh-cat option";
+    // Locator for TestCase5 - Text from search result page (XPATH - custom)
+    public static final String WEB_ELEMENT_ACTUAL_TEXT_SEARCH_RESULT_WIRELESS_CHARGING_STATION = "//div[@class='srp-controls__row-cells']/div/h1/span[2]";
+
 }

@@ -27,6 +27,9 @@ public class EbayAdvancedSearchPage extends BaseAPI {
     @FindBy (className = WEB_ELEMENT_EXPECTED_TEXT_SEARCH_RESULT)
     public WebElement expectedTextFromSearchResult;
 
+    @FindBy (css = WEB_ELEMENT_ACTUAL_TEXT_USING_ADVANCED_SEARCH_OPTIONS)
+    public WebElement actualTextUsingAdvancedSearchOptions;
+
     public EbayAdvancedSearchPage(){
         PageFactory.initElements(driver, this);
     }

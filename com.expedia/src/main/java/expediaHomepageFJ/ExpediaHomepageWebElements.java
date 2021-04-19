@@ -14,6 +14,6 @@ public class ExpediaHomepageWebElements {
      */
 
     //Text available on sign-in page: (XPATH)
-    public static final String WEB_ELEMENT_EXPECTED_TEXT_ON_SIGN_IN_PAGE = "//section[@id='signInheader']";
+    public static final String WEB_ELEMENT_EXPECTED_TEXT_ON_SIGN_IN_PAGE = "//*[@id=\"login-form\"]/p[1]";
 
 }

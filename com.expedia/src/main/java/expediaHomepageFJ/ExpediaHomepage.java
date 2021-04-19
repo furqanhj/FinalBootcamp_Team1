@@ -27,9 +27,8 @@ public class ExpediaHomepage extends BaseAPI {
     }
 
     public void navigateToSignInPage(){
-        signInHeader.click();
-//        waitForElementToBeClickable(signInButton);
-        signInButton.click();
+        clickElement(signInHeader);
+        clickElement(signInButton);
     }
 
     public ExpediaSignUpPage navigateToSignUpPage(){

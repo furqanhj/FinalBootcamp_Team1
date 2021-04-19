@@ -1,6 +1,7 @@
 package ebayHomepageFJ;
 
 import common.BaseAPI;
+import dataSource.DataSource;
 import ebayAdvancedSearchPageFJ.EbayAdvancedSearchPage;
 import ebaySignInPageFJ.EbaySignInPage;
 import org.openqa.selenium.WebElement;
@@ -108,6 +109,13 @@ public class EbayHomepage extends BaseAPI {
     @FindBy (css = WEB_ELEMENTS_EXPECTED_ALL_CAT_DROPDOWN_SEARCH_BAR)
     public List<WebElement> expectedAllCatDropdownTotalElements;
 
+    @FindBy (xpath = WEB_ELEMENT_ACTUAL_TEXT_SEARCH_RESULT_WIRELESS_CHARGING_STATION)
+    public WebElement actualTextSearchResultWirelessChargingStation;
+
+    public String GET_WEB_ELEMENTS_EXPECTED_ALL_CAT_DROPDOWN_SEARCH_BAR(){
+        return WEB_ELEMENTS_EXPECTED_ALL_CAT_DROPDOWN_SEARCH_BAR;
+    }
+
     /**
      * @author Furqan.
      * Initializing the WebElement variables by the use of constructor, using the WebDriver and
@@ -162,6 +170,17 @@ public class EbayHomepage extends BaseAPI {
 
         return new EbayAdvancedSearchPage();
     }
+
+    // First attempt at using SQL DB to search for an item
+    public void searchForAnItemUsingSQLDB() throws Exception {
+        clickElement(searchBar);
+        DataSource.insertDataIntoDB();
+        List<String> elementFromDB = DataSource.getItemsListFromDB();
+        String searchItem = elementFromDB.get(2);
+        sendKeysToElement(searchBar, searchItem);
+        clickSearchButton();
+    }
+
 
 
 }

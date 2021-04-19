@@ -19,5 +19,7 @@ public class EbayAdvancedSearchPageWebElements {
 
     //"results for" on advanced search, search result page (CLASS)
     public static final String WEB_ELEMENT_EXPECTED_TEXT_SEARCH_RESULT = "kwcat";
+    //text on "using advanced search options" new window (CSS)
+    public static final String WEB_ELEMENT_ACTUAL_TEXT_USING_ADVANCED_SEARCH_OPTIONS = ".article_main_container > div h2";
 
 }

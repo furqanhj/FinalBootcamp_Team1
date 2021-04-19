@@ -6,30 +6,36 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.*;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import org.testng.annotations.Optional;
+import org.testng.asserts.SoftAssert;
 import reporting.ExtentManager;
 import reporting.ExtentTestManager;
 import utilities.DataReader;
 import utilities.WebEventListener;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.time.Duration;
 import java.util.*;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class BaseAPI {
 
@@ -38,6 +44,25 @@ public class BaseAPI {
     public static Actions actions;
     public static ExtentReports extent;
     public static EventFiringWebDriver eventFiringWebDriver;
+    public static Robot robot;
+
+    {
+        try {
+            robot = new Robot();
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static SoftAssert softAssert;
+
+    {
+        try {
+            softAssert = new SoftAssert();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public DataReader dataReader = new DataReader();
     public Properties properties = new Properties();
@@ -50,7 +75,7 @@ public class BaseAPI {
         extent = ExtentManager.getInstance();
     }
 
-    @BeforeMethod (alwaysRun = true)
+    @BeforeMethod(alwaysRun = true)
     public static void beforeEachMethodExtentInit(Method method) {
         String className = method.getDeclaringClass().getSimpleName();
         String methodName = method.getName();
@@ -63,7 +88,7 @@ public class BaseAPI {
 
     // Parameterization via .xml runner files in each module
     @Parameters({"browserName", "browserVersion", "url"})
-    @BeforeMethod (alwaysRun = true)
+    @BeforeMethod(alwaysRun = true)
     public static void setUp(@Optional("chrome") String browserName, @Optional("90") String browserVersion,
                              @Optional("") String url, Method method) {
 
@@ -106,11 +131,12 @@ public class BaseAPI {
         driver.quit();
     }
 
-    @AfterSuite (alwaysRun = true)
+    @AfterSuite(alwaysRun = true)
     private void afterSuiteCloseExtent() {
         extent.close();
     }
 // ******************************************************************************************************************
+
     /**
      * Driver + ExtentReport Helper Methods
      */
@@ -200,7 +226,7 @@ public class BaseAPI {
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("UNABLE TO SEND KEYS TO WEB ELEMENT" );
+            System.out.println("UNABLE TO SEND KEYS TO WEB ELEMENT");
         }
     }
 
@@ -219,7 +245,7 @@ public class BaseAPI {
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("UNABLE TO CLICK ON WEB ELEMENT" );
+            System.out.println("UNABLE TO CLICK ON WEB ELEMENT");
         }
     }
 
@@ -239,7 +265,7 @@ public class BaseAPI {
             System.out.println("ELEMENT IS NOT VISIBLE IN THE DOM");
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("UNABLE TO GET TEXT FROM WEB ELEMENT" );
+            System.out.println("UNABLE TO GET TEXT FROM WEB ELEMENT");
         }
 
         return elementText;
@@ -265,6 +291,23 @@ public class BaseAPI {
         }
 
         return elementText;
+    }
+
+    public List<WebElement> getListOfWebElementsById(String locator) {
+        List<WebElement> list = new ArrayList<WebElement>();
+        list = driver.findElements(By.id(locator));
+        return list;
+    }
+
+    public static List<String> getTextFromWebElements(String locator) {
+        List<WebElement> element = new ArrayList<WebElement>();
+        List<String> text = new ArrayList<String>();
+        element = driver.findElements(By.cssSelector(locator));
+        for (WebElement web : element) {
+            String st = web.getText();
+            text.add(st);
+        }
+        return text;
     }
 
     // 3 Methods to help with selecting from SELECT Dropdown
@@ -353,6 +396,32 @@ public class BaseAPI {
         return elementList;
     }
 
+    public void mouseHoverByCSS(String locator) {
+        try {
+            WebElement element = driver.findElement(By.cssSelector(locator));
+            Actions action = new Actions(driver);
+            Actions hover = action.moveToElement(element);
+        } catch (Exception ex) {
+            System.out.println("First attempt has been done, This is second try");
+            WebElement element = driver.findElement(By.cssSelector(locator));
+            Actions action = new Actions(driver);
+            action.moveToElement(element).build().perform();
+        }
+    }
+
+    public void mouseHoverByXNCss(String locator) {
+        try {
+            WebElement element = driver.findElement(By.xpath(locator));
+            Actions action = new Actions(driver);
+            action.moveToElement(element).perform();
+        } catch (Exception ex) {
+            System.out.println("First attempt has been done, This is second try");
+            WebElement element = driver.findElement(By.cssSelector(locator));
+            Actions action = new Actions(driver);
+            action.moveToElement(element).build().perform();
+        }
+    }
+
     public void switchToNewWindow() {
         String parentWindow = driver.getWindowHandle();
 
@@ -367,7 +436,7 @@ public class BaseAPI {
 
     public void switchToNewTab(int tabIndexToSwitchTo) {
 
-        List<String> tabs = new ArrayList<> (driver.getWindowHandles());
+        List<String> tabs = new ArrayList<>(driver.getWindowHandles());
 
         try {
             driver.switchTo().window(tabs.get(tabIndexToSwitchTo));
@@ -393,7 +462,20 @@ public class BaseAPI {
         driver.switchTo().parentFrame();
     }
 
+    public void IncognitoMode(String Url) {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--incognito");
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+        options.merge(capabilities);
+        ChromeDriver driver = new ChromeDriver(options);
+        driver.get(Url);
+        driver.manage().window().maximize();
+        driver.quit();
+    }
+
 // ******************************************************************************************************************
+
     /**
      * Javascript Helper Methods
      */
@@ -458,7 +540,14 @@ public class BaseAPI {
         }
     }
 
+    public void scrollToBottomOfPage() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        //This will scroll the web page till end.
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+    }
+
 // ******************************************************************************************************************
+
     /**
      * Synchronization Helper Methods
      */
@@ -510,6 +599,7 @@ public class BaseAPI {
     }
 
 // ******************************************************************************************************************
+
     /**
      * Assertion Helper Methods
      */
@@ -535,7 +625,7 @@ public class BaseAPI {
         boolean flag = false;
 
         try {
-           title = driver.getTitle();
+            title = driver.getTitle();
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("UNABLE TO GET TITLE FROM PAGE");
@@ -577,6 +667,17 @@ public class BaseAPI {
         return flag;
     }
 
+    public boolean compareIntegers(int int1, int int2){
+        boolean flag = false;
+
+        if (int1 != int2)
+            return false;
+        else if (int1 == int2)
+            return true;
+
+        return flag;
+    }
+
     // Gets text from List<WebElements> and compares against expected String array from Excel workbook
     public boolean compareAttributeListToExpectedStringArray(By by, String attribute, String path, String sheetName) throws IOException {
         List<WebElement> actualList = driver.findElements(by);
@@ -584,7 +685,7 @@ public class BaseAPI {
 
         String[] actual = new String[actualList.size()];
 
-        for (int j = 0; j<actualList.size(); j++) {
+        for (int j = 0; j < actualList.size(); j++) {
             actual[j] = actualList.get(j).getAttribute(attribute).replaceAll("&amp;", "&").replaceAll("’", "'").replaceAll("<br>", "\n").trim();
             actual[j].replaceAll("&amp;", "&").replaceAll("’", "'").replaceAll("<br>", "\n").trim();
 //            escapeHtml4(actual[j]);
@@ -600,7 +701,7 @@ public class BaseAPI {
                 System.out.println("ACTUAL " + attribute.toUpperCase() + " " + (i + 1) + ": " + actual[i]);
                 System.out.println("EXPECTED " + attribute.toUpperCase() + " " + (i + 1) + ": " + expectedList[i] + "\n");
             } else {
-                System.out.println("FAILED AT INDEX " + (i+1) + "\nEXPECTED " + attribute.toUpperCase() + ": " + expectedList[i] +
+                System.out.println("FAILED AT INDEX " + (i + 1) + "\nEXPECTED " + attribute.toUpperCase() + ": " + expectedList[i] +
                         "\nACTUAL " + attribute.toUpperCase() + ": " + actual[i] + "\n");
                 falseCount++;
             }
@@ -610,5 +711,76 @@ public class BaseAPI {
         }
         return flag;
     }
+//*********************************************************************************************************************
 
+    /**
+     * Actions helper methods
+     */
+
+    public void robotScrollDown(int numOfScrolls) throws InterruptedException {
+
+        for (int i = 0; i <= numOfScrolls; i++) {
+            robot.keyPress(KeyEvent.VK_DOWN);
+            robot.keyRelease(KeyEvent.VK_DOWN);
+        }
+        System.out.println("\n*** Scrolled Down Page " + numOfScrolls + " times ***");
+
+    }
+
+    public static void scrollDownUsingActions(WebElement element) {
+        Actions action = new Actions(driver);
+        action.keyDown(element, Keys.CONTROL).build().perform();
+    }
+
+//*********************************************************************************************************************
+
+    /**
+     * Alert Handling helper methods
+     */
+    public void okAlert(){
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+
+    public void cancelAlert(){
+        try {
+            Alert alert = driver.switchTo().alert();
+            alert.dismiss();
+            System.out.println(alert.getText());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+//*********************************************************************************************************************
+
+    /**
+     * Waits helper methods (Explicit, Implicit, Fluent)
+     */
+
+    public void waitTimeExplicit(String locator){
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator)));
+    }
+
+    public void waitTimeUsingFluent(long seconds) {
+        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+                .withTimeout(Duration.ofSeconds(seconds))
+                .pollingEvery(Duration.ofSeconds(5))
+                .withMessage("Time out after " + seconds + " seconds")
+                .ignoring(java.util.NoSuchElementException.class);
+    }
+
+    public void waitTimeUsingFluentUsingXpath(long seconds, String locator) {
+        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+                .withTimeout(Duration.ofSeconds(seconds))
+                .pollingEvery(Duration.ofSeconds(5))
+                .withMessage("Time out after " + seconds + " seconds")
+                .ignoring(java.util.NoSuchElementException.class);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(locator)));
+    }
+
+    public void waitTimeUsingImplicit(int seconds) {
+        driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
+    }
 }
