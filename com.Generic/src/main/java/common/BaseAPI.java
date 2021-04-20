@@ -248,4 +248,33 @@ public class BaseAPI {
         return flag;
     }
 
+    public boolean isElementDisplayed(WebElement element) {
+        boolean flag = false;
+
+        try {
+            waitForVisibilityOfElement(element);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("UNABLE TO DETERMINE IF ELEMENT IS VISIBLE");
+        }
+
+        if (element.isDisplayed()) {
+            flag = true;
+            return flag;
+        }
+        return flag;
+    }
+    public void waitForVisibilityOfElement(WebElement element) {
+        try {
+            driverWait.until(ExpectedConditions.visibilityOf(element));
+
+        } catch (ElementNotVisibleException elementNotVisibleException) {
+            elementNotVisibleException.printStackTrace();
+            System.out.println("ELEMENT NOT VISIBLE");
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("UNABLE TO LOCATE ELEMENT");
+        }
+    }
 }
