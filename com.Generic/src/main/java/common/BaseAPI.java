@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -32,6 +33,7 @@ public class BaseAPI {
     public static WebDriverWait driverWait;
     public DataReader dataReader;
     public Properties properties;
+    public static Actions actions;
 
     String propertiesFilePath = "src/main/resources/secret.properties";
 
@@ -340,7 +342,7 @@ public class BaseAPI {
     }
 
 
-    public void implicitWait(long seconds) {
+    public static void implicitWait(long seconds) {
         driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
     }
 
@@ -403,7 +405,6 @@ public class BaseAPI {
     }
 
 
-
     public void waitTimeUsingFluentUsingXNCss(long seconds, String locator) {
         try {
             Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
@@ -428,32 +429,80 @@ public class BaseAPI {
 
     }
 
-        public void scrollToElementUsingJavaScript(String loc) {
+    public void scrollToElementUsingJavaScript(String loc) {
+        try {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+//Find element by link text and store in variable "Element"
+            WebElement Element = driver.findElement(By.xpath(loc));
+//This will scroll the page till the element is found
+            js.executeScript("arguments[0].scrollIntoView();", Element);
+        } catch (Exception e) {
+            e.printStackTrace();
             try {
                 JavascriptExecutor js = (JavascriptExecutor) driver;
 //Find element by link text and store in variable "Element"
-                WebElement Element = driver.findElement(By.xpath(loc));
+                WebElement Element = driver.findElement(By.cssSelector(loc));
 //This will scroll the page till the element is found
                 js.executeScript("arguments[0].scrollIntoView();", Element);
-            } catch (Exception e) {
-                e.printStackTrace();
-                try {
-                    JavascriptExecutor js = (JavascriptExecutor) driver;
-//Find element by link text and store in variable "Element"
-                    WebElement Element = driver.findElement(By.cssSelector(loc));
-//This will scroll the page till the element is found
-                    js.executeScript("arguments[0].scrollIntoView();", Element);
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
+            } catch (Exception e1) {
+                e1.printStackTrace();
             }
         }
+    }
 
     //iFrame Handle
     public void iframeHandle(WebElement element) {
         driver.switchTo().frame(element);
     }
 
+
+    public void basicHoverUsingXpath(String loc) {
+        //Hover over Like-New Cams link using Actions
+        WebElement ele = driver.findElement(By.xpath(loc));
+        //Creating object of an Actions class
+        Actions action = new Actions(driver);
+        //Performing the mouse hover action on the target element.
+        action.moveToElement(ele).perform();
+    }
+        public static void hoverOverNClickUsingXpath (String main, String sub){
+            implicitWait(20);
+            WebElement mainMenu = driver.findElement(By.xpath(main));
+            Actions actions = new Actions(driver);
+            actions.moveToElement(mainMenu).build().perform();
+            WebElement subMenu = driver.findElement(By.xpath(sub));
+            actions.moveToElement(subMenu);
+            actions.click().build().perform();
+
+        }
+
+    public void waitForVisibilityOfElement(WebElement element) {
+        try {
+            driverWait.until(ExpectedConditions.visibilityOf(element));
+
+        } catch (ElementNotVisibleException elementNotVisibleException) {
+            elementNotVisibleException.printStackTrace();
+            System.out.println("ELEMENT NOT VISIBLE");
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("UNABLE TO LOCATE ELEMENT");
+        }
     }
 
 
+    public void hoverOverElement(WebElement elementToHoverOver) {
+        try {
+            waitForVisibilityOfElement(elementToHoverOver);
+            actions.moveToElement(elementToHoverOver).build().perform();
+
+        } catch (ElementNotInteractableException elementNotInteractableException) {
+            elementNotInteractableException.printStackTrace();
+            System.out.println("ELEMENT IS NOT INTERACTABLE");
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+
+            System.out.println("UNABLE TO HOVER OVER ELEMENT");
+        }
+    }
+    }

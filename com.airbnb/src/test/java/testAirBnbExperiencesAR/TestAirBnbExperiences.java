@@ -62,13 +62,16 @@ public class TestAirBnbExperiences extends BaseAPI {
         experiences.selectADate();
 
     }
-    @Test (enabled = true)
-    public void testVerifyPageTitle(){
-        String exp = "";
+    @Test (enabled = false)
+    public void testVerifyPageTitle() {
+        AirBnbExperiences airBnbExperiences = new AirBnbExperiences();
+        airBnbExperiences.clickExperiencesLink();
+        String exp = "Vacation Rentals, Homes, Hotels, Experiences & More - Airbnb";
         String act = driver.getTitle();
         //Compares 2 Strings -->equalsIgnoreCase will Compare Strings even if in upper or lower case
         Assert.assertTrue(exp.equalsIgnoreCase(act));
     }
+
     @Test (enabled = false)
     public void testPageTitleInspection() {
         String expectedTitle = "";

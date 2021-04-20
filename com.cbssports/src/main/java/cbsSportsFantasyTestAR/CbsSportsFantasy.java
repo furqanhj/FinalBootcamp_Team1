@@ -1,11 +1,11 @@
-package cbsSportsFantasyAR;
+package cbsSportsFantasyTestAR;
 
 import common.BaseAPI;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import static cbsSportsFantasyAR.CbsSportsFantasyWebElements.*;
+import static cbsSportsFantasyTestAR.CbsSportsFantasyWebElements.*;
 
 public class CbsSportsFantasy extends BaseAPI {
 
@@ -30,6 +30,9 @@ public class CbsSportsFantasy extends BaseAPI {
     @FindBy(xpath = WEB_ELEMENT_LOG_IN_BUTTON)
     WebElement logInButton;
 
+    @FindBy (xpath = WEB_ELEMENT_LOGIN_ERROR_MESSAGE)
+    WebElement logInErrorMessage;
+
 
     //Initialize all the web elements on this page, using Page Factory
     public  CbsSportsFantasy() {
@@ -42,13 +45,31 @@ public class CbsSportsFantasy extends BaseAPI {
     public void navigateToFantasyLink(){
         clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_FANTASY_LINK);
     }
+
     public void doLogIn(String email, String password){
         fantasyLink.click();
         sendKeysToElement(logInEmailTextBox,email);
         sendKeysToElement(logInPasswordTextBox, password);
         implicitWait(20);
-
-
+        logInButton.click();
+    }
+    public void clickSignUpLink() {
+        implicitWait(20);
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_LOG_IN_LINK);
+        implicitWait(20);
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_SIGN_UP_LINK);
     }
 
+    public void selectTvShowsListingsOption(){
+        implicitWait(20);
+        hoverOverNClickUsingXpath(WEB_ELEMENT_WATCH_LINK, WEB_ELEMENT_TV_SHOWS_LISTINGS_OPTION);
+        implicitWait(20);
+    }
+
+    public void clickFantasyPagePlayButton(){
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_FANTASY_LINK);
+        implicitWait(20);
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_PLAY_BUTTON);
+        implicitWait(20);
+    }
 }

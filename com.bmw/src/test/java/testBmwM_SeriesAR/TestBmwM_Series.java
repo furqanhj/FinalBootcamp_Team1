@@ -20,7 +20,7 @@ public class TestBmwM_Series extends BaseAPI {
 
     }
 
-    @Test(enabled = false) //failed
+    @Test(enabled = false)
     public void testLimitedEditionsExploreButton() throws InterruptedException, AWTException {
         BmwM_Series bmwMSeries = new BmwM_Series();
         bmwMSeries.clickMModels();
@@ -35,7 +35,7 @@ public class TestBmwM_Series extends BaseAPI {
         implicitWait(20);
     }
 
-    @Test(enabled = false) //passed, but not clicking Models link or the rest..?
+    @Test(enabled = false) //
     public void testAllModelsPageBmwMLink() {
         BmwM_Series bmwMSeries = new BmwM_Series();
         clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_MODELS_LINK);

@@ -9,8 +9,8 @@ import static chaseOpenAnAccountAR.ChaseOpenAnAccountWebElements.*;
 
 public class ChaseOpenAnAccount extends BaseAPI {
 
-    @FindBy (css = WEB_ELEMENT_OPEN_AN_ACCT_DROP_DOWN)
-    WebElement openAnAcctDropDown;
+    @FindBy (xpath = WEB_ELEMENT_OPEN_AN_ACCT_DROP_DOWN)
+    public WebElement openAnAcctDropDown;
 
     @FindBy (css = WEB_ELEMENT_CHCK_ACCT_DROP_DOWN_OPTION)
     WebElement chkAcctDropDownOption;
@@ -37,14 +37,31 @@ public class ChaseOpenAnAccount extends BaseAPI {
 
     //METHODS:
 
-    public void hoverOverOpenAnAcctDropDown(){
-
+    public void hoverOpenAnAccount(){
+    implicitWait(20);
+    basicHoverUsingXpath(WEB_ELEMENT_OPEN_AN_ACCT_DROP_DOWN);
+    implicitWait(20);
     }
 
-    public void clickChckAccountsOption(){
+    public void verifyChckAccountsPageHeader(){
+        implicitWait(20);
+        hoverOverNClickUsingXpath(WEB_ELEMENT_OPEN_AN_ACCT_DROP_DOWN, WEB_ELEMENT_CHCK_ACCT_DROP_DOWN_OPTION);
+        implicitWait(20);
 
     }
+    public void verifyChckAccountsCompareAccountsHeader() {
+        implicitWait(20);
+        hoverOverNClickUsingXpath(WEB_ELEMENT_OPEN_AN_ACCT_DROP_DOWN, WEB_ELEMENT_CHCK_ACCT_DROP_DOWN_OPTION);
+        implicitWait(20);
+    }
+    public void clickCollegeCheckingOpenNowButton(){
+        implicitWait(20);
+        hoverOverElement(openAnAcctDropDown);
+        implicitWait(20);
+        hoverOverElement(chkAcctDropDownOption);
+        implicitWait(20);
+        //hoverOverNClickUsingXpath(WEB_ELEMENT_OPEN_AN_ACCT_DROP_DOWN, WEB_ELEMENT_CHCK_ACCT_DROP_DOWN_OPTION);
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_COLLEGE_CHCK_ACCT_OPEN_NOW_BUTTON);
 
-
-
+    }
 }
