@@ -22,6 +22,8 @@ public class EbayFashionWebElements {
 
 
     //SEND KEYS METHODS
+    public static final String WEB_ELEMENT_FASHION_SEARCH = "//input[@id='gh-ac']";//XPATH
+    public static final String WEB_ELEMENT_DIAMOND_RING_SEARCH = "Diamond ring";
 
 
 }

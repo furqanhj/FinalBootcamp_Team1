@@ -24,11 +24,14 @@ import reporting.ExtentManager;
 import reporting.ExtentTestManager;
 import utilities.DataReader;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.time.Duration;
 import java.util.*;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class BaseAPI {
@@ -776,21 +779,62 @@ public class BaseAPI {
         actions.moveToElement(subMenu);
         actions.click().build().perform();
     }
-    public static void implicitWait(int seconds){
-        driver.manage().timeouts().implicitlyWait(seconds,TimeUnit.SECONDS);
+
+    public static void implicitWait(int seconds) {
+        driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
     }
 
-    public static void softAssertAssertEqualsGetCurrentURL(String exp){
+    public static void softAssertAssertEqualsGetCurrentURL(String exp) {
         String expected = exp;
         String actual = driver.getCurrentUrl();
         SoftAssert softAssert = new SoftAssert();
-//        softAssert.assertTrue(expected.equalsIgnoreCase(actual));
-        softAssert.assertEquals(actual,expected,"TEST FAILED");
-//        softAssert.assertAll();
+        softAssert.assertEquals(actual, expected, "TEST FAILED");
+
+    }
+
+    public static void enterKey() throws AWTException {
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_ENTER);
+    }
+
+    public boolean compareTwoIntegers(int int1, int int2) {
+        boolean flag = false;
+        if (int1 != int2)
+            flag = false;
+        else if (int1 == int2)
+            flag = true;
+
+        return flag;
+    }
+
+    public boolean isTitleTrue(String title) {
+        boolean flag = false;
+
+        try {
+            title = driver.getTitle();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("UNABLE TO GET TITLE FROM PAGE");
+        }
+        if (title != null)
+            flag = true;
+        else
+            return flag;
+
+        return flag;
+    }
+
+    public void fluentWait(long seconds) {
+
+        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+                .withTimeout(Duration.ofSeconds(seconds))
+                .pollingEvery(Duration.ofSeconds(5))
+                .withMessage("Time out after 30 seconds")
+                .ignoring(NoSuchElementException.class);
+
+
     }
 }
 
-//    String expected = "https://www.ebay.com/b/Watches-Parts-Accessories/260324/bn_2408535";
-//    String actual = driver.getCurrentUrl();
-//
-//        Assert.assertEquals(actual,expected);
+
+

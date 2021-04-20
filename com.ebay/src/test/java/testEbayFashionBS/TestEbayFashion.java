@@ -5,6 +5,8 @@ import ebayFashionBS.EbayFashion;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.awt.*;
+
 import static ebayFashionBS.EbayFashionWebElements.*;
 
 public class TestEbayFashion extends BaseAPI {
@@ -104,11 +106,18 @@ public class TestEbayFashion extends BaseAPI {
         assertEqualsGetAttribute("hl-cat-nav__js-tab hl-cat-nav__js-show", WEB_ELEMENT_FASHION,"class");
     }
     //TEST 11
-    @Test(priority = 11, enabled = true)
+    @Test(priority = 11, enabled = false)
     public void testHoverAndClickWatches(){
         ebay = new EbayFashion();
         ebay.hoverAndClickWatches();
         softAssertAssertEqualsGetCurrentURL("https://www.ebay.com/b/Watches-Parts-Accessories/260324/bn_2408535/");
+    }
+    //TEST 12
+    @Test(priority = 12, enabled = false)
+    public void testSearchDiamondRing() throws AWTException, InterruptedException {
+        ebay = new EbayFashion();
+        ebay.searchForDiamondRing();
+        assertEqualsGetAttribute("Diamond ring",WEB_ELEMENT_FASHION_SEARCH,"value");
     }
 
     }

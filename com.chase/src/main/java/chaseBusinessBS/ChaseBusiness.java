@@ -9,33 +9,7 @@ import static chaseBusinessBS.ChaseBusinessWebElements.*;
 
 public class ChaseBusiness extends BaseAPI {
 
-    @FindBy(xpath = WEB_ELEMENT_SIDE_MENU)
-    WebElement sideMenu;
-    @FindBy(xpath = WEB_ELEMENT_SEE_ALL)
-    WebElement seeAll;
-    @FindBy(xpath = WEB_ELEMENT_BUSINESS_LINK)
-    WebElement business;
-    @FindBy(xpath = WEB_ELEMENT_BUSINESS_CHECKING_LINK)
-    WebElement businessChecking;
-    @FindBy(xpath = WEB_ELEMENT_MERCHANT_SERVICES)
-    WebElement merchantServices;
-    @FindBy(xpath = WEB_ELEMENT_MERCHANT_TITLE)
-    WebElement merchantTitle;
-    @FindBy(xpath = WEB_ELEMENT_PPP_TITLE)
-    WebElement pppTitle;
 
-    @FindBy(xpath = WEB_ELEMENT_PPP_LEARN_MORE)
-    WebElement pppLearnMore;
-    @FindBy(xpath = WEB_ELEMENT_CHECKLIST_FAQ)
-    WebElement checklistFAQ;
-    @FindBy(xpath = WEB_ELEMENT_APPLY)
-    WebElement apply;
-    @FindBy(xpath = WEB_ELEMENT_WEBINAR)
-    WebElement Webinar;
-    @FindBy(xpath = WEB_ELEMENT_750_CASH_BACK_LEARN_MORE)
-    WebElement cashBackLearnMore;
-    @FindBy(xpath = WEB_ELEMENT_WOMEN_ON_THE_MOVE)
-    WebElement womenOnTheMove;
     @FindBy(xpath = WEB_ELEMENT_EXPLORE_PRODUCTS_HOVER_OVER)
     public WebElement exploreProducts;
     @FindBy(xpath = WEB_ELEMENT_OPEN_ACCOUNT_HOVER)

@@ -4,6 +4,8 @@ import common.BaseAPI;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.awt.*;
+
 import static ebayFashionBS.EbayFashionWebElements.*;
 
 public class EbayFashion extends BaseAPI {
@@ -136,6 +138,13 @@ public class EbayFashion extends BaseAPI {
         hoverOverNClickUsingXpath(WEB_ELEMENT_FASHION_LINK,WEB_ELEMENT_HOVER_WATCHES);
         implicitWait();
     }
+    public void searchForDiamondRing() throws AWTException {
+        basicHoverUsingXpath(WEB_ELEMENT_FASHION_LINK);
+        typeOnElement(WEB_ELEMENT_FASHION_SEARCH,WEB_ELEMENT_DIAMOND_RING_SEARCH);
+        enterKey();
+
+    }
+
 
 
 
