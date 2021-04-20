@@ -10,7 +10,8 @@
         <parameter name="url" value="https://www.macys.com"/>
 
         <classes>
-            <!--            <class name="homepageTest.HomepageTest"/>-->
+<!--            <class name="testMacysHomepageFJ.TestMacysHomepage"/>-->
+            <class name="testMacysListsPageFJ.TestMacysListsPage"/>
         </classes>
 
     </test>

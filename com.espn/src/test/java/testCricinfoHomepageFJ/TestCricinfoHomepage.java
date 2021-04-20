@@ -33,7 +33,7 @@ public class TestCricinfoHomepage extends BaseAPI {
     }
 
     //TestCase#2: validate number of links in "Live Score" dropdown, via Excel file
-    @Test (priority = 2, enabled = false)
+    @Test (priority = 2, enabled = true)
     public void testNumberOfLinksInLiveScoreDropdodown() throws IOException {
         espn = new ESPNHomepage();
         cricinfo = new CricinfoHomepage();
