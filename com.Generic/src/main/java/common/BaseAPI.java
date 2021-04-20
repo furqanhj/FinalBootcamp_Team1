@@ -66,8 +66,8 @@ public class BaseAPI {
     //@AfterClass(alwaysRun = true)
     @AfterMethod
     public static void tearDown() {
-        driver.close();
-        driver.quit();
+//        driver.close();
+//        driver.quit();
     }
 
     // Method to get local driver, based on the browserName parameter in testNG.xml runner file

@@ -46,7 +46,7 @@ public class TestAboutUsPage extends BaseAPI {
 
     }
 
-    @Test(priority = 3)
+    @Test(priority = 4)
     public void testClickOurCompanyTextLink() {
 
         testClickAboutUsMenu();
@@ -56,7 +56,7 @@ public class TestAboutUsPage extends BaseAPI {
 
     }
 
-    @Test(priority = 4)
+    @Test(priority = 5)
     public void testClickResponsibleGrowthTextLink() {
 
 //        AboutUsPage.clickAboutUsMenu();
@@ -70,7 +70,7 @@ public class TestAboutUsPage extends BaseAPI {
 
     }
 
-    @Test(priority = 5)
+    @Test(priority = 6)
     public void testClickBusinessPracticesTextLink()  {
 
         testHoverOurCompanyLinks();
@@ -78,7 +78,7 @@ public class TestAboutUsPage extends BaseAPI {
         Assert.assertTrue(AboutUsPage.businessPracticesImage.isDisplayed());
 
     }
-    @Test(priority = 6)
+    @Test(priority = 7)
     public void testClickWhatWeOffer(){
 
         testHoverOurCompanyLinks();
