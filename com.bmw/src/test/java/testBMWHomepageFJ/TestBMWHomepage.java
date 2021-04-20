@@ -56,7 +56,7 @@ public class TestBMWHomepage extends BaseAPI {
     }
 
     //Test Case#4: Validate number of links in BMW Owners inside Owners dropdown via Excel file
-    @Test(priority = 4, enabled = false)
+    @Test(priority = 4, enabled = true)
     public void testValidateNumOfLinksBMWOwnersViaExcelFile() throws IOException {
         homepage = new BMWHomepage();
 
@@ -68,7 +68,7 @@ public class TestBMWHomepage extends BaseAPI {
     }
 
     //Test Case#5: Validate number of links in Know Your BMW inside Owners dropdown via Excel file
-    @Test(priority = 5, enabled = false)
+    @Test(priority = 5, enabled = true)
     public void testValidateNumOfLinksKnowYourBMWViaExcelFile() throws IOException {
         homepage = new BMWHomepage();
         homepage.clickOnOwnersDropdown();
@@ -81,7 +81,7 @@ public class TestBMWHomepage extends BaseAPI {
     }
 
     //Test Case#6: Validate number of links in Caring For Your BMW inside Owners dropdown, via Excel file
-    @Test(priority = 6, enabled = true)
+    @Test(priority = 6, enabled = false)
     public void testValidateNumOfLinksCaringForYourBMWViaExcelFile() throws IOException {
         homepage = new BMWHomepage();
         homepage.clickOnOwnersDropdown();

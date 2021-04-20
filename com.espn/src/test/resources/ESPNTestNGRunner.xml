@@ -10,7 +10,8 @@
         <parameter name="url" value="https://www.espn.com"/>
 
         <classes>
-            <!--            <class name="homepageTest.HomepageTest"/>-->
+<!--            <class name="testESPNHomepageFJ.TestESPNHomepage"/>-->
+            <class name="testCricinfoHomepageFJ.TestCricinfoHomepage"/>
         </classes>
 
     </test>
