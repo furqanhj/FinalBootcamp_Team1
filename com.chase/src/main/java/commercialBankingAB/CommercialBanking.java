@@ -29,7 +29,17 @@ public class CommercialBanking extends BaseAPI {
 
 
     }
+//*****************************************************************
 
 
+    @FindBy(xpath = WEB_ELEMENT_CLICK_DROP_DOWN)
+    WebElement dropDownMenu;
+
+    @FindBy(xpath = WEB_ELEMENT_NAVIGATE_TO_MORTGAGE_PAGE)
+    WebElement navigateToMortgagePage;
+
+    public void clickDropDownMenu(){clickByXpathUsingJavaScript(WEB_ELEMENT_CLICK_DROP_DOWN);}
+
+    public void clickMortgagePageLink(){clickByXpathUsingJavaScript(WEB_ELEMENT_NAVIGATE_TO_MORTGAGE_PAGE);}
 
 }

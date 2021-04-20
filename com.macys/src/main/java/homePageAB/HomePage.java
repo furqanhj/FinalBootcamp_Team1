@@ -4,8 +4,8 @@ import common.BaseAPI;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import static homePageAB.HomePageWebElement.*;
+
 public class HomePage extends BaseAPI {
 
     @FindBy(css = WEB_ELEMENT_BUTTON_DEALS)

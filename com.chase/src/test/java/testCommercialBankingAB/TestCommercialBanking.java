@@ -9,7 +9,7 @@ public class TestCommercialBanking extends BaseAPI {
 
 
     CommercialBanking commercialBanking;
-    @Test
+    @Test(priority = 1,enabled = false)
     public void testNavigateToCommercialBanking(){
         commercialBanking=new CommercialBanking();
 
@@ -21,6 +21,21 @@ public class TestCommercialBanking extends BaseAPI {
 
     }
 
+    @Test(priority = 2,  enabled = false)
+    public void testNavigationToMortgagePage() throws InterruptedException {
 
+        commercialBanking = new CommercialBanking();
+
+        commercialBanking.clickDropDownMenu();
+        Thread.sleep(4000);
+        commercialBanking.clickMortgagePageLink();
+        Thread.sleep(4000);
+
+        String actualTitle = BaseAPI.driver.getTitle();
+
+        String expectedTitle = "Chase Mortgage | Home Lending | Chase.com";
+
+        Assert.assertEquals(actualTitle, expectedTitle, "TITLE DOES NOT MATCH");
+    }
 
 }

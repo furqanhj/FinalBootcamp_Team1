@@ -10,7 +10,7 @@ public class TestOnlineExperiencesPage extends BaseAPI {
 
     OnlineExperiencesPage onlineExperiencesPage;
 
-    @Test
+    @Test(priority = 1,enabled = false)
     public void testNavigateToOnlineExperiencesPage() throws InterruptedException {
 
         onlineExperiencesPage= new OnlineExperiencesPage();
@@ -22,6 +22,38 @@ public class TestOnlineExperiencesPage extends BaseAPI {
         Assert.assertEquals(actualTitle, expectedTitle, "Title do not match");
 
     }
+
+
+
+
+
+    @Test(priority = 2, enabled = false)
+    public void testDoSearch() throws InterruptedException {
+        onlineExperiencesPage = new OnlineExperiencesPage();
+
+        onlineExperiencesPage.doSearch();
+        String actualTitle = BaseAPI.driver.getTitle();
+
+        String expectedTitle = "Vacation Rentals, Homes, Hotels, Experiences & More - Airbnb";
+
+        Assert.assertEquals(actualTitle, expectedTitle, "TITLE DOES NOT MATCH");
+    }
+
+    @Test(priority = 3, enabled = true)
+    public void testSignUp() {
+        onlineExperiencesPage = new OnlineExperiencesPage();
+
+        onlineExperiencesPage.doToggleClick();
+
+        String actualText = driver.getTitle();
+
+        String expectedText = "Vacation Rentals, Homes, Hotels, Experiences & More - Airbnb";
+
+        Assert.assertEquals(actualText, expectedText, "Test not found");
+
+    }
+
+
 
 
 }

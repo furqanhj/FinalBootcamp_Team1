@@ -10,7 +10,7 @@ public class testHomePage extends BaseAPI {
 
     HomePage homePage;
 
-    @Test(enabled = false)
+    @Test(priority = 1, enabled = false)
     public void TestNevigateDealsPage(){
         homePage = new HomePage();
         homePage.navigateToDealsPage();
@@ -21,7 +21,7 @@ public class testHomePage extends BaseAPI {
     }
 
 
-    @Test(enabled = false)
+    @Test(priority = 2,enabled = false)
     public void testDoSearch(){
         homePage= new HomePage();
         String searchKeys="boys shoe";
@@ -35,14 +35,14 @@ public class testHomePage extends BaseAPI {
         Assert.assertEquals(actualText,searchKeys);
     }
 
-    @Test (enabled = false)
+    @Test (priority = 3, enabled = false)
     public void testPageTitle(){
         String actualTitle=driver.getTitle();
         String expectedTitle="Macy's - Shop Fashion Clothing & Accessories - Official Site - Macys.com";
         Assert.assertEquals(actualTitle,expectedTitle,"Title do not match");
     }
 
-    @Test (enabled = false)
+    @Test (priority = 4, enabled = false)
     public void testDoInValidSighIn() throws InterruptedException {
         homePage=new HomePage();
         homePage.doInvalidLogIn("abc@gmail.com", "12345");
@@ -52,13 +52,13 @@ public class testHomePage extends BaseAPI {
         Assert.assertEquals(actualText, expectedText, "Text Donot Match");
     }
 
-    @Test (enabled = false)
+    @Test (priority = 5, enabled = false)
     public void testLogoPresent(){
         homePage=new HomePage();
         boolean logoPresent=homePage.MacysLogo.isDisplayed();
         Assert.assertTrue(logoPresent);
     }
-    @Test (enabled = false)
+    @Test (priority = 6, enabled = false)
 
     public void testDoInValidMyAccount() throws InterruptedException {
         homePage=new HomePage();
@@ -68,7 +68,7 @@ public class testHomePage extends BaseAPI {
         String expectedText="Sorry, it looks like there's a problem on our end. For assistance, please call 1-800-289-6229.";
         Assert.assertEquals(actualText,expectedText, "Text Donot Match");
     }
-    @Test
+    @Test(priority = 7, enabled = false)
     public void testDoCheckMyShoppingCart() throws InterruptedException {
 
         homePage=new HomePage();

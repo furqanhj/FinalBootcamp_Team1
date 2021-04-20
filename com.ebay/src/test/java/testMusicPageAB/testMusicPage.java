@@ -50,7 +50,7 @@ public class testMusicPage extends BaseAPI {
     }
 
     @Test(priority = 5, enabled = true)
-    public void testNavigateToFolfMusicCdPage() {
+    public void testNavigateToFolkMusicCdPage() {
         musicPage = new MusicPage();
         musicPage.navigateToMusicPage();
         musicPage.navigateToMusicCategory();
