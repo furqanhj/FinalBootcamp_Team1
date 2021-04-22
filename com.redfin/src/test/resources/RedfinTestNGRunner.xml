@@ -10,7 +10,8 @@
         <parameter name="url" value="https://www.redfin.com"/>
 
         <classes>
-            <!--            <class name="homepageTest.HomepageTest"/>-->
+<!--            <class name="testRedfinHomepageFJ.TestRedfinHomepage"/>-->
+            <class name="testMortgageCalculatorPageFJ.TestMortgageCalculatorPage"/>
         </classes>
 
     </test>

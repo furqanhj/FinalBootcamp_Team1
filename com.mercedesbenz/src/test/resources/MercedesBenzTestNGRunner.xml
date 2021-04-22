@@ -10,7 +10,9 @@
         <parameter name="url" value="https://www.mbusa.com/en/home"/>
 
         <classes>
-            <!--            <class name="homepageTest.HomepageTest"/>-->
+<!--            <class name="testMercedesHomepageFJ.TestMercedesHomepage"/>-->
+<!--            <class name="testInventoryPageFJ.TestInventoryPage"/>-->
+            <class name="testRequestAQuotePageFJ.TestRequestAQuotePage"/>
         </classes>
 
     </test>
