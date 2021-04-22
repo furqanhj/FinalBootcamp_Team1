@@ -332,7 +332,7 @@ public class BaseAPI {
         }
     }
 
-    public void selectOptionByVisibleText(WebElement dropdown, String visibleText) {
+    public WebElement selectOptionByVisibleText(WebElement dropdown, String visibleText) {
         Select select = new Select(dropdown);
 
         try {
@@ -351,6 +351,7 @@ public class BaseAPI {
             e.printStackTrace();
             System.out.println("UNABLE TO SELECT OPTION (" + visibleText + ") FROM DROPDOWN");
         }
+        return dropdown;
     }
 
     public void selectOptionByValue(WebElement dropdown, String value) {
@@ -711,6 +712,28 @@ public class BaseAPI {
         }
         return flag;
     }
+// LAMIA'S METHOD TO VERIFY IF VIDEO IS PLAYING.
+//    public boolean isVideoPlaying(){
+//        WebElement element = null;
+//        WebElement videoElement = null;
+//        clickElement(element);
+//        scrollToElementJScript(videoElement);
+//        try {
+//            waitForVisibilityOfElement(videoPlayPauseButton);
+//            videoPlayPauseButton.click();
+//            if(videoPlayPauseButton.getAttribute("data-control").equals("Play")){
+//                System.out.println("This Youtube video wasn't playing but we clicked on it to play the video.");
+//            }else{
+//                if(videoPlayPauseButton.getAttribute("data-control").equals("Pause")){
+//                    System.out.println("Youtube video is already playing.");
+//                    return true;
+//                }
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return false;//return "false" in case both conditions fail
+//    }
 //*********************************************************************************************************************
 
     /**
@@ -751,6 +774,32 @@ public class BaseAPI {
             e.printStackTrace();
         }
     }
+
+//    public boolean killPopup() {
+//        boolean flag = false;
+//
+//        try {
+//            driverWait.until(ExpectedConditions.visibilityOf(popup));
+//            if (popup.isDisplayed()) {
+//                System.out.println("POP-UP DISPLAYED\n");
+//                buttonPopupClose.click();
+//                System.out.println("POP-UP CLOSED\n");
+//                driver.switchTo().defaultContent();
+//                flag = true;
+//            } else {
+//                System.out.println("Pop-up was not displayed\n");
+//            }
+//        } catch (Exception e) {
+//            e.getMessage();
+//        }
+//        return flag;
+//    }
+
+    public static boolean isPopUpWindowDisplayed(WebDriver driver1, String locator) {
+        boolean value = driver1.findElement(By.cssSelector(locator)).isDisplayed();
+        return value;
+    }
+
 
 //*********************************************************************************************************************
 
