@@ -265,7 +265,8 @@ public class BaseAPI {
     }
 
     // 3 Methods to help with selecting from SELECT Dropdown
-    public void selectOptionByIndex(WebElement dropdown, int index) {
+    public void selectOptionByIndex(String locator, int index) {
+        WebElement dropdown = driver.findElement(By.xpath(locator));
         Select select = new Select(dropdown);
 
         try {
@@ -805,23 +806,7 @@ public class BaseAPI {
             flag = true;
 
         return flag;
-    }
 
-    public boolean isTitleTrue(String title) {
-        boolean flag = false;
-
-        try {
-            title = driver.getTitle();
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("UNABLE TO GET TITLE FROM PAGE");
-        }
-        if (title != null)
-            flag = true;
-        else
-            return flag;
-
-        return flag;
     }
 
     public void fluentWait(long seconds) {
@@ -831,10 +816,140 @@ public class BaseAPI {
                 .pollingEvery(Duration.ofSeconds(5))
                 .withMessage("Time out after 30 seconds")
                 .ignoring(NoSuchElementException.class);
+    }
+    public static boolean isPopUpWindowDisplayed(WebDriver driver1, String locator) {
+        boolean value = driver1.findElement(By.cssSelector(locator)).isDisplayed();
+        return value;
+    }
+
+    public void explicitWaitUntilClickable(long seconds, String locator) {
+        WebDriverWait wait = new WebDriverWait(driver, seconds);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator)));
+
+    }
+
+    public void scrollToElementUsingJavaScript(String loc) {
+        try {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+//Find element by link text and store in variable "Element"
+            WebElement Element = driver.findElement(By.xpath(loc));
+//This will scroll the page till the element is found
+            js.executeScript("arguments[0].scrollIntoView();", Element);
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+//Find element by link text and store in variable "Element"
+                WebElement Element = driver.findElement(By.cssSelector(loc));
+//This will scroll the page till the element is found
+                js.executeScript("arguments[0].scrollIntoView();", Element);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
+    public boolean isElementSelected(String element) {
+        boolean flag = false;
+
+        if (driver.findElement(By.xpath(element)).isSelected()) {
+            flag = true;
+            return flag;
+        }
+        return flag;
+    }
+
+    public boolean isElementDisplayed(String element) {
+        boolean flag = false;
+
+        if (driver.findElement(By.xpath(element)).isDisplayed()) {
+            flag = true;
+            return flag;
+        }
+        return flag;
+    }
+
+    public boolean isTitleTrue(String title) {
+        boolean flag = false;
+
+        if (driver.getTitle().equals(title)) {
+            flag = true;
+            return flag;
+        }
+        return flag;
+    }
+
+
+    public boolean isUrlTrue(String url){
+        boolean flag = false;
+
+        if(driver.getCurrentUrl().equals(url)){
+            flag = true;
+            return flag;
+        }
+        return flag;
+    }
+
+    public String getAttributeFromElement(String element, String attribute) {
+        String elementText = "";
+
+        try {
+            elementText = driver.findElement(By.xpath(element)).getAttribute(attribute);
+            return elementText;
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("UNABLE TO GET ATTRIBUTE FROM WEB ELEMENT");
+        }
+
+        return elementText;
+    }
+
+//    public boolean killPopup() {
+//        boolean flag = false;
+//
+//        try {
+//            wait.until(ExpectedConditions.visibilityOf(popup));
+//            if (popup.isDisplayed()) {
+//                System.out.println("POP-UP DISPLAYED\n");
+//                buttonPopupClose.click();
+//                System.out.println("POP-UP CLOSED\n");
+//                driver.switchTo().defaultContent();
+//                flag = true;
+//            } else {
+//                System.out.println("Pop-up was not displayed\n");
+//            }
+//        } catch (Exception e) {
+//            e.getMessage();
+//        }
+//        return flag;
 
 
     }
-}
+
+//    public boolean isVideoPlaying(){
+//        navigateHomeLoans();
+//        clickOnTheElement(refinance);
+//        scrollToElementJScript(refinanceVideo);
+//        try {
+//            waitForVisibilityOfElement(videoPlayPauseButton);
+//            videoPlayPauseButton.click();
+//            if(videoPlayPauseButton.getAttribute("data-control").equals("Play")){
+//                System.out.println("This Youtube video wasn't playing but we clicked on it to play the video.");
+//            }else{
+//                if(videoPlayPauseButton.getAttribute("data-control").equals("Pause")){
+//                    System.out.println("Youtube video is already playing.");
+//                    return true;
+//                }
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return false;//return "false" in case both conditions fail
+//    }
+//}
+//
+//
+
+
 
 
 
