@@ -10,6 +10,8 @@ public class ChaseOpenAnAccountWebElements {
     public static final String WEB_ELEMENT_CHASE_COLLEGE_CHECKING_HEADER = "//h4[.='Chase College CheckingSM']"; //xpath
     public static final String WEB_ELEMENT_COLLEGE_CHCK_ACCT_OPEN_NOW_BUTTON = "//div[@class='no-padding col-lg-4 col-compare col-compare-1 compare-heading students active']//a[.='Opens in the same windowOpen now']"; //xpath
     public static final String WEB_ELEMENT_OPEN_AN_ACCT_DROP_DOWN  = "//div[@class='herolayer__button']/a[.='Open an account']"; //XPATH. Open an acct button
+    public static final String WEB_ELEMENT_OPEN_AN_ACCOUNT_BUTTON  = "//div[@class='herolayer__button']/a[.='Open an account']"; //XPATH. Open an acct button
+    public static final String WEB_ELEMENT_OPEN_AN_ACCOUNT_TEXT_HEADER = "//div[@class='h2 text-align-center six-hundred-hero-description']"; //XPATH.
 }
 
 

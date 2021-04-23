@@ -12,6 +12,7 @@ public class EbayToysWebElements {
     public static final String WEB_ELEMENT_SEE_ALL_EDUCATIONAL_LINK = "//a[.='See all in Educational']"; //xpath
     public static final String WEB_ELEMENT_EDUCATIONAL_TOYS_HEADER = "//span[@class='b-pageheader__text']"; //xpath
     public static final String WEB_ELEMENT_CART = ".gh-cart-icon";//css
+    public static final String WEB_ELEMENT_MY_EBAY_DROP_DOWN = "//a[.='My eBay']"; //xpath
 
 
 

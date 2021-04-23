@@ -64,4 +64,11 @@ public class ChaseOpenAnAccount extends BaseAPI {
         clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_COLLEGE_CHCK_ACCT_OPEN_NOW_BUTTON);
 
     }
+
+    public void clickOpenAnAccountButton(){
+        implicitWait(20);
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_OPEN_AN_ACCOUNT_BUTTON);
+        implicitWait(20);
+
+    }
 }

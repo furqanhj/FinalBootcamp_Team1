@@ -141,13 +141,12 @@ public class BaseAPI {
         }
     }
 
-    public String getTextFromElement(WebElement element) {
+    public String getTextFromElement(String element) {
         String elementText = "";
 
-        driverWait.until(ExpectedConditions.visibilityOf(element));
 
         try {
-            elementText = element.getText();
+            elementText = driver.findElement(By.xpath(element)).getText();
             return elementText;
         } catch (StaleElementReferenceException staleElementReferenceException) {
             staleElementReferenceException.printStackTrace();
@@ -464,16 +463,17 @@ public class BaseAPI {
         //Performing the mouse hover action on the target element.
         action.moveToElement(ele).perform();
     }
-        public static void hoverOverNClickUsingXpath (String main, String sub){
-            implicitWait(20);
-            WebElement mainMenu = driver.findElement(By.xpath(main));
-            Actions actions = new Actions(driver);
-            actions.moveToElement(mainMenu).build().perform();
-            WebElement subMenu = driver.findElement(By.xpath(sub));
-            actions.moveToElement(subMenu);
-            actions.click().build().perform();
 
-        }
+    public static void hoverOverNClickUsingXpath(String main, String sub) {
+        implicitWait(20);
+        WebElement mainMenu = driver.findElement(By.xpath(main));
+        Actions actions = new Actions(driver);
+        actions.moveToElement(mainMenu).build().perform();
+        WebElement subMenu = driver.findElement(By.xpath(sub));
+        actions.moveToElement(subMenu);
+        actions.click().build().perform();
+
+    }
 
     public void waitForVisibilityOfElement(WebElement element) {
         try {
@@ -505,4 +505,39 @@ public class BaseAPI {
             System.out.println("UNABLE TO HOVER OVER ELEMENT");
         }
     }
+
+
+    public boolean isElementDisplayed(String element) {
+        boolean flag = false;
+
+        if (driver.findElement(By.xpath(element)).isDisplayed()) {
+            flag = true;
+            return flag;
+        }
+        return flag;
+
     }
+
+    public boolean isTitleTrue(String title) {
+        boolean flag = false;
+
+        if (driver.getTitle().equals(title)) {
+            flag = true;
+            return flag;
+        }
+        return flag;
+    }
+
+
+    public void switchToNewTab(int tabIndexToSwitchTo) {
+
+        List<String> tabs = new ArrayList<>(driver.getWindowHandles());
+
+        try {
+            driver.switchTo().window(tabs.get(tabIndexToSwitchTo));
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+    }
+}

@@ -72,4 +72,11 @@ public class CbsSportsFantasy extends BaseAPI {
         clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_PLAY_BUTTON);
         implicitWait(20);
     }
+    public void verifyTopHeadlinesHeader(){
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_FANTASY_LINK);
+        implicitWait(20);
+    }
+
+
+
 }

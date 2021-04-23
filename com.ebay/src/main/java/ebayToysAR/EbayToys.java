@@ -46,6 +46,14 @@ public class EbayToys extends BaseAPI{
         click(WEB_ELEMENT_CART);
     }
 
+    public void clickMyEbayDropDownLink(){
+        implicitWait(20);
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_TOYS_LINK);
+        implicitWait(20);
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_MY_EBAY_DROP_DOWN);
+        implicitWait(20);
+    }
+
 
 
 

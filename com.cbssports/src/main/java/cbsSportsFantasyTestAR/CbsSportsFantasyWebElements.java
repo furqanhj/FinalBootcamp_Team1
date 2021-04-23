@@ -14,6 +14,7 @@ public class CbsSportsFantasyWebElements {
     public static final String WEB_ELEMENT_WATCH_LINK = "//span[.='Watch']"; //xpath
     public static final String WEB_ELEMENT_TV_SHOWS_LISTINGS_OPTION = "//a[.='TV Shows & Listings']"; //xpath
     public static final String WEB_ELEMENT_PLAY_BUTTON = "//a[@href='https://www.cbssports.com/fantasy/games/']/span[@class='the-button']"; //xpath
+    public static final String WEB_ELEMENT_TOP_HEADLINES_HEADER = "//h5[contains(.,'Top Headlines')]"; //xpath
 
 
 
