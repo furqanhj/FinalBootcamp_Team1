@@ -681,6 +681,7 @@ public class BaseAPI {
 
     // Gets text from List<WebElements> and compares against expected String array from Excel workbook
     public boolean compareAttributeListToExpectedStringArray(By by, String attribute, String path, String sheetName) throws IOException {
+        dataReader = new DataReader();
         List<WebElement> actualList = driver.findElements(by);
         String[] expectedList = dataReader.fileReaderStringXSSF(path, sheetName);
 

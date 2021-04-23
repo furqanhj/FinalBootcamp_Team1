@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.List;
 
 //TOTAL TEST CASES =
-public class TestEbayHomepage extends BaseAPI {
+public class    TestEbayHomepage extends BaseAPI {
 
     EbayHomepage ebayHomepage;
 

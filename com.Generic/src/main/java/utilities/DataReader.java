@@ -164,7 +164,7 @@ public class DataReader {
     public String getCellValue(XSSFCell cell) {
         Object value;
 
-        CellType dataType = cell.getCellType();
+        CellType    dataType = cell.getCellType();
         switch (dataType) {
             case NUMERIC:
                 value = cell.getNumericCellValue();
