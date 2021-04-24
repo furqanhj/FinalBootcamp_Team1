@@ -60,8 +60,8 @@ public class testHomeLoansPage extends BaseAPI {
 
 
     }
-    // (this method has 6 test cases
-    @Test(priority = 5,enabled = true)
+    // this method has 7 test cases
+    @Test(priority = 6,enabled = true)
     public void testGetMyOptions() {
          testClickEstimateYourRateTextLink();
          homeLoansPage.getMyOptions();

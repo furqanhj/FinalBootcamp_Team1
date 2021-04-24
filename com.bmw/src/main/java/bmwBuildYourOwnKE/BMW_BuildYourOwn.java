@@ -34,6 +34,14 @@ public class BMW_BuildYourOwn extends BaseAPI {
     public WebElement submitTextLink;
     @FindBy(xpath = WEB_ELEMENT_VALIDATE_ENTERING_ZIP_CODE)
     public WebElement validatingEnteringZipCode;
+    @FindBy(xpath = WEB_ELEMENT_NEXT_COLOR_BTN)
+    public WebElement nextColorBtn;
+    @FindBy(xpath = WEB_ELEMENT_TOP_UP_BTN)
+    public WebElement topUpBtn;
+    @FindBy(xpath = WEB_ELEMENT_JET_BLACK_COLOR_BTN)
+    public WebElement jetBlackColorBtn;
+    @FindBy(xpath = WEB_ELEMENT_JET_BLACK_TEXT)
+    public WebElement jetBlackText;
 
 
 
@@ -75,5 +83,15 @@ public class BMW_BuildYourOwn extends BaseAPI {
         sendKeysToElement(zipCodeField,"22192");
         clickElement(submitTextLink);
     }
+     public void clickNextColor(){
+        //clickElement(nextColorBtn);
+         clickJScript(nextColorBtn);
+
+
+     }
+     public void clickJetBlackColorBtn(){
+
+        clickElement(jetBlackColorBtn);
+     }
 
 }

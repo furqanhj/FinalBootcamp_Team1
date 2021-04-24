@@ -24,6 +24,17 @@ public class WebElementsLocatorsBuildYourOwn {
      //Submit Text Link , located by :xpath
     public static final String WEB_ELEMENT_SUBMIT_TEXT_LINK ="//button[normalize-space()='Submit']";
     public static final String WEB_ELEMENT_VALIDATE_ENTERING_ZIP_CODE="//img[@alt='vehicle image']";
+    // Next / Color Button , located by : xpath
+    public static final String WEB_ELEMENT_NEXT_COLOR_BTN="//a[normalize-space()='Next / Color']";
+    // Top Up Button , located by : xpath
+    public static final String WEB_ELEMENT_TOP_UP_BTN ="//*[@id=\"Studio\"]/div[1]/div/div[1]/button";
+    //Jet Black Color Button , located by : xpath
+    public static final String WEB_ELEMENT_JET_BLACK_COLOR_BTN="//div[@title='Jet Black']//figure[@class='byo-rail-option-selector__thumb']";
+    //Jet Black Text , located by : xpath
+    public static final String WEB_ELEMENT_JET_BLACK_TEXT="//*[@id=\"Studio\"]/div[1]/div/div[1]/div[1]/div/div[2]/div/div[1]/div";
+
+
+
 
 
 

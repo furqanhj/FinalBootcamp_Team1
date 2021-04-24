@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 public class TestBecomeHostPage extends BaseAPI {
     BecomeHostPage becomeHostPage;
 
-    @Test(priority = 1,enabled = false)
+    @Test(priority = 1,enabled = true)
     public void testClickBecomeHostButton ()  {
         becomeHostPage = new BecomeHostPage();
         becomeHostPage.clickBecomeHostButton();
@@ -21,7 +21,7 @@ public class TestBecomeHostPage extends BaseAPI {
         Assert.assertEquals(actualTitle, expectedTitle, "Text Not Matching");
 
     }
-    @Test(priority = 2,enabled = false)
+    @Test(priority = 2,enabled = true)
             public void testCountriesScroll()  {
         testClickBecomeHostButton();
         becomeHostPage.login();
@@ -29,7 +29,7 @@ public class TestBecomeHostPage extends BaseAPI {
         Assert.assertTrue(becomeHostPage.countriesSelection.getText().contains("Morocco (+212)"));
 
         }
-    @Test(priority = 3,enabled = false)
+    @Test(priority = 3,enabled = true)
     public void testExploreTheWorldOfHostingTextLink()  {
         testClickBecomeHostButton();
         becomeHostPage.clickExploreTheWorldOfHostingTextLink();

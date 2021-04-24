@@ -1,23 +1,32 @@
 package common;
 
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.LogStatus;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.ITestContext;
+import org.testng.ITestResult;
+import org.testng.annotations.Optional;
 import org.testng.annotations.*;
+import reporting.ExtentManager;
+import reporting.ExtentTestManager;
 import utilities.DataReader;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
-import java.util.Set;
+import java.lang.reflect.Method;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class BaseAPI {
 
@@ -25,6 +34,7 @@ public class BaseAPI {
     public static WebDriverWait driverWait;
     public static Actions actions;
     public DataReader dataReader;
+    public static ExtentReports extent;
     public Properties properties;
 
     String propertiesFilePath = "src/main/resources/secret.properties";
@@ -47,6 +57,23 @@ public class BaseAPI {
         }
 
     }
+    @BeforeSuite (alwaysRun = true)
+    public static void beforeSuiteExtentSetup(ITestContext context) {
+        ExtentManager.setOutputDirectory(context);
+        extent = ExtentManager.getInstance();
+    }
+
+    @BeforeMethod (alwaysRun = true)
+    public static void beforeEachMethodExtentInit(Method method) {
+        String className = method.getDeclaringClass().getSimpleName();
+        String methodName = method.getName();
+
+        ExtentTestManager.startTest(methodName);
+        ExtentTestManager.getTest().assignCategory(className);
+
+        System.out.println("\n\t***" + methodName + "***\n");
+    }
+
 
 
     // Parameterization via .xml runner files in each module
@@ -63,11 +90,35 @@ public class BaseAPI {
         driver.manage().window().maximize();
         actions = new Actions(driver);
     }
+
     //@AfterClass(alwaysRun = true)
     @AfterMethod
     public static void tearDown() {
 //        driver.close();
 //        driver.quit();
+    }
+    @AfterMethod(alwaysRun = true)
+    public void afterEachTestMethod(ITestResult result) {
+
+        ExtentTestManager.getTest().getTest().setStartedTime(getTime(result.getStartMillis()));
+        ExtentTestManager.getTest().getTest().setEndedTime(getTime(result.getEndMillis()));
+
+        for (String group : result.getMethod().getGroups()) {
+            ExtentTestManager.getTest().assignCategory(group);
+        }
+
+        if (result.getStatus() == ITestResult.FAILURE) {
+            ExtentTestManager.getTest().log(LogStatus.FAIL, "TEST CASE FAILED: " + result.getName());
+            ExtentTestManager.getTest().log(LogStatus.FAIL, result.getThrowable());
+            captureScreenshot(driver, result.getName());
+        } else if (result.getStatus() == ITestResult.SKIP) {
+            ExtentTestManager.getTest().log(LogStatus.SKIP, "TEST CASE SKIPPED: " + result.getName());
+        } else if (result.getStatus() == ITestResult.SUCCESS) {
+            ExtentTestManager.getTest().log(LogStatus.PASS, "TEST CASE PASSED: " + result.getName());
+        }
+
+        ExtentTestManager.endTest();
+        extent.flush();
     }
 
     // Method to get local driver, based on the browserName parameter in testNG.xml runner file
@@ -91,10 +142,31 @@ public class BaseAPI {
 
         return driver;
     }
+    private static void captureScreenshot(WebDriver driver, String testName) {
+        String fileName = testName + ".png";
+        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        File newScreenshotFile = new File(System.getProperty("user.dir") + File.separator + "src" + File.separator +
+                "main" + File.separator + "java" + File.separator + "reporting"  + File.separator + fileName);
+
+        try {
+            FileHandler.copy(screenshot, newScreenshotFile);
+            System.out.println("SCREENSHOT TAKEN");
+        } catch (Exception e) {
+            System.out.println("ERROR TAKING SCREENSHOT: " + e.getMessage());
+        }
+    }
+    private Date getTime(long millis) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(millis);
+        return calendar.getTime();
+    }
+
     /**
      * Synchronization Helper Methods
      */
-
+    public void implicitWait() {
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    }
     public void waitForVisibilityOfElement(WebElement element) {
         try {
             driverWait.until(ExpectedConditions.visibilityOf(element));
@@ -268,6 +340,64 @@ public class BaseAPI {
      * Assertion Helper Methods
      */
 
+
+    public boolean isElementDisplayed(WebElement element) {
+        boolean flag = false;
+
+        try {
+            waitForVisibilityOfElement(element);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("UNABLE TO DETERMINE IF ELEMENT IS VISIBLE");
+        }
+
+        if (element.isDisplayed()) {
+            flag = true;
+            return flag;
+        }
+
+        return flag;
+
+    }
+    public boolean isElementEnabled(WebElement element) {
+        boolean flag = false;
+
+        try {
+            waitForVisibilityOfElement(element);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("UNABLE TO DETERMINE IF ELEMENT IS VISIBLE");
+        }
+
+        if (element.isEnabled()) {
+            flag = true;
+            return flag;
+        }
+
+        return flag;
+
+    }
+
+
+    public boolean isElementSelected(WebElement element) {
+        boolean flag = false;
+
+        try {
+            waitForElementToBeSelected(element);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("UNABLE TO DETERMINE IF ELEMENT IS SELECTED");
+        }
+
+        if (element.isSelected()) {
+            flag = true;
+            return flag;
+        }
+
+        return flag;
+    }
+
+
     public boolean compareStrings(String str1, String str2) {
         boolean flag = false;
 
@@ -278,6 +408,8 @@ public class BaseAPI {
 
         return flag;
     }
+
+    // Gets text from List<WebElements> and compares against expected String array from Excel workbook
 
     // Gets text from List<WebElements> and compares against expected String array from Excel workbook
     public boolean compareAttributeListToExpectedStringArray(By by, String attribute, String path, String sheetName) throws IOException {
@@ -312,6 +444,7 @@ public class BaseAPI {
         }
         return flag;
     }
+
     public void switchToNewWindow() {
         String parentWindow = driver.getWindowHandle();
 
@@ -323,5 +456,71 @@ public class BaseAPI {
             }
         }
     }
+            /**
+             * Javascript Helper Methods
+             */
 
-}
+            public static void clickJScript(WebElement element) {
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+
+                try {
+                    js.executeScript("arguments[0].click();", element);
+
+                } catch (NoSuchElementException e) {
+                    System.out.println("NO SUCH ELEMENT - " + element);
+                    e.printStackTrace();
+
+                } catch (StaleElementReferenceException e) {
+                    System.out.println("STALE ELEMENT - " + element);
+                    e.printStackTrace();
+
+                } catch (Exception e) {
+                    System.out.println("COULD NOT CLICK ON ELEMENT - " + element);
+                    e.printStackTrace();
+                }
+            }
+
+            public void scrollToElementJScript(WebElement element) {
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+
+                try {
+                    js.executeScript("arguments[0].scrollIntoView();", element);
+                } catch (NoSuchElementException e) {
+                    System.out.println("NO SUCH ELEMENT - " + element);
+                    e.printStackTrace();
+                } catch (StaleElementReferenceException e) {
+                    System.out.println("STALE ELEMENT - " + element);
+                    e.printStackTrace();
+                } catch (Exception e) {
+                    System.out.println("COULD NOT SCROLL TO ELEMENT - " + element);
+                    e.printStackTrace();
+                }
+            }
+
+            public void mouseHoverJScript(WebElement element) {
+                try {
+
+                    if (isElementDisplayed(element)) {
+                        String mouseOverScript = "if(document.createEvent){var evObj = document.createEvent('MouseEvents');evObj.initEvent('mouseover', true, false); arguments[0].dispatchEvent(evObj);} else if(document.createEventObject) { arguments[0].fireEvent('onmouseover');}";
+                        ((JavascriptExecutor) driver).executeScript(mouseOverScript, element);
+                        System.out.println("Hover performed\n");
+                    } else {
+                        System.out.println("UNABLE TO HOVER OVER ELEMENT\n");
+                    }
+                } catch (StaleElementReferenceException e) {
+                    System.out.println("ELEMENT WITH " + element
+                            + " IS NOT ATTACHED TO THE PAGE DOCUMENT");
+                    e.printStackTrace();
+                } catch (NoSuchElementException e) {
+                    System.out.println("ELEMENT " + element + " WAS NOT FOUND IN DOM");
+                    e.printStackTrace();
+                } catch (Exception e) {
+                    System.out.println("ERROR OCCURED WHILE HOVERING\n");
+                    e.printStackTrace();
+                }
+            }
+
+        }
+
+
+
