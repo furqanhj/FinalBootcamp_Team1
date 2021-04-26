@@ -10,7 +10,7 @@
         <parameter name="url" value="https://www.redfin.com"/>
 
         <classes>
-            <!--            <class name="homepageTest.HomepageTest"/>-->
+               <class name="TestNewsAndData.NewsAndDataTest"/>
         </classes>
 
     </test>

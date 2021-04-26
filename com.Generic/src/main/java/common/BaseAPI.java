@@ -9,6 +9,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
@@ -19,6 +20,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 public class BaseAPI {
 
@@ -58,8 +60,9 @@ public class BaseAPI {
         driver = getLocalDriver(browserName);
         driverWait = new WebDriverWait(driver, 10);
         driver.get(url);
-        driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
+        driver.manage().deleteAllCookies();
+
     }
 
     @AfterMethod(alwaysRun = true)
@@ -110,7 +113,7 @@ public class BaseAPI {
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("UNABLE TO SEND KEYS TO WEB ELEMENT" );
+            System.out.println("UNABLE TO SEND KEYS TO WEB ELEMENT");
         }
     }
 
@@ -129,7 +132,7 @@ public class BaseAPI {
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("UNABLE TO CLICK ON WEB ELEMENT" );
+            System.out.println("UNABLE TO CLICK ON WEB ELEMENT");
         }
     }
 
@@ -149,7 +152,7 @@ public class BaseAPI {
             System.out.println("ELEMENT IS NOT VISIBLE IN THE DOM");
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("UNABLE TO GET TEXT FROM WEB ELEMENT" );
+            System.out.println("UNABLE TO GET TEXT FROM WEB ELEMENT");
         }
 
         return elementText;
@@ -221,7 +224,7 @@ public class BaseAPI {
 
         String[] actual = new String[actualList.size()];
 
-        for (int j = 0; j<actualList.size(); j++) {
+        for (int j = 0; j < actualList.size(); j++) {
             actual[j] = actualList.get(j).getAttribute(attribute).replaceAll("&amp;", "&").replaceAll("’", "'").replaceAll("<br>", "\n").trim();
             actual[j].replaceAll("&amp;", "&").replaceAll("’", "'").replaceAll("<br>", "\n").trim();
 //            escapeHtml4(actual[j]);
@@ -237,7 +240,7 @@ public class BaseAPI {
                 System.out.println("ACTUAL " + attribute.toUpperCase() + " " + (i + 1) + ": " + actual[i]);
                 System.out.println("EXPECTED " + attribute.toUpperCase() + " " + (i + 1) + ": " + expectedList[i] + "\n");
             } else {
-                System.out.println("FAILED AT INDEX " + (i+1) + "\nEXPECTED " + attribute.toUpperCase() + ": " + expectedList[i] +
+                System.out.println("FAILED AT INDEX " + (i + 1) + "\nEXPECTED " + attribute.toUpperCase() + ": " + expectedList[i] +
                         "\nACTUAL " + attribute.toUpperCase() + ": " + actual[i] + "\n");
                 falseCount++;
             }
@@ -248,4 +251,41 @@ public class BaseAPI {
         return flag;
     }
 
+
+    public void scrollToElementUsingJavaScript(String loc) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        //Find element by link text and store in variable "Element"
+        WebElement Element = driver.findElement(By.xpath(loc));
+        //This will scroll the page till the element is found
+        js.executeScript("arguments[0].scrollIntoView();", Element);
+
+
+    }
+
+    public void assertEqualsGetTextUsingXpath(String Loc, String exp) {
+        String Act = driver.findElement(By.xpath(Loc)).getText();
+        Assert.assertEquals(Act, exp, "test fail");
+    }
+
+    public void assertEqualsGetTitle(String exp) {
+        String actualText = driver.getTitle();
+        Assert.assertEquals(actualText, exp, "test Failed");
+    }
+
+
+    public void implicitWait() {
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+    }
+
+
+    public static void clickByXNCssUsingJavaScript(String locator) {
+        try {
+            WebElement element = driver.findElement(By.xpath(locator));
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].click()", element);
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+    }
 }

@@ -10,7 +10,7 @@
         <parameter name="url" value="https://www.cbssports.com"/>
 
         <classes>
-            <!--            <class name="homepageTest.HomepageTest"/>-->
+                 <class name="TestNba.NbaTest"/>
         </classes>
 
     </test>
