@@ -54,15 +54,15 @@ public class DealsHomepage extends BaseAPI {
 
     public void ClickHeadPhones() throws InterruptedException, AWTException {
         driver.findElement(By.xpath(WEB_ELEMENT_LINK_HEADPHONES)).click();
-        Thread.sleep(6000);
+
         driver.findElement(By.xpath(WEB_ELEMENT_SELECT_COLOR)).click();
-        Thread.sleep(6000);
+
         driver.findElement(By.xpath(WEB_ELEMENT_SELECT_COLOR)).sendKeys(WEB_ELEMENT_COLOR_BLACK);
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_ENTER);
-        Thread.sleep(6000);
+
         driver.findElement(By.xpath(WEB_ELEMENT_ADD_TO_CART)).click();
-        Thread.sleep(6000);
+
 
 
     }

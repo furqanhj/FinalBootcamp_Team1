@@ -24,6 +24,7 @@ public class BusinessPage extends BaseAPI {
 
 
 
+
     public void clickDeals (){
     implicitWait();
     DropDownProduct.click();
@@ -54,6 +55,41 @@ public class BusinessPage extends BaseAPI {
         implicitWait();
         aboutUs.click();
         implicitWait();
+    }
+
+    @FindBy (xpath = WEB_ELEMENT_SEE_OUR_SOLUTIONS)
+    public WebElement seeOurSolutions;
+    @FindBy (xpath = WEB_ELEMENT_PUBLIC_SECTOR)
+    public WebElement publicSector;
+    @FindBy (xpath = WEB_ELEMENT_CLICK_PLANS)
+    public WebElement clickPlans;
+    @FindBy (xpath = WEB_ELEMENT_VERIZON_BUSINESS_DEALS)
+    public WebElement verizonBusinessDeals;
+    @FindBy (xpath = WEB_ELEMENT_NAVIGATE_NEWS)
+    public WebElement navigateNews;
+
+    public void seeOurSolutions (){
+        seeOurSolutions.click();
+        implicitWait();
+    }
+
+    public void publicSector (){
+        publicSector.click();
+        implicitWait();
+    }
+
+    public void clickPlans (){
+        implicitWait();
+        clickPlans.click();
+    }
+
+    public void verizonBusinessDeals (){
+        verizonBusinessDeals.click();
+    }
+
+    public void navigateNews (){
+        implicitWait();
+        navigateNews.click();
     }
 }
 

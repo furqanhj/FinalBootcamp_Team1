@@ -13,4 +13,17 @@ public class BusinessLocators {
     public static final String WEB_ELEMENT_ABOUT_US = "//a[contains(text(),'About Us')]"; //XPATH
 
 
+
+
+    public static final String WEB_ELEMENT_SEE_OUR_SOLUTIONS = "//a[contains(text(),'See our solutions')]"; //XPATH
+
+    public static final String WEB_ELEMENT_PUBLIC_SECTOR = "//a[contains(@href,'/business/solutions/public-sector/')][normalize-space()='Learn more']"; //XPATH
+
+    public static final String WEB_ELEMENT_CLICK_PLANS= "//div[@class='gnav20-desktop']/div[@class='gnav20-navigation']/div[@class='gnav20-navigation']//div[2]//a[1]"; //XPATH
+
+    public static final String WEB_ELEMENT_VERIZON_BUSINESS_DEALS = "//a[contains(text(),'Verizon Business Deals')]"; //XPATH
+
+    public static final String WEB_ELEMENT_NAVIGATE_NEWS = "//a[contains(text(),'News')]"; //XPATH
+
+
 }

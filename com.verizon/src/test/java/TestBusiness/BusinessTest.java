@@ -2,6 +2,7 @@ package TestBusiness;
 
 import BusinessMA.BusinessPage;
 import common.BaseAPI;
+import io.cucumber.java.af.En;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -64,6 +65,61 @@ public class BusinessTest extends BaseAPI {
         Assert.assertEquals(actualResult, expectedResult, "Page not Found");
     }
 
+  ////////////////////////////////////////////////////////////////////
 
+    //Test 6
+    @Test (enabled = false,priority = 6)
+    public void testSeeOurSolutions (){
+        business = new BusinessPage();
+        business.seeOurSolutions();
+        String actualResult = BaseAPI.driver.getTitle();
+        String expectedResult = "Business Technology Solutions | Verizon";
 
+        Assert.assertEquals(actualResult, expectedResult, "Page not Found");
+    }
+
+    //Test 7
+    @Test (enabled = false,priority = 7)
+    public void testPublicSector (){
+        business = new BusinessPage();
+        business.publicSector();
+        String actualResult = BaseAPI.driver.getTitle();
+        String expectedResult = "Public Sector Solutions | Verizon";
+
+        Assert.assertEquals(actualResult, expectedResult, "Page not Found");
+    }
+
+    //Test 8
+    @Test (enabled = false,priority = 8)
+    public void testClickPlans (){
+        business = new BusinessPage();
+        business.clickPlans();
+        String actualResult = BaseAPI.driver.getTitle();
+        String expectedResult = "Plans for Business: Phone, Internet, Data, Security & More | Verizon";
+
+        Assert.assertEquals(actualResult, expectedResult, "Page not Found");
+    }
+
+    //Test 9
+
+    @Test (enabled = false,priority = 9)
+    public void testVerizonBusinessDeals (){
+        business = new BusinessPage();
+        business.verizonBusinessDeals();
+        String actualResult = BaseAPI.driver.getTitle();
+        String expectedResult = "Business Phone Deals and More | Verizon";
+
+        Assert.assertEquals(actualResult, expectedResult, "Page not Found");
+    }
+
+    //Test 10
+    @Test (enabled = false,priority = 10)
+    public void testNavigateNews (){
+        business = new BusinessPage();
+        business.navigateNews();
+        String actualResult = BaseAPI.driver.getTitle();
+        String expectedResult = "https://www.verizon.com/about/news-center";
+
+        Assert.assertEquals(actualResult, expectedResult, "Page not Found");
+    }
 }
