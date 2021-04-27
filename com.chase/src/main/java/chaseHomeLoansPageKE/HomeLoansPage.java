@@ -89,7 +89,7 @@ public class HomeLoansPage extends BaseAPI {
     }
         public void PlayVideo() throws InterruptedException {
 
-            Thread.sleep(3000);
+            implicitWait();
 //            JavascriptExecutor js = (JavascriptExecutor) driver;
 //            js .executeScript("document.videoPlayBtn.play()");
 

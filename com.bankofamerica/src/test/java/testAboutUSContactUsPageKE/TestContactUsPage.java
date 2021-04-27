@@ -12,7 +12,7 @@ public class TestContactUsPage extends BaseAPI {
       AboutUsPage AboutUsPage;
     public ContactUsPage contactUsPage;
 
-    @Test(priority =7,enabled = true)
+    @Test(priority =7,enabled = false)
     //Click on Contact us TextLink to open Contact us page
     public void testClickContactUsLinkText() {
 
@@ -23,7 +23,7 @@ public class TestContactUsPage extends BaseAPI {
         ContactUsPage.clickContactUsTextLink();
     }
     //Search bar on Contact us Page
-    @Test(priority = 8,enabled = true)
+    @Test(priority = 8,enabled = false)
     public void testClickInSearchBar()  {
         //AboutUsPage = new AboutUsPage();
         testClickContactUsLinkText();
@@ -39,7 +39,7 @@ public class TestContactUsPage extends BaseAPI {
 
     }
     //Click search module Link "billing dispute"
-    @Test(priority = 9,enabled = true)
+    @Test(priority = 9,enabled = false)
     public void testClickBillingDisputeTextLink() throws InterruptedException {
       //  ContactUsPage= new ContactUsPage();
 
@@ -57,20 +57,20 @@ public class TestContactUsPage extends BaseAPI {
 
     }
     // Click Dispute debit card charge online Button
-    @Test(priority = 10,enabled = true )
+    @Test(priority = 10,enabled = false)
     public void testClickDisputeDebitCardButton() throws InterruptedException {
         testClickBillingDisputeTextLink();
-        Thread.sleep(2000);
+        implicitWait();
         ContactUsPage.clickDisputeDebitCardButton();
 
-       // Assert.assertTrue(ContactUsPage.phoneImage.isDisplayed());
+        Assert.assertTrue(ContactUsPage.phoneImage.isDisplayed());
 
 
 
 
     }
   // Send a Text "save" In SearchBar
-    @Test(priority = 11,enabled = true)
+    @Test(priority = 11,enabled = false)
     public void testEnterTextInSearchBar()  {
 
       testClickInSearchBar();
@@ -91,7 +91,7 @@ public class TestContactUsPage extends BaseAPI {
 
     }
     // Click on Arrow Menu Button
-    @Test(priority = 12,enabled = true)
+    @Test(priority = 12,enabled = false)
     public void testClickArrowMenuBtn()  {
 
         testClickContactUsLinkText();
@@ -99,7 +99,7 @@ public class TestContactUsPage extends BaseAPI {
 
     }
 
-    @Test(priority = 13,enabled = true)
+    @Test(priority = 13,enabled = false)
     public void testCountingLinksInContactUsSection(){
         testClickContactUsLinkText();
         ContactUsPage.countingLinksInContactUsSection();

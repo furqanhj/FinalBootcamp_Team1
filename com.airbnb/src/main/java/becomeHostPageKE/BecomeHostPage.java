@@ -3,6 +3,7 @@ package becomeHostPageKE;
 import common.BaseAPI;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
@@ -49,6 +50,48 @@ public class BecomeHostPage extends BaseAPI {
     public WebElement nextBtn;
     @FindBy(xpath = WEB_ELEMENT_PAGE_DOT)
     public WebElement pageDot;
+    @FindBy(xpath = WEB_ELEMENT_HOW_WE_SUPPORT_HOST_LINK)
+    public WebElement howWeSupportHostLink;
+    @FindBy(xpath = WEB_ELEMENT_TURQUOISE_COUCH)
+    public WebElement turquoiseCouch;
+    @FindBy(xpath = WEB_ELEMENT_LOCATION_INBOX)
+    public WebElement locationInbox;
+    @FindBy(xpath = WEB_ELEMENT_CHECK_IN_DATE)
+    public WebElement checkInDate;
+    @FindBy(xpath = WEB_ELEMENT_CHECK_OUT_DATE)
+    public WebElement checkOutDate;
+    @FindBy(xpath = WEB_ELEMENT_ADD_GUEST_BTN)
+    public WebElement addGuest;
+    @FindBy(xpath = WEB_ELEMENT_STEPPER_ADULT)
+    public WebElement stepperAdultAdd;
+    @FindBy(xpath = WEB_ELEMENT_STEPPER_CHILDREN)
+    public WebElement stepperChildrenAdd;
+    @FindBy(xpath = WEB_ELEMENT_STEPPER_ENFANTS)
+    public WebElement stepperEnfantsAdd;
+    @FindBy(xpath = WEB_ELEMENT_SEARCH_BUTTON)
+    public WebElement searchBtn;
+    @FindBy(xpath = WEB_ELEMENT_SELECTED_DATE_IN)
+    public WebElement selectedDateIN;
+    @FindBy(xpath = WEB_ELEMENT_SELECTED_DATE_OUT)
+    public WebElement selectedDateOut;
+    @FindBy(xpath = WEB_ELEMENT_VALIDATE_SEARCH)
+    public WebElement validateSearch;
+    @FindBy(xpath = WEB_ELEMENT_VALIDATE_ADD_ENFANT)
+    public WebElement validateAddEnfant;
+    @FindBy(xpath = WEB_ELEMENT_VALIDATE_ADD_CHILDREN)
+    public WebElement validateAddChildren;
+    @FindBy(xpath = WEB_ELEMENT_VALIDATE_ADD_ADULT)
+    public WebElement validateAddAdult;
+    @FindBy(xpath = WEB_ELEMENT_VALIDATE_DATE_CHECK_OUT)
+    public WebElement validateDateCheckOut;
+    @FindBy(xpath = WEB_ELEMENT_VALIDATE_DATE_CHECK_IN)
+    public WebElement validateDate_CheckIn;
+    @FindBy(xpath = WEB_ELEMENT_VALIDATE_Location_)
+    public WebElement validateLocation;
+
+
+
+
 
 
 //    @FindBy(xpath = WEB_ELEMENT_FIND_WEBINAR_BTN)
@@ -104,7 +147,7 @@ public class BecomeHostPage extends BaseAPI {
 //Pause
 
 //        jse.executeScript("jwplayer().pause()");
-        Thread.sleep(2000);
+        waitForVisibilityOfElement(moviePauseBtn);
 
         moviePauseBtn.click();
         //clickElement(moviePauseBtn);
@@ -121,5 +164,47 @@ public class BecomeHostPage extends BaseAPI {
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
        clickElement(nextBtn);
     }
+    public void clickHowWeSupportHostLink (){
+
+        clickJScript(howWeSupportHostLink);
+    }
+
+    /**
+     * In HomePage
+     */
+        public void enterLocation (){
+        sendKeysToElement(locationInbox,"Miami , Florida");
+
+        }
+        public void clickOnCheckInDate(){
+        clickElement(checkInDate);
+        clickElement(selectedDateIN);
+        }
+        public void clickOnSelectedDayCheckOut(){
+
+            clickElement(selectedDateOut);
+        }
+        public void clickOnAddGuest(){
+        clickElement(addGuest);
+        }
+
+         public void addAdultGuest(){
+        actions = new Actions(driver);
+             actions.doubleClick(stepperAdultAdd).click().build().perform(); // 2 Adults
+
+         }
+         public void addChildrenGuest(){
+             actions = new Actions(driver);
+             actions.doubleClick(stepperChildrenAdd).build().perform(); // 3 children
+         }
+         public void addEnfantGuest(){
+            clickElement(stepperEnfantsAdd); // 1 Enfant
+
+         }
+         public void clickSearchBtn(){
+            waitForElementToBeClickable(searchBtn);
+            clickJScript(searchBtn);
+
+         }
 
 }

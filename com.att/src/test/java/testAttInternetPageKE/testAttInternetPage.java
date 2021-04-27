@@ -33,7 +33,7 @@ public class testAttInternetPage extends BaseAPI {
 
 
     }
-    @Test(priority = 3,enabled = false)
+    @Test(priority = 3,enabled = true)
     public void testClickCheckAvailabilityButton(){
     testClickInternetImageLink();
     attInternetPage.clickCheckAvailabilityButton();
@@ -50,7 +50,7 @@ public class testAttInternetPage extends BaseAPI {
     attInternetPage.sendAddressTOTextField();
 
     }
-     @Test(priority = 5,enabled = false)
+     @Test(priority = 5,enabled = true)
     public void testClickCheckAvailabilityButton2(){
     testSendAddressTOTextField();
     attInternetPage.clickCheckAvailabilityButton2();
@@ -76,7 +76,7 @@ public class testAttInternetPage extends BaseAPI {
 
       //  Assert.assertEquals(actualAttributeValue, expectedAttributeValue, "COLOR DOES NOT MATCH");
     }
-    @Test(priority = 7,enabled = false)
+    @Test(priority = 7,enabled = true)
     public void testClickFindStoreTextLink()  {
 
     testClickInternetImageLink();
@@ -94,10 +94,6 @@ public class testAttInternetPage extends BaseAPI {
         String expectedText="AT&T Stores Near You";
         Assert.assertEquals(actualText,expectedText);
         System.out.println(actualText);
-
-
-
-
 
     }
 

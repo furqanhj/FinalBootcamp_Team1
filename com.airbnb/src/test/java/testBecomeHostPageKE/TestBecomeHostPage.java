@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 public class TestBecomeHostPage extends BaseAPI {
     BecomeHostPage becomeHostPage;
 
-    @Test(priority = 1,enabled = true)
+    @Test(priority = 1,enabled = false)
     public void testClickBecomeHostButton ()  {
         becomeHostPage = new BecomeHostPage();
         becomeHostPage.clickBecomeHostButton();
@@ -21,7 +21,7 @@ public class TestBecomeHostPage extends BaseAPI {
         Assert.assertEquals(actualTitle, expectedTitle, "Text Not Matching");
 
     }
-    @Test(priority = 2,enabled = true)
+    @Test(priority = 2,enabled = false)
             public void testCountriesScroll()  {
         testClickBecomeHostButton();
         becomeHostPage.login();
@@ -29,7 +29,7 @@ public class TestBecomeHostPage extends BaseAPI {
         Assert.assertTrue(becomeHostPage.countriesSelection.getText().contains("Morocco (+212)"));
 
         }
-    @Test(priority = 3,enabled = true)
+    @Test(priority = 3,enabled = false)
     public void testExploreTheWorldOfHostingTextLink()  {
         testClickBecomeHostButton();
         becomeHostPage.clickExploreTheWorldOfHostingTextLink();
@@ -80,7 +80,7 @@ public class TestBecomeHostPage extends BaseAPI {
 
         }
 
-        @Test(priority = 7,enabled = true)
+        @Test(priority = 7,enabled = false)
     public void testClickNextBtn() throws InterruptedException {
         testClickBecomeHostButton();
         becomeHostPage.clickNextBtn();
@@ -90,6 +90,72 @@ public class TestBecomeHostPage extends BaseAPI {
 
         }
 
+    @Test(priority = 8,enabled = false)
+    public void testClickHowWeSupportHostLink (){
+        testClickBecomeHostButton();
+        becomeHostPage.clickHowWeSupportHostLink();
+        switchToNewWindow();
+        isElementDisplayed(becomeHostPage.turquoiseCouch);
+
+/**
+ * In HomePage
+ */
+    }
+    @Test(priority = 9,enabled = false)
+    public void testEnterLocation (){
+        becomeHostPage=new BecomeHostPage();
+        becomeHostPage.enterLocation();
+        isElementDisplayed(becomeHostPage.validateLocation);
+    }
+    @Test(priority = 10, enabled = false)
+    public void testClickOnCheckInDate(){
+      //  becomeHostPage=new BecomeHostPage();
+        testEnterLocation();
+        becomeHostPage.clickOnCheckInDate();
+        isElementDisplayed(becomeHostPage.validateDate_CheckIn);
+    }
+    @Test(priority = 11,enabled = true)
+    public void testClickOnSelectedDayCheckOut(){
+        testClickOnCheckInDate();
+        becomeHostPage.clickOnSelectedDayCheckOut();
+        isElementDisplayed(becomeHostPage.validateDateCheckOut);
+
+    }
+    @Test(priority = 12,enabled = false)
+    public void testClickOnAddGuest(){
+        testClickOnSelectedDayCheckOut();
+        becomeHostPage.clickOnAddGuest();
+    }
+
+    @Test(priority = 13,enabled = false)
+    public void testAddAdultGuest(){
+       testClickOnAddGuest();
+        becomeHostPage.addAdultGuest();
+        isElementDisplayed(becomeHostPage.validateAddAdult);
+
+    }
+    @Test(priority = 14,enabled = false)
+
+    public void testAddChildrenGuest(){
+        testAddAdultGuest();
+        becomeHostPage.addChildrenGuest();
+        isElementDisplayed(becomeHostPage.validateAddChildren);
+
+
+    }
+    @Test(priority =15,enabled = false )
+    public void testAddEnfantGuest (){
+
+        testAddChildrenGuest();
+        becomeHostPage.addEnfantGuest();
+        isElementDisplayed(becomeHostPage.validateAddEnfant);
+    }
+    @Test(priority = 16,enabled = false)
+    public void testClickSearchButton(){
+        testAddEnfantGuest();
+        becomeHostPage.clickSearchBtn();
+        isElementDisplayed(becomeHostPage.validateSearch);
+    }
 
 
 
