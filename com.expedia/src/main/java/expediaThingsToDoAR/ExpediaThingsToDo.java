@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 import static expediaThingsToDoAR.ExpediaThingsToDoWebElements.*;
 
 public class ExpediaThingsToDo extends BaseAPI{
@@ -60,7 +62,16 @@ public class ExpediaThingsToDo extends BaseAPI{
         implicitWait(20);
 
     }
+    public void sendKeysToSearchBoxUsingExcel() throws Exception {
 
+        List<String> element = DataSource.getItemsListFromExcel();
+        String location = element.get(2);
+        typeOnElementNEnter(WEB_ELEMENT_LOCATION_FIELD,location);
+        click(WEB_ELEMENT_SEARCH_BUTTON);
+
+
+
+    }
 
 
 

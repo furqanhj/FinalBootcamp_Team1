@@ -24,11 +24,10 @@ public class TestAirBnbExperiences extends BaseAPI {
     }
 
 
-   @Test (enabled = false)    //only running up until it clicks Experiences link.???
+   @Test (enabled = false)
     public void testTypeInLocationField() throws InterruptedException {
-        AirBnbExperiences airBnbExperiencesAR = new AirBnbExperiences();
-        airBnbExperiencesAR.enterALocation();
-
+       AirBnbExperiences airBnbExperiencesAR = new AirBnbExperiences();
+       airBnbExperiencesAR.enterALocation();
         String actualResult = BaseAPI.driver.getTitle();
        String expectedResult = "Things to Do in Mexico | 5-Star Authentic Experiences";
        Assert.assertEquals(actualResult, expectedResult, "PAGE NOT FOUND");
@@ -45,7 +44,6 @@ public class TestAirBnbExperiences extends BaseAPI {
         assertEqualsGetText("A space to share, a world to gain", WEB_ELEMENT_HOST_YOUR_HOME_HEADER);
     }
 
-    //Add number of guests in Guests drop down, after searching for a location on Experiences page
     @Test (enabled = false)
     public void testAddNumberOfGuests() throws InterruptedException {
         AirBnbExperiences experiences = new AirBnbExperiences();
@@ -53,10 +51,10 @@ public class TestAirBnbExperiences extends BaseAPI {
         experiences.addNumberOfGuests();
 
         assertEqualsGetText("",WEB_ELEMENT_1_GUEST_BUTTON);
-//        /the Guests button updated to "1 Guest"?????
+
     }
 
-    @Test (enabled = false)    //how to select a date????
+    @Test (enabled = false)
     public void testSelectADate() throws InterruptedException {
         AirBnbExperiences experiences = new AirBnbExperiences();
         experiences.selectADate();
@@ -73,17 +71,36 @@ public class TestAirBnbExperiences extends BaseAPI {
     }
 
     @Test (enabled = false)
-    public void testPageTitleInspection() {
-        String expectedTitle = "";
+    public void testBecomeAHostPageTitleInspection() {
+        AirBnbExperiences airBnbExperiences = new AirBnbExperiences();
+        airBnbExperiences.clickBecomeAHostButton();
+        String expectedTitle = "Host your home on Airbnb";
         String actualTitle = driver.getTitle();
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(actualTitle, expectedTitle);
         softAssert.assertTrue(expectedTitle.equalsIgnoreCase(actualTitle));
         softAssert.assertNotSame(actualTitle, expectedTitle);
         softAssert.assertAll();
-
-
     }
-
+    @Test(enabled = false)
+    public void testSendKeysToLocationSearchBoxUsingExcel() throws Exception {
+        AirBnbExperiences airBnbExperiences = new AirBnbExperiences();
+        airBnbExperiences.sendKeysToLocationSearchBoxUsingExcel();
+        Assert.assertTrue(isTitleTrue("Things to Do in Ohio | 5-Star Authentic Experiences"));
+    }
+    @Test (enabled = false)
+    public void testAveragePriceDropDownMenu() throws InterruptedException {
+        AirBnbExperiences airBnbExperiences = new AirBnbExperiences();
+        airBnbExperiences.enterALocation();
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_PRICE_BUTTON);
+        Assert.assertTrue(isElementDisplayed(WEB_ELEMENT_AVERAGE_PRICE_DROPDOWN));
+    }
+    @Test (enabled = true)
+    public void testTimeOfDayMorningCheckbox() throws InterruptedException {
+        AirBnbExperiences airBnbExperiences = new AirBnbExperiences();
+        airBnbExperiences.enterALocation();
+        airBnbExperiences.clickTimeOfDayMorningCheckbox();
+        Assert.assertTrue(isElementDisplayed(WEB_ELEMENT_MORNING_BUTTON));
+    }
 
 }

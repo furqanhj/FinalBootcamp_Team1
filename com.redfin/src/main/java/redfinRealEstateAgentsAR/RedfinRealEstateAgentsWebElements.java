@@ -13,4 +13,6 @@ public class RedfinRealEstateAgentsWebElements {
     public static final String WEB_ELEMENT_LIVE_CHAT_WINDOW = "//div[@id='liveChatConversationHistory']"; //XPATH
     public static final String WEB_ELEMENT_INPUT_SEARCH_BOX = "Fairfax";
     public static final String WEB_ELEMENT_DID_YOU_MEAN_SUGGESTIONS_WINDOW = "//div[@class='content-wrapper']";//XPATH
+    public static final String WEB_ELEMENT_SIGN_UP_BUTTON = "//button[@class='button Button tertiary compact headerMenuButton']/span[.='Sign Up']";//XPATH
+    public static final String WEB_ELEMENT_JOIN_OR_SIGN_IN_WINDOW = "//div[@class='content-wrapper']";
 }

@@ -14,7 +14,7 @@ public class RedfinRealEstateAgents extends BaseAPI {
     WebElement searchBox;
 
     @FindBy (xpath = WEB_ELEMENT_FIND_REDFIN_AGENT_HEADER)
-    public WebElement redfinAgentHeader    ;
+    public WebElement redfinAgentHeader;
 
     public RedfinRealEstateAgents() {
         PageFactory.initElements(driver, this);
@@ -50,6 +50,12 @@ public class RedfinRealEstateAgents extends BaseAPI {
         clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_SEARCH_BOX);
         typeOnElement(WEB_ELEMENT_SEARCH_BOX, WEB_ELEMENT_INPUT_SEARCH_BOX);
         clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_SEARCH_BUTTON);
+        implicitWait(20);
+    }
+    public void verifyJoinOrSignInWindow(){
+        implicitWait(20);
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_REAL_ESTATE_AGENTS_LINK);
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_SIGN_UP_BUTTON);
         implicitWait(20);
     }
 }

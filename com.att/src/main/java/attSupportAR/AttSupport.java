@@ -81,7 +81,11 @@ public class AttSupport extends BaseAPI {
         implicitWait(10);
     }
 
-
+    public void verifyPageTitle(){
+        supportLink.click();
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_SIGN_IN_LINK);
+        implicitWait(20);
+    }
 
     public void clickManageDataUseLink(){
         clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_MANAGE_DATA_USE_LINK);

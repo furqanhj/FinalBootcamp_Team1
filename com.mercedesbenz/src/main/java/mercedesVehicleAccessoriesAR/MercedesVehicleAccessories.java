@@ -40,5 +40,10 @@ public class MercedesVehicleAccessories extends BaseAPI {
         implicitWait(20);
         basicHoverUsingXpath(WEB_ELEMENT_REPLACEMENT_PARTS_LINK);
     }
-
+    public void verifyBrowseAllAvailableAccessoriesHeader(){
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_SHOPPING_LINK);
+        implicitWait(20);
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_VEHICLE_ACCESSORIES_LINK);
+        implicitWait(20);
+    }
 }

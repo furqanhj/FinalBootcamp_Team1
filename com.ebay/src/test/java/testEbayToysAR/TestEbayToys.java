@@ -45,7 +45,7 @@ public class TestEbayToys extends BaseAPI {
         assertEqualsGetTitle("eBay shopping cart");
     }
 
-    @Test(enabled = false) //failed
+    @Test(enabled = false)
     public void testVerifyPageTitle() {
         EbayToys ebayToys = new EbayToys();
         ebayToys.navigateToToysPage();
@@ -67,12 +67,23 @@ public class TestEbayToys extends BaseAPI {
 
 
     }
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void testClickMyEbayDropDownLink(){
         EbayToys ebayToys = new EbayToys();
         ebayToys.clickMyEbayDropDownLink();
         assertEqualsGetTitle("Security Measure");
     }
+
+    @Test (enabled = true)
+    public void testSendKeysToSearchFieldUsingExcel() throws Exception {
+        EbayToys ebayToys = new EbayToys();
+        ebayToys.sendKeysToSearchFieldUsingExcel();
+        Assert.assertEquals(getAttributeFromElement(WEB_ELEMENT_TOYS_SEARCH_BOX,"value"),"Headphones");
+
+
+    }
+
+
 }
 
 

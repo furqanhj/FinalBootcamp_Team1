@@ -7,15 +7,15 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 import static airBnbExperiencesAR.AirBnbExperiencesWebElements.*;
 
 
 public class AirBnbExperiences extends BaseAPI {
 
-    //- This class will EXTEND the BASE class (so that the constructor used on line 41, will instantiate the elements)
-    //  - Also, this class will have all the helper methods, that would be called upon in the TEST CLASS.
 
-    @FindBy(css = WEB_ELEMENT_EXPERIENCES_LINK)
+    @FindBy(xpath = WEB_ELEMENT_EXPERIENCES_LINK)
     WebElement experiencesLink;
 
     @FindBy(xpath = WEB_ELEMENT_LOCATION_FIELD)
@@ -30,7 +30,7 @@ public class AirBnbExperiences extends BaseAPI {
     @FindBy (xpath = WEB_ELEMENT_BECOME_A_HOST_BUTTON)
     WebElement becomeAHostButton;
 
-    @FindBy (css = WEB_ELEMENT_EXPERIENCES_SEARCH_BUTTON)
+    @FindBy (xpath = WEB_ELEMENT_EXPERIENCES_SEARCH_BUTTON)
     WebElement experiencesSearchButton;
 
     @FindBy (css = WEB_ELEMENT_GUESTS_BUTTON)
@@ -71,12 +71,14 @@ public class AirBnbExperiences extends BaseAPI {
 //Type in the location field on Experiences page
     public void enterALocation() throws InterruptedException {
         experiencesLink.click();
+        implicitWait(20);
         clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_LOCATION_FIELD);
-        WebDriverWait wait = new WebDriverWait(driver,20);
+       implicitWait(20);
         typeOnElementNEnter(WEB_ELEMENT_LOCATION_FIELD,"Mexico");
-        WebDriverWait wait1 = new WebDriverWait(driver,20);
+        implicitWait(20);
         clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_EXPERIENCES_SEARCH_BUTTON);
-        driverWait.until(ExpectedConditions.titleIs("Things to Do in Mexico | 5-Star Authentic Experiences"));
+        implicitWait(30);
+
     }
 
     //Click the 'Become A Host' button on Experiences page
@@ -107,9 +109,27 @@ public class AirBnbExperiences extends BaseAPI {
         typeOnElementNEnter(WEB_ELEMENT_LOCATION_FIELD,"Mexico");
         WebDriverWait wait1 = new WebDriverWait(driver,20);
         clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_DATE_FIELD);
-        wait.until(ExpectedConditions.visibilityOf(date));
+        implicitWait(20);
         clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_DATE);
-        Thread.sleep(5000);
+        implicitWait(20);
         clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_EXPERIENCES_SEARCH_BUTTON);
+    }
+    public void sendKeysToLocationSearchBoxUsingExcel() throws Exception {
+        List<String> locations = DataSource.getItemsListFromExcel();
+        String states = locations.get(3);
+        typeOnElementNEnter(WEB_ELEMENT_LOCATION_FIELD,states);
+        click(WEB_ELEMENT_SEARCH_BUTTON);
+    }
+    public void verifyAveragePriceDropDownMenu(){
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_EXPERIENCES_LINK);
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_LOCATION_FIELD);
+        implicitWait(20);
+    }
+    public void clickTimeOfDayMorningCheckbox(){
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_TIME_OF_DAY_BUTTON);
+        implicitWait(20);
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_TIME_OF_DAY_MORNING_CHECKBOX);
+        implicitWait(20);
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_TIME_OF_DAY_SAVE_BUTTON);
     }
 }

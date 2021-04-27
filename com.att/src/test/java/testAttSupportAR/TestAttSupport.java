@@ -12,8 +12,6 @@ import static attSupportAR.AttSupportWebElements.*;
 public class TestAttSupport extends BaseAPI {
 
 
-//    AttSupport attSupportAR;
-
     @Test(enabled = false)
     public void testNavigateToSupportPage() {
 
@@ -56,7 +54,7 @@ public class TestAttSupport extends BaseAPI {
         assertEqualsGetText("Sign in", WEB_ELEMENT_SIGN_IN_HEADER);
     }
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void testViewYourBillPeriod() {
         AttSupport att = new AttSupport();
         att.viewYourBillPeriod();
@@ -65,7 +63,9 @@ public class TestAttSupport extends BaseAPI {
 
     @Test(enabled = false)
     public void testVerifyPageTitle() {
-        String exp = "";
+        AttSupport att = new AttSupport();
+        att.navigateToAttSupportPage();
+        String exp = "AT&T Customer Service & Support - AT&T Official Site";
         String act = driver.getTitle();
         //Compares 2 Strings -->equalsIgnoreCase will Compare Strings even if in upper or lower case
         Assert.assertTrue(exp.equalsIgnoreCase(act));
@@ -73,12 +73,20 @@ public class TestAttSupport extends BaseAPI {
 
     @Test(enabled = false)
     public void testPageTitleInspection() {
-        String expectedTitle = "";
+        AttSupport att = new AttSupport();
+        att.navigateToAttSupportPage();
+        String expectedTitle = "AT&T Customer Service & Support - AT&T Official Site";
         String actualTitle = driver.getTitle();
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(actualTitle, expectedTitle);
         softAssert.assertTrue(expectedTitle.equalsIgnoreCase(actualTitle));
         softAssert.assertNotSame(actualTitle, expectedTitle);
         softAssert.assertAll();
+    }
+
+    @Test(enabled = false)
+    public void testSupportPageTitle() {
+        AttSupport att = new AttSupport();
+        att.navigateToAttSupportPage();
     }
 }

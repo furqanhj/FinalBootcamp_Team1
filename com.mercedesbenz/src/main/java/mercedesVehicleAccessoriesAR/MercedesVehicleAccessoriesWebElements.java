@@ -10,6 +10,6 @@ public class MercedesVehicleAccessoriesWebElements {
     public static final String WEB_ELEMENT_PURCHASE_ONLINE_HEADER= "//h2[contains(.,'Purchase Online')]"; //xpath
     public static final String WEB_ELEMENT_REPLACEMENT_PARTS_LINK = "//strong[.='Replacement Parts']";//xpath
     public static final String WEB_ELEMENT_REPLACEMENT_PARTS_HEADER = "//h3[.='Replacement Parts']";//xpath
-
+    public static final String WEB_ELEMENT_BROWSE_ACCESSORIES_HEADER = "//p[@class='cta-contact__label']";
 
 }

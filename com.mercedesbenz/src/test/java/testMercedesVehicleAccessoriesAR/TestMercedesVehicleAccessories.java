@@ -48,10 +48,16 @@ public class TestMercedesVehicleAccessories extends BaseAPI {
         Assert.assertEquals(getTextFromElement(WEB_ELEMENT_PURCHASE_ONLINE_HEADER),"Purchase Online");
         //assertEqualsGetText("Purchase Online", WEB_ELEMENT_PURCHASE_ONLINE_HEADER);
     }
-    @Test (enabled = true)
+    @Test (enabled = false)
     public void testClickShopNowNSwitchTabs(){
         MercedesVehicleAccessories mercedesVehicleAccessories = new MercedesVehicleAccessories();
         mercedesVehicleAccessories.clickShopNowNSwitchTabs();
         Assert.assertTrue(isElementDisplayed(WEB_ELEMENT_REPLACEMENT_PARTS_HEADER));
+    }
+    @Test (enabled = false)
+    public void testBrowseAllAvailableAccessoriesHeader(){
+        MercedesVehicleAccessories mercedesVehicleAccessories = new MercedesVehicleAccessories();
+        mercedesVehicleAccessories.verifyBrowseAllAvailableAccessoriesHeader();
+        Assert.assertEquals(getTextFromElement(WEB_ELEMENT_BROWSE_ACCESSORIES_HEADER),"Browse All Available Accessories");
     }
 }

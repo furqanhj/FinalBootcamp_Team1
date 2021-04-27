@@ -30,10 +30,10 @@ import java.util.concurrent.TimeUnit;
 public class BaseAPI {
 
     public static WebDriver driver;
-    public static WebDriverWait driverWait;
+//    public static WebDriverWait driverWait;
     public DataReader dataReader;
     public Properties properties;
-    public static Actions actions;
+   // public static Actions actions;
 
     String propertiesFilePath = "src/main/resources/secret.properties";
 
@@ -64,7 +64,7 @@ public class BaseAPI {
                              @Optional("") String url) {
 
         driver = getLocalDriver(browserName);
-        driverWait = new WebDriverWait(driver, 10);
+
         driver.get(url);
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
@@ -105,7 +105,7 @@ public class BaseAPI {
     public void sendKeysToElement(WebElement element, String keysToSend) {
 
         try {
-            driverWait.until(ExpectedConditions.visibilityOf(element));
+
             element.sendKeys(keysToSend);
 
         } catch (StaleElementReferenceException staleElementReferenceException) {
@@ -125,7 +125,7 @@ public class BaseAPI {
     public void clickElement(WebElement elementToClick) {
 
         try {
-            driverWait.until(ExpectedConditions.elementToBeClickable(elementToClick));
+
             elementToClick.click();
         } catch (StaleElementReferenceException staleElementReferenceException) {
             staleElementReferenceException.printStackTrace();
@@ -165,7 +165,6 @@ public class BaseAPI {
     public String getAttributeFromElement(WebElement element, String attribute) {
         String elementText = "";
 
-        driverWait.until(ExpectedConditions.visibilityOf(element));
 
         try {
             elementText = element.getAttribute(attribute);
@@ -187,7 +186,7 @@ public class BaseAPI {
     public List<WebElement> getListOfWebElements(By by) {
         List<WebElement> elementList = new ArrayList<>();
 
-        driverWait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(by)));
+
 
         try {
             elementList = driver.findElements(by);
@@ -221,39 +220,7 @@ public class BaseAPI {
         return flag;
     }
 
-    // Gets text from List<WebElements> and compares against expected String array from Excel workbook
-    public boolean compareAttributeListToExpectedStringArray(By by, String attribute, String path, String sheetName) throws IOException {
-        List<WebElement> actualList = driver.findElements(by);
-        String[] expectedList = dataReader.fileReaderStringXSSF(path, sheetName);
 
-        String[] actual = new String[actualList.size()];
-
-        for (int j = 0; j < actualList.size(); j++) {
-            actual[j] = actualList.get(j).getAttribute(attribute).replaceAll("&amp;", "&").replaceAll("’", "'").replaceAll("<br>", "\n").trim();
-            actual[j].replaceAll("&amp;", "&").replaceAll("’", "'").replaceAll("<br>", "\n").trim();
-//            escapeHtml4(actual[j]);
-//            escapeHtml3(actual[j]);
-        }
-
-        int falseCount = 0;
-        boolean flag = false;
-
-        for (int i = 0; i < expectedList.length; i++) {
-            if (actual[i].equalsIgnoreCase(expectedList[i])) {
-                flag = true;
-                System.out.println("ACTUAL " + attribute.toUpperCase() + " " + (i + 1) + ": " + actual[i]);
-                System.out.println("EXPECTED " + attribute.toUpperCase() + " " + (i + 1) + ": " + expectedList[i] + "\n");
-            } else {
-                System.out.println("FAILED AT INDEX " + (i + 1) + "\nEXPECTED " + attribute.toUpperCase() + ": " + expectedList[i] +
-                        "\nACTUAL " + attribute.toUpperCase() + ": " + actual[i] + "\n");
-                falseCount++;
-            }
-        }
-        if (falseCount > 0) {
-            flag = false;
-        }
-        return flag;
-    }
 
     public void clickByXpathOrCssUsingJavaScript(String locator) {
         try {
@@ -286,9 +253,14 @@ public class BaseAPI {
 
     public void typeOnElement(String locator, String value) {
         try {
-            driver.findElement(By.cssSelector(locator)).sendKeys(value);
-        } catch (Exception ex) {
             driver.findElement(By.xpath(locator)).sendKeys(value);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            try {
+                driver.findElement(By.cssSelector(locator)).sendKeys(value);
+            } catch (Exception e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -477,7 +449,7 @@ public class BaseAPI {
 
     public void waitForVisibilityOfElement(WebElement element) {
         try {
-            driverWait.until(ExpectedConditions.visibilityOf(element));
+
 
         } catch (ElementNotVisibleException elementNotVisibleException) {
             elementNotVisibleException.printStackTrace();
@@ -493,6 +465,7 @@ public class BaseAPI {
     public void hoverOverElement(WebElement elementToHoverOver) {
         try {
             waitForVisibilityOfElement(elementToHoverOver);
+            Actions actions = new Actions(driver);
             actions.moveToElement(elementToHoverOver).build().perform();
 
         } catch (ElementNotInteractableException elementNotInteractableException) {
@@ -538,6 +511,31 @@ public class BaseAPI {
         } catch (Exception e) {
             e.printStackTrace();
 
+        }
+    }
+
+    public String getAttributeFromElement(String element, String attribute) {
+        String elementText = "";
+
+        try {
+            elementText = driver.findElement(By.xpath(element)).getAttribute(attribute);
+            return elementText;
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("UNABLE TO GET ATTRIBUTE FROM WEB ELEMENT");
+        }
+
+        return elementText;
+    }
+
+    public boolean isCurrentUrlTrue(String Url) {
+        boolean flag = false;
+
+        if (driver.getCurrentUrl().equalsIgnoreCase(Url)) {
+            flag = true;
+            return flag;
+        } else {
+            return flag;
         }
     }
 }

@@ -15,4 +15,5 @@ public class MacysDealsWebElements {
     public static final String WEB_ELEMENT_INPUT_SEARCH_BOX = "Shoes";
     public static final String WEB_ELEMENT_WALLET_IMAGE = "//div[@class='wallet-huge']"; //xpath
     public static final String WEB_ELEMENT_IFRAME = "//iframe[@title='Criteo DIS iframe']"; //xpath
+    public static final String WEB_ELEMENT_MY_ACCOUNT_LINK = "//span[@class='tier-status']";
 }

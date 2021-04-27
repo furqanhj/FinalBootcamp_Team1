@@ -6,13 +6,16 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import static expediaThingsToDoAR.ExpediaThingsToDoWebElements.*;
+
+
 public class TestExpediaThingsToDo extends BaseAPI {
 
     @Test(enabled = false)
     public void testThingsToDoDropDownOption() {
         ExpediaThingsToDo expediaThingsToDo = new ExpediaThingsToDo();
         expediaThingsToDo.selectThingsToDoDropDownOption();
-        assertEqualsGetText("Search things to do", "WEB_ELEMENT_SEARCH_THINGS_TO_DO_HEADER");
+        assertEqualsGetText("Search things to do", WEB_ELEMENT_SEARCH_THINGS_TO_DO_HEADER);
     }
 
     @Test(enabled = false)
@@ -51,20 +54,26 @@ public class TestExpediaThingsToDo extends BaseAPI {
         softAssert.assertNotSame(actualTitle, expectedTitle);
         softAssert.assertAll();
     }
-    @Test (enabled = false) //failed
+    @Test (enabled = false)
     public void testClickSearchButton(){
         ExpediaThingsToDo expediaThingsToDo = new ExpediaThingsToDo();
         expediaThingsToDo.clickSearchButton();
-        assertEqualsGetText("To continue, please correct the error below.", "WEB_ELEMENT_TO_CONTINUE_ERROR_MESSAGE");
+        assertEqualsGetText("To continue, please correct the error below.", WEB_ELEMENT_TO_CONTINUE_ERROR_MESSAGE);
     }
-    @Test (enabled = true)
+    @Test (enabled = false)
     public void testVerifyFindYourNextDestinationHeader(){
         ExpediaThingsToDo expediaThingsToDo = new ExpediaThingsToDo();
         expediaThingsToDo.verifyFindYourNextDestinationHeader();
-        assertEqualsGetText("Find your next destination", "WEB_ELEMENT_FIND_YOUR_NEXT_DESTINATION_HEADER");
+        assertEqualsGetText("Find your next destination", WEB_ELEMENT_FIND_YOUR_NEXT_DESTINATION_HEADER);
 
     }
+    @Test (enabled = true)
+    public void testSendKeysToSearchBoxUsingExcel() throws Exception {
+        ExpediaThingsToDo expediaThingsToDo = new ExpediaThingsToDo();
+        expediaThingsToDo.sendKeysToSearchBoxUsingExcel();
+        Assert.assertTrue(isTitleTrue("Iwate Prefecture, Japan Hotel Search Results"));
 
+    }
 
 
 }

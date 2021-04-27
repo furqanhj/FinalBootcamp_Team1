@@ -22,7 +22,7 @@ public class AttSupportWebElements {
 
 
     public static final String WEB_ELEMENT_SIGN_IN_HEADER = "//h1[@id='signInHeaderText']"; //xpath
-
+    public static final String WEB_ELEMENT_SIGN_IN_LINK = "//*[@id=\"__next\"]/div/div[2]/div[3]/div/div[1]/div/div/a";
 
 
 

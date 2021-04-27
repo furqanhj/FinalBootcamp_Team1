@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 import static macysDealsAR.MacysDealsWebElements.*;
 
@@ -60,6 +61,16 @@ public class MacysDeals extends BaseAPI {
         implicitWait(20);
         clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_DEALS_LINK);
         implicitWait(20);
+    }
+    public void verifyOffersHeader(){
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_DEALS_LINK);
+        implicitWait(20);
+    }
+    public void verifySignInPageTitle(){
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_DEALS_LINK);
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_MY_ACCOUNT_LINK);
+        implicitWait(20);
 
     }
+
 }

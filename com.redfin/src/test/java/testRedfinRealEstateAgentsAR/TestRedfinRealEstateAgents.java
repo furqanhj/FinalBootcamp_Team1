@@ -34,7 +34,7 @@ public class TestRedfinRealEstateAgents extends BaseAPI {
         softAssert.assertAll();
 
     }
-    @Test (enabled = true)
+    @Test (enabled = false)
     public void testVerifyFindRedfinAgentHeader(){
         RedfinRealEstateAgents redfinRealEstateAgents = new RedfinRealEstateAgents();
         redfinRealEstateAgents.verifyFindRedfinAgentHeader();
@@ -53,5 +53,11 @@ public class TestRedfinRealEstateAgents extends BaseAPI {
         RedfinRealEstateAgents redfinRealEstateAgents = new RedfinRealEstateAgents();
         redfinRealEstateAgents.typeInAgentSearchBox();
         Assert.assertTrue(isElementDisplayed(WEB_ELEMENT_DID_YOU_MEAN_SUGGESTIONS_WINDOW));
+    }
+    @Test(enabled = false)
+    public void testJoinOrSignInWindow(){
+        RedfinRealEstateAgents redfinRealEstateAgents = new RedfinRealEstateAgents();
+        redfinRealEstateAgents.verifyJoinOrSignInWindow();
+        Assert.assertTrue(isElementDisplayed(WEB_ELEMENT_JOIN_OR_SIGN_IN_WINDOW));
     }
 }

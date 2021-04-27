@@ -16,7 +16,7 @@ public class TestMacysDeals extends BaseAPI {
     public void testNavigateToDealsPage() {
         MacysDeals macysDeals = new MacysDeals();
         macysDeals.navigateToDealsPage();
-        assertEqualsGetText("Offers", "WEB_ELEMENT_OFFERS_HEADER");
+        Assert.assertEquals(getTextFromElement(WEB_ELEMENT_OFFERS_HEADER), "Offers");
     }
 
 
@@ -57,10 +57,25 @@ public class TestMacysDeals extends BaseAPI {
         Assert.assertTrue(isTitleTrue("Access Denied"));
         //assertEqualsGetTitle("Access Denied");
     }
-    @Test (enabled = false)
-    public void testVerifyWalletImage(){
+
+    @Test(enabled = false)
+    public void testVerifyWalletImage() {
         MacysDeals macysDeals = new MacysDeals();
         macysDeals.verifyWalletImage();
+        Assert.assertTrue(isElementDisplayed(WEB_ELEMENT_WALLET_IMAGE));
+    }
 
+    @Test(enabled = false)
+    public void testVerifyOffersHeader() {
+        MacysDeals macysDeals = new MacysDeals();
+        macysDeals.verifyOffersHeader();
+        Assert.assertEquals(getTextFromElement(WEB_ELEMENT_OFFERS_HEADER), "Offers");
+    }
+
+    @Test(enabled = true)
+    public void verifySignInPageTitle() {
+        MacysDeals macysDeals = new MacysDeals();
+        macysDeals.verifySignInPageTitle();
+        Assert.assertTrue(isTitleTrue("Sign In - Macy's"));
     }
 }

@@ -10,7 +10,7 @@ public class TestEspnPlus extends BaseAPI {
 
 
     @Test(priority = 1, enabled = false)
-    public void testEspnPlus(){
+    public void testEspnPlus() {
         EspnPlus espn = new EspnPlus();
         espn.navigateToEspnPlus();
         String actualResult = driver.getTitle();
@@ -19,15 +19,15 @@ public class TestEspnPlus extends BaseAPI {
         Assert.assertEquals(actualResult, expectedResult, "PAGE NOT FOUND");
     }
 
-    @Test(priority = 2, enabled = false)
+    @Test( enabled = false)
     public void testFeatured() {
         EspnPlus espn = new EspnPlus();
         espn.navigateToFeatured();
-        softAssertAssertEqualsGetCurrentURL("https://www.espn.com/espnplus/");
+        Assert.assertTrue(isCurrentUrlTrue("https://www.espn.com/espnplus/"));
     }
 
-    @Test(priority = 2, enabled = true)
-    public void testOriginals(){
+    @Test( enabled = false)
+    public void testOriginals() {
         EspnPlus espn = new EspnPlus();
         espn.navigateToOriginals();
         String actualResult = driver.getTitle();
@@ -36,23 +36,23 @@ public class TestEspnPlus extends BaseAPI {
         Assert.assertEquals(actualResult, expectedResult, "Page not Found");
     }
 
-    @Test(priority = 3,enabled = false)
-    public void testTrailers(){
+    @Test(enabled = false)
+    public void testTrailers() {
         EspnPlus espn = new EspnPlus();
         espn.navigateToTrailers();
-        softAssertAssertEqualsGetCurrentURL("https://www.espn.com/espnplus/collections/24971/trailers");
+        Assert.assertTrue(isCurrentUrlTrue("https://www.espn.com/espnplus/collections/24971/trailers"));
     }
 
-    @Test(priority = 3,enabled = false)
-    public void testBrowseBasketBall(){
+    @Test(enabled = false)
+    public void testBrowseBasketBall() {
         EspnPlus espn = new EspnPlus();
         espn.browseToBasketBall();
-        softAssertAssertEqualsGetCurrentURL("https://www.espn.com/espnplus/catalog/cd70a58e-a830-330c-93ed-52360b51b632/basketball#bucketId=29446&sourceCollection=Featured_Sports_");
+        Assert.assertTrue(isCurrentUrlTrue("https://www.espn.com/espnplus/catalog/cd70a58e-a830-330c-93ed-52360b51b632/basketball#bucketId=29446&sourceCollection=Featured_Sports_"));
     }
 
 
-    @Test (enabled = false)
-    public void testVerifyPageTitle(){
+    @Test(enabled = false)
+    public void testVerifyPageTitle() {
         EspnPlus espn = new EspnPlus();
         espn.navigateToEspnPlus();
         espn.navigateToOriginals();
@@ -62,9 +62,10 @@ public class TestEspnPlus extends BaseAPI {
         Assert.assertTrue(exp.equalsIgnoreCase(act));
     }
 
-    @Test (enabled = false)
+    @Test(enabled = false)
     public void testPageTitleInspection() {
-        String expectedTitle = "";
+        EspnPlus espPlus = new EspnPlus();
+        String expectedTitle = "Watch ESPN Originals";
         String actualTitle = driver.getTitle();
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(actualTitle, expectedTitle);
@@ -74,7 +75,7 @@ public class TestEspnPlus extends BaseAPI {
 
 
     }
-
+}
 
 
 

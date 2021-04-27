@@ -1,8 +1,11 @@
 package ebayToysAR;
 
 import common.BaseAPI;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
 
 import static ebayToysAR.EbayToysWebElements.*;
 
@@ -52,6 +55,15 @@ public class EbayToys extends BaseAPI{
         implicitWait(20);
         clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_MY_EBAY_DROP_DOWN);
         implicitWait(20);
+    }
+
+    public void sendKeysToSearchFieldUsingExcel() throws Exception {
+        List<String> toys = DataSource.getItemsListFromExcel();
+        String search = toys.get(0);
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_TOYS_SEARCH_BOX);
+        WebElement searchBox = driver.findElement(By.xpath(WEB_ELEMENT_TOYS_SEARCH_BOX));
+        sendKeysToElement(searchBox, search);
+
     }
 
 

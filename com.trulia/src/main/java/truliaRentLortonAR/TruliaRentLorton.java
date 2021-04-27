@@ -25,7 +25,7 @@ public class TruliaRentLorton extends BaseAPI {
     public void clickRentButton() throws InterruptedException {
         implicitWait(20);
         basicHoverUsingXpath(WEB_ELEMENT_RENT_BUTTON);
-        driverWait.until(ExpectedConditions.visibilityOf(rentButton));
+        implicitWait(20);
         clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_RENT_BUTTON);
     }
 
@@ -37,6 +37,25 @@ public class TruliaRentLorton extends BaseAPI {
         implicitWait(20);
         clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_SEARCH_BUTTON);
     }
-    public void
+    public void clickSaveSearchButton(){
+        implicitWait(20);
+        basicHoverUsingXpath(WEB_ELEMENT_RENT_LINK);
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_ALL_RENTALS_DROPDOWN_OPTION);
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_ALL_RENTAL_TYPES_DROPDOWN);
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_SINGLE_FAMILY_HOME_RADIO_BUTTON);
+        implicitWait(20);
+        clickByXpathOrCssUsingJavaScript((WEB_ELEMENT_SAVE_SEARCH_BUTTON));
+    }
+    public void checkCatsAllowedCheckBox(){
+        implicitWait(20);
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_RENT_BUTTON);
+        typeOnElement(WEB_ELEMENT_LOCATION_SEARCH_BOX, WEB_ELEMENT_INPUT_LOCATION_SEARCH_BOX);
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_SAVE_SEARCH_BUTTON);
+        implicitWait(20);
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_PETS_DROPDOWN_LINK);
+        clickByXpathOrCssUsingJavaScript(WEB_ELEMENT_CATS_ALLOWED_CHECKBOX);
+    }
+
+
 
 }
