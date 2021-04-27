@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TestOnlineExperiencesPage extends BaseAPI {
+    public class TestOnlineExperiencesPage extends BaseAPI {
 
     OnlineExperiencesPage onlineExperiencesPage;
 
@@ -39,7 +39,7 @@ public class TestOnlineExperiencesPage extends BaseAPI {
         Assert.assertEquals(actualTitle, expectedTitle, "TITLE DOES NOT MATCH");
     }
 
-    @Test(priority = 3, enabled = true)
+    @Test(priority = 3, enabled = false)
     public void testSignUp() {
         onlineExperiencesPage = new OnlineExperiencesPage();
 
@@ -53,7 +53,20 @@ public class TestOnlineExperiencesPage extends BaseAPI {
 
     }
 
+        @Test(priority = 4,  enabled = true)
+        public void testCommercialPageInsightsURl() throws InterruptedException {
 
+           onlineExperiencesPage = new OnlineExperiencesPage();
+           onlineExperiencesPage.navigateToOnlineExperiencePage();
+            Thread.sleep(4000);
+            onlineExperiencesPage.navigateToOnlineExperiencesBecomeAHostPage();
+
+            String actualUrl=driver.getCurrentUrl();
+            String expectedUrl="https://www.airbnb.com/host/homes";
+
+            System.out.println(actualUrl);
+            Assert.assertEquals(actualUrl,expectedUrl, "URL does not match");
+        }
 
 
 }

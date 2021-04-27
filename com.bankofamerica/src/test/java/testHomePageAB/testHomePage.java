@@ -13,7 +13,7 @@ public class testHomePage extends BaseAPI {
 
     HomePage homePage;
 
-    @Test(enabled = false)
+    @Test(priority = 1,enabled = false)
     public void testDoSearch(){
         homePage=new HomePage();
         String searchKeys= "Erica";
@@ -27,7 +27,7 @@ public class testHomePage extends BaseAPI {
     }
 //  *************************************************************************
 
-    @Test(enabled = false)
+    @Test(priority = 2, enabled = false)
     public void testLogoPresent(){
         homePage=new HomePage();
 //        boolean logoPresent=driver.findElement(By.cssSelector("headerModule > div.main-nav-top-logo > div.logo-container > img")).isDisplayed();
@@ -37,7 +37,7 @@ public class testHomePage extends BaseAPI {
     }
 
 //    Invalid login
-    @Test
+    @Test(priority = 3, enabled = false)
     public void testInvalidLogIn() throws InterruptedException {
         homePage=new HomePage();
         homePage.doInvalidLogIn("abcd","wyx4ss");
@@ -50,7 +50,7 @@ public class testHomePage extends BaseAPI {
     }
 
     //For Credit Card Page
-    @Test(enabled = false)
+    @Test(priority = 4,enabled = false)
     public void testnevigateToCreditCard() throws InterruptedException {
         homePage=new HomePage();
         homePage.nevigateToCreditCard();
@@ -61,7 +61,7 @@ public class testHomePage extends BaseAPI {
 
     }
 
-    @Test(enabled = false)
+    @Test(priority = 5,enabled = false)
     public void testNavigateToHomeLoans(){
         homePage=new HomePage();
         homePage.nevigateToHomeLoans();
@@ -71,7 +71,7 @@ public class testHomePage extends BaseAPI {
     }
 
 
-        @Test(enabled = false)
+        @Test(priority = 6,enabled = false)
         public void testNavigateToHomeLoans1(){
         homePage=new HomePage();
         homePage.nevigateToHomeLoans();

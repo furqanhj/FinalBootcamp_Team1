@@ -79,6 +79,13 @@ public class OnlineExperiencesPage extends BaseAPI {
     }
 
 
+//*********************************************************************************
 
+    @FindBy(css = WEB_ELEMENT_ONLINE_EXPERIENCES_BUTTON_BECOME_A_HOST)
+    public WebElement onlineExperiencesBecomeAHostLink;
+
+    public void navigateToOnlineExperiencesBecomeAHostPage(){
+        clickElement(onlineExperiencesBecomeAHostLink);
+    }
 
 }
