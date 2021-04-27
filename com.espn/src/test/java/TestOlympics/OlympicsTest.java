@@ -3,6 +3,7 @@ package TestOlympics;
 import OlympicsMA.OlympicsLocators;
 import OlympicsMA.OlympicsPage;
 import common.BaseAPI;
+import io.cucumber.java.af.En;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -12,10 +13,10 @@ public class OlympicsTest extends BaseAPI {
 
     // Test 1
 
-    @Test (enabled = true,priority = 1)
-    public void testClickWatch (){
+    @Test(enabled = true, priority = 1)
+    public void testClickWatch() {
         olympicsPage = new OlympicsPage();
-        olympicsPage. clickWatch();
+        olympicsPage.clickWatch();
         String actualResult = BaseAPI.driver.getTitle();
         String expectedResult = "Olympic Sports Schedule, News, and Results - Olympic Games - ESPN";
 
@@ -23,8 +24,8 @@ public class OlympicsTest extends BaseAPI {
     }
 
     // Test 2
-    @Test (enabled = false,priority = 2)
-    public void testDropDownSport (){
+    @Test(enabled = false, priority = 2)
+    public void testDropDownSport() {
         olympicsPage = new OlympicsPage();
         olympicsPage.dropDownSport();
         String actualResult = BaseAPI.driver.getTitle();
@@ -34,8 +35,8 @@ public class OlympicsTest extends BaseAPI {
     }
 
     // Test 3
-    @Test (enabled = false,priority = 3)
-    public void testSignup (){
+    @Test(enabled = false, priority = 3)
+    public void testSignup() {
         olympicsPage = new OlympicsPage();
         olympicsPage.signUp();
         String actualResult = BaseAPI.driver.getTitle();
@@ -45,8 +46,8 @@ public class OlympicsTest extends BaseAPI {
     }
 
     // Test 4
-    @Test (enabled = false,priority = 4)
-    public void testLogin (){
+    @Test(enabled = false, priority = 4)
+    public void testLogin() {
         olympicsPage = new OlympicsPage();
         olympicsPage.logIn();
         String actualResult = BaseAPI.driver.getTitle();
@@ -57,8 +58,8 @@ public class OlympicsTest extends BaseAPI {
     }
 
     // Test 5
-    @Test (enabled = false,priority = 5)
-    public void testContactUs (){
+    @Test(enabled = false, priority = 5)
+    public void testContactUs() {
         olympicsPage = new OlympicsPage();
         olympicsPage.contactUs();
         String actualResult = BaseAPI.driver.getTitle();
@@ -66,4 +67,65 @@ public class OlympicsTest extends BaseAPI {
 
         Assert.assertEquals(actualResult, expectedResult, "Page not Found");
     }
-}
+
+    ///////////////////////////////////////////
+
+    // Test 6
+    @Test (enabled = false,priority = 6)
+    public void testTermsOfUse (){
+    olympicsPage = new OlympicsPage();
+    olympicsPage. termsOfUse();
+        String actualResult = BaseAPI.driver.getTitle();
+        String expectedResult = "Contact ESPN";
+
+        Assert.assertEquals(actualResult, expectedResult, "Page not Found");
+    }
+
+    //Test 7
+    @Test (enabled = false,priority = 7)
+    public void testPrivacyPolicy (){
+        olympicsPage = new OlympicsPage();
+        olympicsPage.privacyPolicy();
+        String actualResult = BaseAPI.driver.getTitle();
+        String expectedResult = "Contact ESPN";
+
+        Assert.assertEquals(actualResult, expectedResult, "Page not Found");
+    }
+
+
+    // Test 8
+    @Test (enabled = false,priority = 7)
+    public void testYourCaliforniaPrivacyRights (){
+        olympicsPage = new OlympicsPage();
+        olympicsPage.yourCaliforniaPrivacyRights();
+        String actualResult = BaseAPI.driver.getTitle();
+        String expectedResult = "Contact ESPN";
+
+        Assert.assertEquals(actualResult, expectedResult, "Page not Found");
+    }
+
+
+    // Test 9
+    @Test (enabled = false,priority = 8)
+    public void testDisneyAdSalesSite (){
+        olympicsPage = new OlympicsPage();
+        olympicsPage.disneyAdSales();
+        String actualResult = BaseAPI.driver.getTitle();
+        String expectedResult = "Contact ESPN";
+
+        Assert.assertEquals(actualResult, expectedResult, "Page not Found");
+    }
+
+    //Test 10
+    @Test (enabled = false,priority = 9)
+    public void testChildrenOnlinePrivacyPolicy (){
+        olympicsPage = new OlympicsPage();
+        olympicsPage.childrenOnlinePrivacyPolicy();
+        String actualResult = BaseAPI.driver.getTitle();
+        String expectedResult = "Contact ESPN";
+
+        Assert.assertEquals(actualResult, expectedResult, "Page not Found");
+    }
+
+    }
+

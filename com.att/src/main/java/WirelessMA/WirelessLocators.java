@@ -18,6 +18,17 @@ public class WirelessLocators {
 
     public static final String WEB_ELEMENT_CLICK_SUPPORT = "//span[contains(text(),'Support')]"; //XPATH
 
+    //////////////////////////////////////////////////////
+
+
+    public static final String WEB_ELEMENT_WIRELESS_DEALS = "//a[@href='/deals/cell-phone-deals/']/span[@class='font-medium type-xs  ']"; //XPATH
+
+    public static final String WEB_ELEMENT_SHOP_ALL = "//a[.='Shop all']"; //XPATH
+
+    public static final String WEB_ELEMENT_ATT_PREPAID = "//h3[contains(text(),'AT&T Prepaid')]"; //XPATH
+
+    public static final String WEB_ELEMENT_COVERAGE_MAPS = "//div[@class='gn-container']//li[@class='hide-sm hide-xsm']/a[.='Coverage maps']"; //XPATH
+
 
 
 }

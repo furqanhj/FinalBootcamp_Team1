@@ -39,12 +39,15 @@ public class DealsLocators {
 
 
     public static final String WEB_ELEMENT_LINK_OAKLEY_SUNGLASSES = "//div[@class='ebayui-dne-item-featured-card ebayui-dne-item-featured-card']//span[1]/span[.='Oakley Fuel Cell POLARIZED Sunglasses OO9096-K060 Black Ink W/ PRIZM Ruby Lens']"; //XPATH
-
     public static final String WEB_ELEMENT_ADIDAS_ORIGINAL = "//span[contains(text(),\"adidas Originals Superstar Slip-on Shoes Women's\")]";//XPATH
 
-    public static final String WEB_ELEMENT_DEALS_LINK = "//header/div[@id='gh-top']/ul[@id='gh-topl']/li[@id='gh-p-1']/a[1]"; //XPATH
 
-    public static final String WEB_ELEMENT_DEALS_ON_EBAY = "//header/div[@id='gh-top']/ul[@id='gh-topl']/li[@id='gh-p-1']/a[1]"; //XPATH
+
+
+    public static final String WEB_ELEMENT_DEALS_LINK = "//header/div[@id='gh-top']/ul[@id='gh-topl']/li[@id='gh-p-1']/a[1]"; //XPATH
+    public static final String WEB_ELEMENT_SEARCH_FIELD = "//input[@id='gh-ac']"; //XPATH
+    public static final  String WEB_ELEMENT_SEARCH_BUTTON= "//input[@id='gh-btn']"; //XPATH
+    public static final  String WEB_ELEMENT_SEARCH_RESULT= "//span[.='Deals for kitchen aid']"; //XPATH
 
 
 

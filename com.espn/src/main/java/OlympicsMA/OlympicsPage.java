@@ -57,4 +57,41 @@ public class OlympicsPage extends BaseAPI {
         implicitWait();
     }
 
+    @FindBy (xpath = WEB_ELEMENT_TERMS_OF_USE)
+    public WebElement termsOfUse;
+    @FindBy (xpath = WEB_ELEMENT_PRIVACY_POLICY)
+    public WebElement privacyPolicy;
+    @FindBy (xpath = WEB_ELEMENT_YOUR_CALIFORNIA_PRIVACY_RIGHTS)
+    public WebElement yourCaliforniaPrivacyRights;
+    @FindBy (xpath = WEB_ELEMENT_DISNEY_AD_SALES_SITE)
+    public WebElement disneyAdSalesSite;
+    @FindBy (xpath = WEB_ELEMENT_CHILDREN_ONLINE_PRIVACY_POLICY)
+    public WebElement childrenOnlinePrivacyPolicy;
+
+    public void termsOfUse (){
+        implicitWait();
+        termsOfUse.click();
+    }
+
+    public void privacyPolicy (){
+        implicitWait();
+        privacyPolicy.click();
+    }
+
+    public void yourCaliforniaPrivacyRights (){
+        implicitWait();
+        yourCaliforniaPrivacyRights.click();
+    }
+
+    public void disneyAdSales (){
+        implicitWait();
+        disneyAdSalesSite.click();
+    }
+
+    public void childrenOnlinePrivacyPolicy (){
+        clickByXNCssUsingJavaScript(WEB_ELEMENT_CHILDREN_ONLINE_PRIVACY_POLICY);
+        implicitWait();
+
+    }
+
 }

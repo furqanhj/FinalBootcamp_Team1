@@ -30,6 +30,7 @@ public class DealsHomepage extends BaseAPI {
     WebElement deals;
 
 
+
     public DealsHomepage(){
         PageFactory.initElements(driver, this);
     }
@@ -109,8 +110,36 @@ public class DealsHomepage extends BaseAPI {
 
     }
 
+    @FindBy (xpath = WEB_ELEMENT_SEARCH_FIELD )
+    public WebElement searchField;
+
+    @FindBy (xpath = WEB_ELEMENT_SEARCH_BUTTON)
+    public WebElement searchButton;
+
+    @FindBy (xpath = WEB_ELEMENT_SEARCH_RESULT)
+    public WebElement searchResult;
+
+ // Method Number 1
+//    public void SendKeysToSearchBar (String SearchKey){
+//        sendKeysToElement(searchField,SearchKey);
+//    }
+//
+//    public void clickSearchButton (){
+//        clickElement(searchButton);
+//    }
+//
+//    public void searchItems (String SearchKey){
+//        SendKeysToSearchBar(SearchKey);
+//        clickSearchButton();
 
 
+    public void SearchItems () {
+        WebElement items = driver.findElement(By.xpath(WEB_ELEMENT_SEARCH_FIELD));
+        items.sendKeys("KitchenAid");
+//        searchButton.click();
+        clickByXNCssUsingJavaScript(WEB_ELEMENT_SEARCH_BUTTON);
+
+    }
 
 
 

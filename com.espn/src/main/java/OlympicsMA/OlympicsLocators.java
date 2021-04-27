@@ -13,6 +13,7 @@ public class OlympicsLocators {
 
     public static final String WEB_ELEMENT_CONTACT_US = "//div[@class='text']//a[normalize-space()='Contact Us']"; //XPATH
 
+
     public static final String WEB_ELEMENT_TERMS_OF_USE = "//div[@class='text']//a[normalize-space()='Terms of Use']"; //XPATH
     public static final String WEB_ELEMENT_PRIVACY_POLICY = "//div[@class='text']//a[normalize-space()='Privacy Policy']"; //XPATH
     public static final String WEB_ELEMENT_YOUR_CALIFORNIA_PRIVACY_RIGHTS = "//div[@class='text']//a[normalize-space()='Your California Privacy Rights']"; //XPATH

@@ -76,6 +76,37 @@ public class WirelessPage extends BaseAPI {
 
     }
 
+    @FindBy (xpath = WEB_ELEMENT_WIRELESS_DEALS)
+    public WebElement wirelessDeals;
+    @FindBy (xpath = WEB_ELEMENT_SHOP_ALL )
+    public WebElement shopAll;
+    @FindBy (xpath = WEB_ELEMENT_ATT_PREPAID)
+    public WebElement attPrepaid;
+    @FindBy (xpath = WEB_ELEMENT_COVERAGE_MAPS)
+    public WebElement coverageMaps;
+
+
+
+    public void wirelessDeals (){
+        clickByXNCssUsingJavaScript(WEB_ELEMENT_WIRELESS_DEALS);
+    }
+
+    public void shopAll (){
+        clickByXNCssUsingJavaScript(WEB_ELEMENT_SHOP_ALL);
+
+    }
+
+    public void AttPrepaid (){
+        implicitWait();
+        attPrepaid.click();
+    }
+
+    public void coverageMaps (){
+        implicitWait();
+        coverageMaps.click();
+    }
+
+
 
 
 }

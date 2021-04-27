@@ -88,6 +88,54 @@ public class WirelessTest extends BaseAPI {
         Assert.assertEquals(actualResult, expectedResult, "Page not Found");
     }
 
+  ///////////////////////////////////////////////
+
+    //Test 8
+    @Test (enabled = false,priority = 8)
+    public void testWirelessDeals (){
+        wirelessPage = new WirelessPage();
+        wirelessPage.wirelessDeals();
+        String actualResult = BaseAPI.driver.getTitle();
+        String expectedResult = "AT&T Customer Service & Support - AT&T Official Site";
+
+        Assert.assertEquals(actualResult, expectedResult, "Page not Found");
+    }
+
+    // Test 9
+    @Test (enabled = false,priority = 9)
+    public void testShopAll (){
+        wirelessPage = new WirelessPage();
+        wirelessPage.shopAll();
+        String actualResult = BaseAPI.driver.getTitle();
+        String expectedResult = "AT&T Customer Service & Support - AT&T Official Site";
+
+        Assert.assertEquals(actualResult, expectedResult, "Page not Found");
+
+    }
+
+    // Test 10
+    @Test (enabled = false,priority = 10)
+    public void testAttPrepaid (){
+        wirelessPage= new WirelessPage();
+        wirelessPage. AttPrepaid();
+        String actualResult = BaseAPI.driver.getTitle();
+        String expectedResult = "AT&T Customer Service & Support - AT&T Official Site";
+
+        Assert.assertEquals(actualResult, expectedResult, "Page not Found");
+    }
+
+
+    // Test 11
+    @Test (enabled = false,priority = 11)
+    public void testCoverageMaps (){
+        wirelessPage = new WirelessPage();
+        wirelessPage . coverageMaps();
+        String actualResult = BaseAPI.driver.getTitle();
+        String expectedResult = "AT&T Customer Service & Support - AT&T Official Site";
+
+        Assert.assertEquals(actualResult, expectedResult, "Page not Found");
+
+    }
 
 
 }

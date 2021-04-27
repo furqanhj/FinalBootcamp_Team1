@@ -16,7 +16,7 @@ public class DealsTestpage extends BaseAPI {
     DealsHomepage deals = new DealsHomepage();
 
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void testExample() throws AWTException {
        implicitWait();
         deals.hoverAndClickOnVacuum();
@@ -70,6 +70,12 @@ public class DealsTestpage extends BaseAPI {
     assertEqualsGetTitle("Daily Deals on eBay | Best deals and Free Shipping");
     }
 
+
+    @Test (enabled = true)
+    public void testSearchItems (){
+        deals.SearchItems();
+
+    }
 
 
 }
