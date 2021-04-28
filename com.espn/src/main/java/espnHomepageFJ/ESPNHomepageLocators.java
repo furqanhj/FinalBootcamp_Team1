@@ -1,6 +1,6 @@
 package espnHomepageFJ;
 
-public class ESPNHomepageWebElements {
+public class ESPNHomepageLocators {
 
     /**
      * Locators on homepage

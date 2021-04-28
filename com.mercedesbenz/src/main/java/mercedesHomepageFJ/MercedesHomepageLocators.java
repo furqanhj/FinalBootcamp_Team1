@@ -2,7 +2,7 @@ package mercedesHomepageFJ;
 
 import org.openqa.selenium.WebElement;
 
-public class MercedesHomepageWebElements {
+public class MercedesHomepageLocators {
 
     /**
      * Locators on homepage

@@ -1,6 +1,6 @@
 package inventoryPageFJ;
 
-import static inventoryPageFJ.InventoryPageWebElements.*;
+import static inventoryPageFJ.InventoryPageLocators.*;
 import common.BaseAPI;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;

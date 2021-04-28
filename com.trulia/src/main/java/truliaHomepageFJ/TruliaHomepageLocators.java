@@ -1,6 +1,6 @@
 package truliaHomepageFJ;
 
-public class TruliaHomepageWebElements {
+public class TruliaHomepageLocators {
 
     //Neighborhoods Link on Trulia homepage: (XPATH - custom)
     public static final String WEB_ELEMENT_NEIGHBORHOODS_PAGE_LINK = "//a[@href='/neighborhoods/']";

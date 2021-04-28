@@ -1,6 +1,6 @@
 package truliaNeighborhoodsPageFJ;
 
-public class NeighborhoodsPageWebElements {
+public class NeighborhoodsPageLocators {
 
     //Search box on Neighborhoods page: (CLASS)
     public static final String WEB_ELEMENT_SEARCH_BOX_INPUT = "nh-intro__search_input";

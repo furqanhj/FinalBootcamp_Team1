@@ -1,14 +1,11 @@
 package espnHomepageFJ;
 
-import static espnHomepageFJ.ESPNHomepageWebElements.*;
+import static espnHomepageFJ.ESPNHomepageLocators.*;
 import common.BaseAPI;
 import cricinfoHomepageFJ.CricinfoHomepage;
-import io.cucumber.java.en_lol.WEN;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import java.util.List;
 
 public class ESPNHomepage extends BaseAPI {
 

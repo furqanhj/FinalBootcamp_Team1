@@ -1,6 +1,6 @@
 package macysListPageFJ;
 
-public class MacysListsPageWebElements {
+public class MacysListsPageLocators {
 
     //Sign-in button link in the body of lists page: (XPATH - custom)
     public static final String WEB_ELEMENT_BUTTON_SIGN_IN_BODY_OF_LISTS_PAGE = "//div[@class='sign-in-container']/div[2]//li";

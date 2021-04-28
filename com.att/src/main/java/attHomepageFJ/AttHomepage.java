@@ -1,6 +1,6 @@
 package attHomepageFJ;
 
-import static attHomepageFJ.AttHomepageWebElements.*;
+import static attHomepageFJ.AttHomepageLocators.*;
 
 import attTVPageFJ.AttTVPage;
 import common.BaseAPI;

@@ -1,6 +1,6 @@
 package ebaySignInPageFJ;
 
-import static ebaySignInPageFJ.EbaySignInPageWebElements.*;
+import static ebaySignInPageFJ.EbaySignInPageLocators.*;
 import common.BaseAPI;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

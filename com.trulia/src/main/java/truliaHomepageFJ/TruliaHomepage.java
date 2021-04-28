@@ -1,6 +1,6 @@
 package truliaHomepageFJ;
 
-import static truliaHomepageFJ.TruliaHomepageWebElements.*;
+import static truliaHomepageFJ.TruliaHomepageLocators.*;
 import common.BaseAPI;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

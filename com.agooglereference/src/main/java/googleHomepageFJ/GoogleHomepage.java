@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 //Importing the WebElements Locators Class so that we can initialize the web elements in this class
-import static googleHomepageFJ.GoogleHomepageWebElements.*;
+import static googleHomepageFJ.GoogleHomepageLocators.*;
 
 /*
    - This class will EXTEND the BASE class (so that the constructor used on line 41, will instantiate the elements)

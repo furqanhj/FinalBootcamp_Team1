@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-import static ebayHomepageFJ.EbayHomepageWebElements.*;
+import static ebayHomepageFJ.EbayHomepageLocators.*;
 
 public class EbayHomepage extends BaseAPI {
 

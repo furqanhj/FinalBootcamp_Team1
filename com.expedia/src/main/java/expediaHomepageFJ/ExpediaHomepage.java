@@ -1,8 +1,7 @@
 package expediaHomepageFJ;
 
-import static expediaHomepageFJ.ExpediaHomepageWebElements.*;
+import static expediaHomepageFJ.ExpediaHomepageLocators.*;
 import common.BaseAPI;
-import expediaSignInPageFJ.ExpediaSignInPage;
 import expediaSignUpPageFJ.ExpediaSignUpPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

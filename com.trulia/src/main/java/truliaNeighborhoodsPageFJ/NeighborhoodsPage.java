@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-import static truliaNeighborhoodsPageFJ.NeighborhoodsPageWebElements.*;
+import static truliaNeighborhoodsPageFJ.NeighborhoodsPageLocators.*;
 
 import common.BaseAPI;
 import org.openqa.selenium.support.PageFactory;

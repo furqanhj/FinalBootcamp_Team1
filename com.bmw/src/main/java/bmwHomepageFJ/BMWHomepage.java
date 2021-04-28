@@ -1,6 +1,6 @@
 package bmwHomepageFJ;
 
-import static bmwHomepageFJ.BMWHomepageWebElements.*;
+import static bmwHomepageFJ.BMWHomepageLocators.*;
 import common.BaseAPI;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

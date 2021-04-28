@@ -1,6 +1,6 @@
 package chaseHomepageFJ;
 
-public class ChaseHomepageWebElements {
+public class ChaseHomepageLocators {
 
     /**
      * Locators on Chase Homepage

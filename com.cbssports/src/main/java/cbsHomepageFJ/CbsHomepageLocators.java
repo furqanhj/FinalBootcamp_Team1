@@ -1,6 +1,6 @@
 package cbsHomepageFJ;
 
-public class CbsHomepageWebElements {
+public class CbsHomepageLocators {
 
     /**
      * Locators on homepage.

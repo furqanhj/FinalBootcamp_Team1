@@ -1,6 +1,6 @@
 package mortgageCalculatorPageFJ;
 
-import static mortgageCalculatorPageFJ.MortgageCalculatorPageWebElements.*;
+import static mortgageCalculatorPageFJ.MortgageCalculatorPageLocators.*;
 
 import common.BaseAPI;
 import org.openqa.selenium.JavascriptExecutor;
@@ -9,9 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.FluentWait;
 
-import java.awt.event.KeyEvent;
 import java.util.List;
 
 public class MortgageCalculatorPage extends BaseAPI {

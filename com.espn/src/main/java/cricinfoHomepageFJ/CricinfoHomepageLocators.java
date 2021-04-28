@@ -1,6 +1,6 @@
 package cricinfoHomepageFJ;
 
-public class CricinfoHomepageWebElements {
+public class CricinfoHomepageLocators {
 
     /**
      * Locators on cricinfo homepage header - DROPDOWNS

@@ -1,6 +1,6 @@
 package attTVPageFJ;
 
-import static attTVPageFJ.AttTVPageWebElements.*;
+import static attTVPageFJ.AttTVPageLocators.*;
 import common.BaseAPI;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

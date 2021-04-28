@@ -1,6 +1,6 @@
 package expediaHomepageFJ;
 
-public class ExpediaHomepageWebElements {
+public class ExpediaHomepageLocators {
 
     // Sign-in header on homepage: (XPATH - custom)
     public static final String WEB_ELEMENT_SIGN_IN_HEADER = "//nav[@id='secondaryNav']/div[4]/button";

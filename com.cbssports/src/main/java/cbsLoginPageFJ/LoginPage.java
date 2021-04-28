@@ -1,6 +1,6 @@
 package cbsLoginPageFJ;
 
-import static cbsLoginPageFJ.LoginPageWebElements.*;
+import static cbsLoginPageFJ.LoginPageLocators.*;
 import common.BaseAPI;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

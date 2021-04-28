@@ -1,9 +1,8 @@
 package airbnbHomepageFJ;
 
-import static airbnbHomepageFJ.AirbnbHomepageWebElements.*;
+import static airbnbHomepageFJ.AirbnbHomepageLocators.*;
 
 import common.BaseAPI;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;

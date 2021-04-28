@@ -1,6 +1,6 @@
 package mortgageCalculatorPageFJ;
 
-public class MortgageCalculatorPageWebElements {
+public class MortgageCalculatorPageLocators {
 
     /**
      * Locators on mortgage calculator page

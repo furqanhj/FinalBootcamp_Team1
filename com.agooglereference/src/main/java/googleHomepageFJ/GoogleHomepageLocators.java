@@ -1,6 +1,6 @@
 package googleHomepageFJ;
 
-public class GoogleHomepageWebElements {
+public class GoogleHomepageLocators {
 
     /*
         ---> Elements related to search:

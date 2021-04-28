@@ -1,6 +1,6 @@
 package cbsHomepageFJ;
 
-import static cbsHomepageFJ.CbsHomepageWebElements.*;
+import static cbsHomepageFJ.CbsHomepageLocators.*;
 
 import cbsLoginPageFJ.LoginPage;
 import common.BaseAPI;

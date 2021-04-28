@@ -1,6 +1,6 @@
 package attHomepageFJ;
 
-public class AttHomepageWebElements {
+public class AttHomepageLocators {
 
     /**
      * Locators on homepage

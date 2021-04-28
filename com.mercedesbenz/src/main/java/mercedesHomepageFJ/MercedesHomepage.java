@@ -1,6 +1,6 @@
 package mercedesHomepageFJ;
 
-import static mercedesHomepageFJ.MercedesHomepageWebElements.*;
+import static mercedesHomepageFJ.MercedesHomepageLocators.*;
 import common.BaseAPI;
 import inventoryPageFJ.InventoryPage;
 import org.openqa.selenium.WebElement;

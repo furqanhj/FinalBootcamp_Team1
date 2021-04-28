@@ -1,6 +1,6 @@
 package chaseCustomerServicePageFJ;
 
-public class ChaseCustomerServiceWebElements {
+public class ChaseCustomerServiceLocators {
 
     /**
      * Locators for all links inside the Customer Service Dropdown

@@ -1,6 +1,6 @@
 package redfinHomepageFJ;
 
-import static redfinHomepageFJ.RedfinHomepageWebElements.*;
+import static redfinHomepageFJ.RedfinHomepageLocators.*;
 import common.BaseAPI;
 import mortgageCalculatorPageFJ.MortgageCalculatorPage;
 import org.openqa.selenium.WebElement;

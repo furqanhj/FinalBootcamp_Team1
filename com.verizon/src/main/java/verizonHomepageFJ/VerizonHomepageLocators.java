@@ -1,6 +1,6 @@
 package verizonHomepageFJ;
 
-public class VerizonHomepageWebElements {
+public class VerizonHomepageLocators {
 
     /**
      * Locators on homepage

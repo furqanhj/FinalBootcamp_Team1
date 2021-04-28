@@ -740,7 +740,7 @@ public class BaseAPI {
     /**
      * Actions helper methods
      */
-
+                                    //15
     public void robotScrollDown(int numOfScrolls) throws InterruptedException {
 
         for (int i = 0; i <= numOfScrolls; i++) {

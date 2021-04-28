@@ -1,6 +1,6 @@
 package ebayHomepageFJ;
 
-public class EbayHomepageWebElements {
+public class EbayHomepageLocators {
 
     /**
      * @author Furqan

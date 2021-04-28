@@ -1,6 +1,6 @@
 package ebayAdvancedSearchPageFJ;
 
-public class EbayAdvancedSearchPageWebElements {
+public class EbayAdvancedSearchPageLocators {
 
     // Input text box for search on advanced search page: (CSS)
     public static final String WEB_ELEMENT_INPUT_FIELD_FOR_SEARCH = "input#_nkw";

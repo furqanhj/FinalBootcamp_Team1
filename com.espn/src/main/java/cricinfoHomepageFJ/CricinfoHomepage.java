@@ -1,6 +1,6 @@
 package cricinfoHomepageFJ;
 
-import static cricinfoHomepageFJ.CricinfoHomepageWebElements.*;
+import static cricinfoHomepageFJ.CricinfoHomepageLocators.*;
 import common.BaseAPI;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

@@ -1,6 +1,6 @@
 package airbnbHomepageFJ;
 
-public class AirbnbHomepageWebElements {
+public class AirbnbHomepageLocators {
 
     /**
      * Locators for WebElements on dropdown for Signup and Login options

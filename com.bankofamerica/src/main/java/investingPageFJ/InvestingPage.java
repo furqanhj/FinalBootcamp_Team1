@@ -1,6 +1,6 @@
 package investingPageFJ;
 
-import static investingPageFJ.InvestingPageWebElements.*;
+import static investingPageFJ.InvestingPageLocators.*;
 import common.BaseAPI;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

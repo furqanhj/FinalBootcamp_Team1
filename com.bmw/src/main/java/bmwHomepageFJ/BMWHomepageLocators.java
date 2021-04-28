@@ -1,6 +1,6 @@
 package bmwHomepageFJ;
 
-public class BMWHomepageWebElements {
+public class BMWHomepageLocators {
 
     /**
      * Locators on homepage

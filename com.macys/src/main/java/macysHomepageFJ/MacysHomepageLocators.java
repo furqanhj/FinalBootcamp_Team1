@@ -1,6 +1,6 @@
 package macysHomepageFJ;
 
-public class MacysHomepageWebElements {
+public class MacysHomepageLocators {
 
     //List link on the header of Macys homepage: (ID)
     public static final String WEB_ELEMENT_BUTTON_LISTS_LINK_ON_HEADER = "header-wishlist-label";

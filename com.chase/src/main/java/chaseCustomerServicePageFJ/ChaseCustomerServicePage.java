@@ -1,13 +1,12 @@
 package chaseCustomerServicePageFJ;
 
-import static chaseCustomerServicePageFJ.ChaseCustomerServiceWebElements.*;
+import static chaseCustomerServicePageFJ.ChaseCustomerServiceLocators.*;
 
 import chaseHomepageFJ.ChaseHomepage;
 import common.BaseAPI;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.seleniumhq.jetty9.server.PushBuilder;
 
 import java.util.List;
 

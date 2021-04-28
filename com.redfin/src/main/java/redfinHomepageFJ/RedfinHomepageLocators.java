@@ -1,6 +1,6 @@
 package redfinHomepageFJ;
 
-public class RedfinHomepageWebElements {
+public class RedfinHomepageLocators {
 
     /**
      * Locators on homepage

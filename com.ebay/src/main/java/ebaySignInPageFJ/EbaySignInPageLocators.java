@@ -1,6 +1,6 @@
 package ebaySignInPageFJ;
 
-public class EbaySignInPageWebElements {
+public class EbaySignInPageLocators {
 
     // Recaptcha Checkbox on signIn page: (CSS)
     public static final String WEB_ELEMENT_RECAPTHA_CHECKBOX = "#recaptcha-anchor > div.recaptcha-checkbox-border";

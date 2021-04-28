@@ -1,6 +1,6 @@
 package cbsLoginPageFJ;
 
-public class LoginPageWebElements {
+public class LoginPageLocators {
 
     /**
      * Locators on login page

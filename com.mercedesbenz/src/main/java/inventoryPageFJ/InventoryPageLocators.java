@@ -1,6 +1,6 @@
 package inventoryPageFJ;
 
-public class InventoryPageWebElements {
+public class InventoryPageLocators {
 
     /**
      * Locators on Inventory main page
