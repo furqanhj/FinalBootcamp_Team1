@@ -6,13 +6,17 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import static truliaBuyPage_KE.TruliaBuyPageWebElementsLocators.WEB_ELEMENT_BUY_Btn;
+import static truliaBuyPage_KE.TruliaBuyPageWebElementsLocators.*;
 
 public class TruliaBuyPage  extends BaseAPI {
     @FindBy(xpath =WEB_ELEMENT_BUY_Btn)
     public WebElement buyBtn;
     @FindBy(xpath = WEB_ELEMENT_BUY_Btn)
     public WebElement firstHouseImg;
+    @FindBy(xpath = WEB_ELEMENT_ANY_BEDROOMS)
+    public WebElement bedroomSelect;
+    @FindBy(xpath = WEB_ELEMENT_VALIDATE_DROP_DOWN)
+    public WebElement validateDropDown;
 
 
 
@@ -33,5 +37,10 @@ public class TruliaBuyPage  extends BaseAPI {
 
 
     }
+    public void selectBeds(){
+
+
+    }
+
 
 }

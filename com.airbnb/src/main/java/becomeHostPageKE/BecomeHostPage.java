@@ -90,10 +90,6 @@ public class BecomeHostPage extends BaseAPI {
     public WebElement validateLocation;
 
 
-
-
-
-
 //    @FindBy(xpath = WEB_ELEMENT_FIND_WEBINAR_BTN)
 //    public WebElement findWebinarButton;
 
@@ -126,9 +122,9 @@ public class BecomeHostPage extends BaseAPI {
                 + "arguments[0].dispatchEvent(evt);", womanSmiling);
 
         String actualTitle = driver.getTitle();
-        String expectedTitle ="Why host on Airbnb? - Resource Center";
+        String expectedTitle = "Why host on Airbnb? - Resource Center";
 
-        Assert.assertEquals(actualTitle,expectedTitle,"Text Not Matching");
+        Assert.assertEquals(actualTitle, expectedTitle, "Text Not Matching");
         //clickElement(womanSmiling);
 
 
@@ -138,7 +134,9 @@ public class BecomeHostPage extends BaseAPI {
 
         //moviePlayerBtn.click();
         driver.switchTo().frame(moviePlayer);
+        Thread.sleep(5000);
         clickElement(moviePlayerBtn);
+        //driverWait.wait(5000);
 
         // JavascriptExecutor jse = (JavascriptExecutor) driver;
 ////Click on play button
@@ -147,24 +145,37 @@ public class BecomeHostPage extends BaseAPI {
 //Pause
 
 //        jse.executeScript("jwplayer().pause()");
-        waitForVisibilityOfElement(moviePauseBtn);
+       // waitForVisibilityOfElement(moviePauseBtn);
+       // waitForElementToBeClickable(moviePauseBtn);
+       // moviePauseBtn.click();
+        Thread.sleep(5000);
+        clickElement(moviePauseBtn);
 
-        moviePauseBtn.click();
-        //clickElement(moviePauseBtn);
+        //clickJScript(moviePauseBtn);
 
     }
+//    public void dragThePointPlay() throws InterruptedException {
+//        Actions drag=new Actions(driver);
+//        Thread.sleep(3000);
+//        WebElement startPoint=driver.findElement(By.xpath("//*[@id=\"movie_player\"]/div[25]/div[1]/div[2]"));
+//        WebElement endPoint=driver.findElement(By.xpath())
+//        drag.dragAndDrop()
+
+
 
     public void clickHowWeEstimateTextLink() {
         clickElement(howWeEstimateTextLink);
 
     }
+
     public void clickNextBtn() throws InterruptedException {
 
         clickElement(nextBtn);
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-       clickElement(nextBtn);
+        clickElement(nextBtn);
     }
-    public void clickHowWeSupportHostLink (){
+
+    public void clickHowWeSupportHostLink() {
 
         clickJScript(howWeSupportHostLink);
     }
@@ -172,39 +183,45 @@ public class BecomeHostPage extends BaseAPI {
     /**
      * In HomePage
      */
-        public void enterLocation (){
-        sendKeysToElement(locationInbox,"Miami , Florida");
+    public void enterLocation() {
+        sendKeysToElement(locationInbox, "Miami , Florida");
 
-        }
-        public void clickOnCheckInDate(){
+    }
+
+    public void clickOnCheckInDate() {
         clickElement(checkInDate);
         clickElement(selectedDateIN);
-        }
-        public void clickOnSelectedDayCheckOut(){
+    }
 
-            clickElement(selectedDateOut);
-        }
-        public void clickOnAddGuest(){
+    public void clickOnSelectedDayCheckOut() {
+
+        clickElement(selectedDateOut);
+    }
+
+    public void clickOnAddGuest() {
         clickElement(addGuest);
-        }
+    }
 
-         public void addAdultGuest(){
+    public void addAdultGuest() {
         actions = new Actions(driver);
-             actions.doubleClick(stepperAdultAdd).click().build().perform(); // 2 Adults
+        actions.doubleClick(stepperAdultAdd).click().build().perform(); // 2 Adults
 
-         }
-         public void addChildrenGuest(){
-             actions = new Actions(driver);
-             actions.doubleClick(stepperChildrenAdd).build().perform(); // 3 children
-         }
-         public void addEnfantGuest(){
-            clickElement(stepperEnfantsAdd); // 1 Enfant
+    }
 
-         }
-         public void clickSearchBtn(){
-            waitForElementToBeClickable(searchBtn);
-            clickJScript(searchBtn);
+    public void addChildrenGuest() {
+        actions = new Actions(driver);
+        actions.doubleClick(stepperChildrenAdd).build().perform(); // 3 children
+    }
 
-         }
+    public void addEnfantGuest() {
+        clickElement(stepperEnfantsAdd); // 1 Enfant
+
+    }
+
+    public void clickSearchBtn() {
+        waitForElementToBeClickable(searchBtn);
+        clickJScript(searchBtn);
+
+    }
 
 }

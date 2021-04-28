@@ -20,7 +20,7 @@ public class HomeloansWebElementsLocators {
     public static final String WEB_ELEMENT_LOGON_FRAME="//*[@id=\"logonbox\"]";
     public static final String WEB_ELEMENT_LOGON_MESSAGE = "//*[@id=\"serviceErrorDialog\"]/div/section/div/div[1]";//xpath
     //  Video Play Button , located by : xpath
-     public static final String WEB_ELEMENT_VIDEO_PLAY_BTN ="//a[contains(.,'Mortgage process overview VideoOpens Overlay')]";
+     public static final String WEB_ELEMENT_VIDEO_PLAY_BTN ="//a[@class='video--play-btn icon-play-video videoLink chaseanalytics-track-link']";
      // Video Icon Close , located by : xpath
       public static final String WEB_ELEMENT_VIDEO_ICON_CLOSE="// *[@id='cancel']";
 
@@ -47,6 +47,7 @@ public class HomeloansWebElementsLocators {
     //Low interest , located by : css
     public static final String WEB_ELEMENT_LowInterest ="div:nth-child(6) > div > div > select > option:nth-child(2)";
     public static final String WEB_ELEMENT_VALIDATE_GetMyOptions = "//*[@id=\"sb-main-result\"]/div/div[1]/div[2]/h2"; // xpath
+    public static final String WEB_ELEMENT_VALIDATE_VIDEO_PLAYED="//a[@id='cancel']";
 
 
 }

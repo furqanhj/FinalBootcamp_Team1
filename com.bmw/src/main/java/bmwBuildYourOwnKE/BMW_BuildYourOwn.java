@@ -1,4 +1,5 @@
 package bmwBuildYourOwnKE;
+
 import common.BaseAPI;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.Color;
@@ -26,9 +27,9 @@ public class BMW_BuildYourOwn extends BaseAPI {
     public WebElement whiteConvertible430i;
     @FindBy(xpath = WEB_ELEMENT_DESIGN_BTN)
     public WebElement designBtn;
-    @FindBy(xpath=WEB_ELEMENT_VALIDATE_DESIGN_BTN)
+    @FindBy(xpath = WEB_ELEMENT_VALIDATE_DESIGN_BTN)
     public WebElement zipCodeAlert;
-    @FindBy(css=WEB_ELEMENT_ZIP_CODE_FIELD)
+    @FindBy(css = WEB_ELEMENT_ZIP_CODE_FIELD)
     public WebElement zipCodeField;
     @FindBy(xpath = WEB_ELEMENT_SUBMIT_TEXT_LINK)
     public WebElement submitTextLink;
@@ -44,54 +45,56 @@ public class BMW_BuildYourOwn extends BaseAPI {
     public WebElement jetBlackText;
 
 
-
-
-
-
-
-
     public BMW_BuildYourOwn() {
         PageFactory.initElements(driver, this);
     }
-    public void clickBuildYourOwn (){
+
+    public void clickBuildYourOwn() {
 
         clickElement(buildYourOwn);
     }
-    public static String hexBackColor;
-    public void backgroundColor(){
 
-        String backColor= selectSeriesBtn.getCssValue("background-color");
+    public static String hexBackColor;
+
+    public void backgroundColor() {
+
+        String backColor = selectSeriesBtn.getCssValue("background-color");
         System.out.println(backColor);
         String hexBackColor = Color.fromString(backColor).asHex();
         System.out.println(hexBackColor);
     }
-    public void clickSeriesX5TextLink (){
+
+    public void clickSeriesX5TextLink() {
         clickElement(seriesX5TextLink);
 
     }
 
-    public void clickSeriesConverSelecBtn(){
+    public void clickSeriesConverSelecBtn() {
         clickElement(seriesConverSelecBtn);
 
     }
-    public void clickDesignBtn(){
-                designBtn.click();
+
+    public void clickDesignBtn() {
+        designBtn.click();
 
     }
-    public void enterZipCode(){
 
-        sendKeysToElement(zipCodeField,"22192");
+    public void enterZipCode() {
+
+        sendKeysToElement(zipCodeField, "22192");
         clickElement(submitTextLink);
     }
-     public void clickNextColor(){
+
+    public void clickNextColor() {
         //clickElement(nextColorBtn);
-         clickJScript(nextColorBtn);
+        clickJScript(nextColorBtn);
 
 
-     }
-     public void clickJetBlackColorBtn(){
+    }
+
+    public void clickJetBlackColorBtn() {
 
         clickElement(jetBlackColorBtn);
-     }
+    }
 
 }

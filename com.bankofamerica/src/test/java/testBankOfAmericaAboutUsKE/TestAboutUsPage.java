@@ -21,28 +21,28 @@ public class TestAboutUsPage extends BaseAPI {
     }
 
     @Test(priority = 2)
-    public void testClickBankLogo(){
+    public void testClickBankLogo() {
 
 
         testClickAboutUsMenu();
         AboutUsPage.clickBankLogo();
         System.out.println(driver.getTitle());
-        String actualHeadlineText =driver.getTitle();
-        String expectedHeadlineText ="About Bank of America - Our People, Our Passion, Our Purpose";
-       Assert.assertEquals(actualHeadlineText, expectedHeadlineText,"Text Not Matching");
+        String actualHeadlineText = driver.getTitle();
+        String expectedHeadlineText = "About Bank of America - Our People, Our Passion, Our Purpose";
+        Assert.assertEquals(actualHeadlineText, expectedHeadlineText, "Text Not Matching");
 
     }
 
     @Test(priority = 3)
     public void testHoverOurCompanyLinks() {
-       // AboutUsPage = new AboutUsPage();
+        // AboutUsPage = new AboutUsPage();
         //AboutUsPage.clickAboutUsMenu();
         testClickAboutUsMenu();
         AboutUsPage.hoverOurCompanyTextLink();
-        String actualHeadlineText =AboutUsPage.responsible_GrowthLink.getText();
-       String expectedHeadlineText ="Responsible growth";
-       Assert.assertEquals(actualHeadlineText, expectedHeadlineText,"Text Not Matching");
-      System.out.println(actualHeadlineText);
+        String actualHeadlineText = AboutUsPage.responsible_GrowthLink.getText();
+        String expectedHeadlineText = "Responsible growth";
+        Assert.assertEquals(actualHeadlineText, expectedHeadlineText, "Text Not Matching");
+        System.out.println(actualHeadlineText);
 
     }
 
@@ -63,23 +63,24 @@ public class TestAboutUsPage extends BaseAPI {
 //        AboutUsPage.hoverOurCompanyTextLink();
         testHoverOurCompanyLinks();
         AboutUsPage.clickResponsibleGrowthTextLink();
-        String actualHeadlineText =driver.getTitle();
-        String expectedHeadlineText ="Bank of America's Focus on Responsible & Sustainable Growth";
+        String actualHeadlineText = driver.getTitle();
+        String expectedHeadlineText = "Bank of America's Focus on Responsible & Sustainable Growth";
         System.out.println(actualHeadlineText);
-        Assert.assertEquals(actualHeadlineText, expectedHeadlineText,"Text Not Matching");
+        Assert.assertEquals(actualHeadlineText, expectedHeadlineText, "Text Not Matching");
 
     }
 
     @Test(priority = 6)
-    public void testClickBusinessPracticesTextLink()  {
+    public void testClickBusinessPracticesTextLink() {
 
         testHoverOurCompanyLinks();
         AboutUsPage.clickBusinessPracticesTextLink();
         Assert.assertTrue(AboutUsPage.businessPracticesImage.isDisplayed());
 
     }
+
     @Test(priority = 7)
-    public void testClickWhatWeOffer(){
+    public void testClickWhatWeOffer() {
 
         testHoverOurCompanyLinks();
         AboutUsPage.clickWhatWeOffer();

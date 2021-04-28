@@ -8,11 +8,11 @@ import org.testng.annotations.Test;
 
 public class TestContactUsPage extends BaseAPI {
 
-      ContactUsPage ContactUsPage;
-      AboutUsPage AboutUsPage;
+    ContactUsPage ContactUsPage;
+    AboutUsPage AboutUsPage;
     public ContactUsPage contactUsPage;
 
-    @Test(priority =7,enabled = false)
+    @Test(priority = 7, enabled = false)
     //Click on Contact us TextLink to open Contact us page
     public void testClickContactUsLinkText() {
 
@@ -22,42 +22,41 @@ public class TestContactUsPage extends BaseAPI {
         ContactUsPage = new ContactUsPage();
         ContactUsPage.clickContactUsTextLink();
     }
+
     //Search bar on Contact us Page
-    @Test(priority = 8,enabled = false)
-    public void testClickInSearchBar()  {
+    @Test(priority = 8, enabled = false)
+    public void testClickInSearchBar() {
         //AboutUsPage = new AboutUsPage();
         testClickContactUsLinkText();
         ContactUsPage.clickInSearchBar();
 
-        String actualHeadlineText =driver.getTitle();
-        String expectedHeadlineText ="Bank of America Customer Service & Contact Numbers";
+        String actualHeadlineText = driver.getTitle();
+        String expectedHeadlineText = "Bank of America Customer Service & Contact Numbers";
         System.out.println(actualHeadlineText);
-        Assert.assertEquals(actualHeadlineText, expectedHeadlineText,"Text Not Matching");
-
-
+        Assert.assertEquals(actualHeadlineText, expectedHeadlineText, "Text Not Matching");
 
 
     }
+
     //Click search module Link "billing dispute"
-    @Test(priority = 9,enabled = false)
+    @Test(priority = 9, enabled = false)
     public void testClickBillingDisputeTextLink() throws InterruptedException {
-      //  ContactUsPage= new ContactUsPage();
+        //  ContactUsPage= new ContactUsPage();
 
         testClickInSearchBar();
         Thread.sleep(2000);
         ContactUsPage.clickBillingDisputeTextLink();
-         //String actualHeadlineText= contactUsPage.billingResultTab.getText();
+        //String actualHeadlineText= contactUsPage.billingResultTab.getText();
 //        String actualHeadlineText = driver.findElement(By.xpath("//*[@id='searchStub']/div/div/div/div/div[5]/p[1])")).getText();
 //        String expectedHeadlineText ="results for: billing dispute";
-      //  System.out.println(actualHeadlineText);
-       // Assert.assertEquals(actualHeadlineText, expectedHeadlineText,"Text Not Matching");
-
-
+        //  System.out.println(actualHeadlineText);
+        // Assert.assertEquals(actualHeadlineText, expectedHeadlineText,"Text Not Matching");
 
 
     }
+
     // Click Dispute debit card charge online Button
-    @Test(priority = 10,enabled = false)
+    @Test(priority = 10, enabled = false)
     public void testClickDisputeDebitCardButton() throws InterruptedException {
         testClickBillingDisputeTextLink();
         implicitWait();
@@ -66,14 +65,13 @@ public class TestContactUsPage extends BaseAPI {
         Assert.assertTrue(ContactUsPage.phoneImage.isDisplayed());
 
 
-
-
     }
-  // Send a Text "save" In SearchBar
-    @Test(priority = 11,enabled = false)
-    public void testEnterTextInSearchBar()  {
 
-      testClickInSearchBar();
+    // Send a Text "save" In SearchBar
+    @Test(priority = 11, enabled = false)
+    public void testEnterTextInSearchBar() {
+
+        testClickInSearchBar();
 
         ContactUsPage.enterTextInSearchBar("save");
         System.out.println("pass");
@@ -85,32 +83,30 @@ public class TestContactUsPage extends BaseAPI {
 //        Assert.assertEquals(actualHeadlineText, expectedHeadlineText,"Text Not Matching");
 
 
-
-
-
-
     }
+
     // Click on Arrow Menu Button
-    @Test(priority = 12,enabled = false)
-    public void testClickArrowMenuBtn()  {
+    @Test(priority = 12, enabled = false)
+    public void testClickArrowMenuBtn() {
 
         testClickContactUsLinkText();
         ContactUsPage.clickArrowMenuBtn();
 
     }
 
-    @Test(priority = 13,enabled = false)
-    public void testCountingLinksInContactUsSection(){
+    @Test(priority = 13, enabled = false)
+    public void testCountingLinksInContactUsSection() {
         testClickContactUsLinkText();
         ContactUsPage.countingLinksInContactUsSection();
 
 
-       // Assert.assertTrue(ContactUsPage.contactUSLinkVerifying.isEnabled());
+        // Assert.assertTrue(ContactUsPage.contactUSLinkVerifying.isEnabled());
 
 
     }
-    @Test(priority = 14,enabled = true)
-    public void testClickFacebookMessengerLink(){
+
+    @Test(priority = 14, enabled = true)
+    public void testClickFacebookMessengerLink() {
         testClickInSearchBar();
         ContactUsPage.clickFacebookMessengerLink();
         Assert.assertTrue(ContactUsPage.popUpMessage.getText().contains("You're continuing to another website"));
@@ -118,18 +114,18 @@ public class TestContactUsPage extends BaseAPI {
 
 
     }
-    @Test(priority = 15,enabled = true)
-    public void testClickContinueBtn () throws InterruptedException {
+
+    @Test(priority = 15, enabled = true)
+    public void testClickContinueBtn() throws InterruptedException {
         testClickFacebookMessengerLink();
         ContactUsPage.clickContinueBtn();
         switchToNewWindow();
         Thread.sleep(2000);
 
-        String actualHeadlineText =driver.getCurrentUrl();
-        String expectedHeadlineText ="https://www.facebook.com/BankofAmerica";
+        String actualHeadlineText = driver.getCurrentUrl();
+        String expectedHeadlineText = "https://www.facebook.com/BankofAmerica";
         System.out.println(actualHeadlineText);
-        Assert.assertEquals(actualHeadlineText, expectedHeadlineText,"Text Not Matching");
-
+        Assert.assertEquals(actualHeadlineText, expectedHeadlineText, "Text Not Matching");
 
 
     }
@@ -184,5 +180,5 @@ public class TestContactUsPage extends BaseAPI {
 //
 //            softAssert.assertEquals(getTextFromElement(elements.get(i)), expectedResults[i], "ELEMENT " + i + " DOES NOT MATCH");
 //        }
-    }
+}
 

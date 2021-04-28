@@ -8,27 +8,27 @@ public class AboutUSWebElementsLocators {
     public static final String webElementAboutUsMenu = "NAV_ABOUT_US";
 
     // Verifying a Bank Of America Logo in About Us Menu, located by :xpath
-    public static final String WEB_ELEMENT_BANK_LOGO ="//img[@alt='Bank of America']";
+    public static final String WEB_ELEMENT_BANK_LOGO = "//img[@alt='Bank of America']";
 
     //hoverOverMenuLink_OurCompany and Click , located by : xpath
-    public static final String WEB_ELEMENT_OUR_COMPANY_LINK ="//header/div/div[3]/div/div[1]/nav/ul/li[1]/a[1]";
+    public static final String WEB_ELEMENT_OUR_COMPANY_LINK = "//header/div/div[3]/div/div[1]/nav/ul/li[1]/a[1]";
     //Validating Our Company page ,located : css
-    public static final String WEB_ELEMENT_MEN_IN_MEETING_IMAGE="[alt='Man in meeting']";
+    public static final String WEB_ELEMENT_MEN_IN_MEETING_IMAGE = "[alt='Man in meeting']";
 
     // Click on Responsible Growth Link, Located by : xpath
-    public static final String WEB_ELEMENT_RESPONSIBLE_GROWTH_LINK ="//ul[@class='navigation-main-list ']//a[.='Responsible growth']";
+    public static final String WEB_ELEMENT_RESPONSIBLE_GROWTH_LINK = "//ul[@class='navigation-main-list ']//a[.='Responsible growth']";
     //Validating Responsible growth page,located : xpath
-    public static final String WEB_ELEMENT_RESPONSIBLE_GROWTH_IMAGE="//img[@alt='People in meeting']";
+    public static final String WEB_ELEMENT_RESPONSIBLE_GROWTH_IMAGE = "//img[@alt='People in meeting']";
 
     // Click on Business practices Link, located by : xpath
-    public static final String WEB_ELEMENT_BUSINESS_PRACTICES_LINK ="//ul[@class='navigation-main-list ']//a[.='Business practices']";
+    public static final String WEB_ELEMENT_BUSINESS_PRACTICES_LINK = "//ul[@class='navigation-main-list ']//a[.='Business practices']";
     //Validating Business Practices page,located : css
-    public static final String WEB_ELEMENT_WOMEN_TALKING_IMAGE=" div.notched-image__container > div > div > div > picture > img";
+    public static final String WEB_ELEMENT_WOMEN_TALKING_IMAGE = " div.notched-image__container > div > div > div > picture > img";
 
     // Click on What we offer Link, located by : xpath
-    public static final String WEB_ELEMENT_WHAT_WE_OFFER_LINK  ="//ul[@class='navigation-main-list ']//a[.='What we offer']";
+    public static final String WEB_ELEMENT_WHAT_WE_OFFER_LINK = "//ul[@class='navigation-main-list ']//a[.='What we offer']";
     //Validating Responsible growth page,located : CSS
-    public static final String WEB_ELEMENT_WHAT_WE_OFFER_IMAGE="[alt='People talking at table with tablet ']";
+    public static final String WEB_ELEMENT_WHAT_WE_OFFER_IMAGE = "[alt='People talking at table with tablet ']";
 
 
     /*
@@ -71,7 +71,6 @@ public class AboutUSWebElementsLocators {
     public static final String webElementGmailLink = "//a[contains(text(),'Gmail')]";
     //"Images" link on the homepage, located by: XPATH
     public static final String webElementImagesLink = "//a[contains(text(),'Images')]";
-
 
 
 }

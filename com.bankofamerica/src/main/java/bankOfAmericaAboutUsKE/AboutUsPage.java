@@ -13,7 +13,6 @@ import static bankOfAmericaAboutUsKE.AboutUSWebElementsLocators.*;
 public class AboutUsPage extends BaseAPI {
 
 
-
     @FindBy(id = webElementAboutUsMenu)
     WebElement aboutUsMenu;
 
@@ -67,49 +66,54 @@ public class AboutUsPage extends BaseAPI {
         PageFactory.initElements(driver, this);
     }
 
-    public void clickAboutUsMenu(){
+    public void clickAboutUsMenu() {
 
 
         aboutUsMenu.click();
         System.out.println("pass");
     }
+
     public void clickBankLogo() {
         bankLogo.click();
         System.out.println("pass");
 
     }
-        public void hoverOurCompanyTextLink(){
+
+    public void hoverOurCompanyTextLink() {
 
         hoverOverElement(ourCompanyLink);
 //            Actions actions = new Actions(driver);
 //
 //            actions.moveToElement(ourCompanyLink).build().perform();
-            System.out.println("pass");
+        System.out.println("pass");
 
-        }
+    }
 
-        public void clickOurCompanyTextLink(){
+    public void clickOurCompanyTextLink() {
         ourCompanyLink.click();
         Assert.assertTrue(menInMeetingImage.isDisplayed());
-            System.out.println("pass");
+        System.out.println("pass");
 
-        }
-        public void clickResponsibleGrowthTextLink (){
+    }
 
-       responsible_GrowthLink.click();
-            System.out.println("pass");
-        }
-        public void clickBusinessPracticesTextLink(){
+    public void clickResponsibleGrowthTextLink() {
+
+        responsible_GrowthLink.click();
+        System.out.println("pass");
+    }
+
+    public void clickBusinessPracticesTextLink() {
 
         businessPracticesLink.click();
-            System.out.println("pass");
-        }
-        public void clickWhatWeOffer(){
+        System.out.println("pass");
+    }
+
+    public void clickWhatWeOffer() {
 
         whatWeOffer.click();
-            System.out.println("pass");
+        System.out.println("pass");
 
-        }
+    }
 
 //    public void clickWomanLeaderLearnMoreLink(){
 //

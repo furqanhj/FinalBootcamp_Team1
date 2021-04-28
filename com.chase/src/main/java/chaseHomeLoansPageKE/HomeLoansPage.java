@@ -1,9 +1,11 @@
 package chaseHomeLoansPageKE;
 
 import common.BaseAPI;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.DataProvider;
 
 import java.util.concurrent.TimeUnit;
 
@@ -30,7 +32,7 @@ public class HomeLoansPage extends BaseAPI {
     public WebElement logonFrame;
     @FindBy(xpath = WEB_ELEMENT_LOGON_MESSAGE)
     public WebElement logonMessage;
-    @FindBy(xpath  = WEB_ELEMENT_VIDEO_PLAY_BTN)
+    @FindBy(xpath = WEB_ELEMENT_VIDEO_PLAY_BTN)
     public WebElement videoPlayBtn;
     @FindBy(xpath = WEB_ELEMENT_VIDEO_ICON_CLOSE)
     public WebElement videoIconClose;
@@ -58,79 +60,99 @@ public class HomeLoansPage extends BaseAPI {
     public WebElement getMyOptionsBtn;
     @FindBy(xpath = WEB_ELEMENT_VALIDATE_GetMyOptions)
     public WebElement validateGetMyOptions;
+    @FindBy(xpath = WEB_ELEMENT_VALIDATE_VIDEO_PLAYED)
+    public WebElement validateVideoPlayed;
 
 
-
-    public HomeLoansPage(){
+    public HomeLoansPage() {
         PageFactory.initElements(driver, this);
 
     }
 
-    public void clickHomeLoansTextLink(){
+    public void clickHomeLoansTextLink() {
 
         clickElement(homeLoansTextLink);
     }
-    public void clickSignInBtn(){
+
+    public void clickSignInBtn() {
         clickElement(signInBtn);
 
 
-
     }
-    public void enterUserNameAndPassword(){
-        driver.switchTo().frame(logonFrame);
-        userNameField.sendKeys("Kamal");
-        passwordField.sendKeys("test@123");
-        signInBtn2.click();
-       // sendKeysToElement(userNameField,"Kamal");
-//        sendKeysToElement(passwordField,"Test@123");
-//        clickElement(signInBtn2);
+    //public class DataPro {
+    //  DataPro dataPro;
 
+    // public WebDriver driver;
 
+    // public static void main(String[] args) {
+//        @BeforeMethod
+//        public void launchBrowser() {
+//            dataPro = new DataPro();
+//
+//            String chromeDriverPath = "C:\\Users\\USER\\IdeaProjects\\Ebay\\Drivers\\chromedriver.exe";
+//            System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+//            WebDriver driver1 = new ChromeDriver();
+//            driver1.manage().window().maximize();
+//            driver1.manage().deleteAllCookies();
+//            driver1.get("https://www.facebook.com");
+
+    //  }
+
+    @DataProvider(name = "TestData")
+    public Object[][] getData() {
+
+        Object[][] data = {{"Kamal", "test@123"}};
+        return data;
     }
-        public void PlayVideo() throws InterruptedException {
 
-            implicitWait();
-//            JavascriptExecutor js = (JavascriptExecutor) driver;
-//            js .executeScript("document.videoPlayBtn.play()");
+
+    public void PlayVideo() throws InterruptedException {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        // This  will scroll down the page by  1000 pixel vertical
+        js.executeScript("window.scrollBy(0,1000)", "");
+
+        waitForElementToBeClickable(videoPlayBtn);
+        //         JavascriptExecutor js = (JavascriptExecutor) driver;
+//           js .executeScript("document.videoPlayBtn.play()");
 
 //            Actions action = new Actions(driver);
 //
 //            action.moveToElement(videoPlayBtn).click().perform();
 
-//            //videoPlayBtn.click();
-//            //Thread.sleep(3000);
+        //videoPlayBtn.click();
+//           Thread.sleep(3000);
 //            JavascriptExecutor js = (JavascriptExecutor) driver;
 //            js.executeScript("var evt = document.createEvent('MouseEvents');" + "evt.initMouseEvent ('click',true, true, window,0, 0, 0, 0, 0, false, false, false, false, 0,null);" + "arguments[0].dispatchEvent(evt);",videoPlayBtn);
-//            driverWait.wait(5000);
-//            clickElement(videoIconClose);
+         //   driverWait.wait(5000);
+//            //clickElement(videoIconClose);
+        clickJScript(videoPlayBtn);
+        wait(5000);
 
+          clickJScript(validateVideoPlayed);
+        //      clickElement(videoPlayBtn);
 
-    //      clickElement(videoPlayBtn);
-
-
-
-        }
-        public void clickEstimateYourRateTextLink(){
-
-        clickElement(estimateYourRate);
-        }
-
-        public void getMyOptions()  {
-            driver.switchTo().frame(iFrame);
-         sendKeysToElement(homePriceField,"350000");
-
-            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-          sendKeysToElement(downPayment,"15");
-            sendKeysToElement(zipCode,"22192");
-            clickElement(creditScoreSel);
-            clickElement(selectScore);
-            clickElement(choseOneSelector);
-            clickElement(lowInterest);
-            clickElement(getMyOptionsBtn);
 
     }
 
+    public void clickEstimateYourRateTextLink() {
 
+        clickElement(estimateYourRate);
+    }
+
+    public void getMyOptions() {
+        driver.switchTo().frame(iFrame);
+        sendKeysToElement(homePriceField, "350000");
+
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        sendKeysToElement(downPayment, "15");
+        sendKeysToElement(zipCode, "22192");
+        clickElement(creditScoreSel);
+        clickElement(selectScore);
+        clickElement(choseOneSelector);
+        clickElement(lowInterest);
+        clickElement(getMyOptionsBtn);
+
+    }
 
 
 }
